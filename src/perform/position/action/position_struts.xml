@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	 <package name="position_default" extends="struts-default" >
+		
+		<action name="poslist_mang" class="perform.position.action.PosList_mang">
+			<result name="success">/page/position/posinfo_mang.jsp</result>
+		</action>
+		<action name="poschulist" class="perform.position.action.PosChuList">
+			<result name="success">/page/position/posinfochu.jsp</result>
+		</action>
+		<action name="poszxlist" class="perform.position.action.PosZxList">
+			<result name="success">/page/position/posinfozx.jsp</result>
+		</action>
+		<action name="posdel_mang" class="perform.position.action.PosDel_mang">
+			<result name="success">/page/position/possuccess_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="posadd_mang" class="perform.position.action.PosAdd_mang">
+			<result name="success">/page/position/poskpiadd_mang.jsp</result>
+			<result name="failed">/page/position/posadd_mang.jsp</result>
+		</action>
+		<action name="posaddkpi_mang" class="perform.position.action.PosAddKpi_mang">
+			<result name="success">/page/position/posktiadd_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="posaddkti_mang" class="perform.position.action.PosAddKti_mang">
+			<result name="success">/page/position/poskbiadd_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="posaddkbi_mang" class="perform.position.action.PosAddKbi_mang">
+			<result name="success">/page/position/poskciadd_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="posaddkci_mang" class="perform.position.action.PosAddKci_mang">
+			<result name="success">/page/position/possuccess_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="posktiaddsearch" class="perform.position.action.PosKtiAddSearch">
+			<result name="success">/page/position/posktiadd_mang.jsp</result>
+		</action>
+		<action name="poskbiaddsearch" class="perform.position.action.PosKbiAddSearch">
+			<result name="success">/page/position/poskbiadd_mang.jsp</result>
+		</action>
+		<action name="poskciaddsearch" class="perform.position.action.PosKciAddSearch">
+			<result name="success">/page/position/poskciadd_mang.jsp</result>
+		</action>
+		<action name="posmodify_mang" class="perform.position.action.PosModify_mang">
+			<result name="success">/page/position/posmodify_mang.jsp</result>
+		</action>
+		<action name="posupdate_mang" class="perform.position.action.PosUpdate_mang">
+			<result name="success">/page/position/poskpimodify_mang.jsp</result>
+			<result name="failed">/page/position/posmodify_mang.jsp</result>
+		</action>
+		<action name="posmodifykpi_mang" class="perform.position.action.PosModifyKpi_mang">
+			<result name="success">/page/position/posktimodify_mang.jsp</result>
+		</action>
+		<action name="posmodifykti_mang" class="perform.position.action.PosModifyKti_mang">
+			<result name="success">/page/position/poskbimodify_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="posmodifykbi_mang" class="perform.position.action.PosModifyKbi_mang">
+			<result name="success">/page/position/poskcimodify_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="posmodifykci_mang" class="perform.position.action.PosModifyKci_mang">
+			<result name="success">/page/position/possuccess_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="posshow" class="perform.position.action.PosShow_mang">
+			<result name="success">/page/position/position_detail.jsp</result>
+		</action>
+		<action name="exportpos" class="perform.position.action.ExportPos">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+		<action name="posmodifyktireturn" class="perform.position.action.PosModifyKtiReturn">
+			<result name="success">/page/position/poskpimodify_mang.jsp</result>
+		</action>
+		<action name="posmodifykbireturn" class="perform.position.action.PosModifyKbiReturn">
+			<result name="success">/page/position/posktimodify_mang.jsp</result>
+		</action>
+		<action name="posmodifykcireturn" class="perform.position.action.PosModifyKciReturn">
+			<result name="success">/page/position/poskbimodify_mang.jsp</result>
+		</action>
+		<action name="posmodifykpireturn" class="perform.position.action.PosModifyKpiReturn">
+			<result name="success">/page/position/posmodify_mang.jsp</result>
+		</action>
+	</package>
+</struts>    

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	 <package name="dataimport_default" extends="struts-default" >
+		
+		<action name="showkpiscoreimport_rate" class="perform.dataimport.action.ShowKpiScoreImport">
+			<result name="success">/page/import/dataimport.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="importkpiscore_rate" class="perform.dataimport.action.ImportKpiScore">
+			<result name="success">/page/public/success.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		
+	</package>
+</struts>    

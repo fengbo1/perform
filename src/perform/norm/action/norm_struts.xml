@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="norm_default" extends="struts-default" >
+		
+		<action name="kpilist_mang" class="perform.norm.action.KPIList_mang">
+			<result name="success">/page/norm/KPInorm_mang.jsp</result>
+		</action>
+		<action name="ktilist_mang" class="perform.norm.action.KTIList_mang">
+			<result name="success">/page/norm/KTInorm_mang.jsp</result>
+		</action>
+		<action name="kbilist_mang" class="perform.norm.action.KBIList_mang">
+			<result name="success">/page/norm/KBInorm_mang.jsp</result>
+		</action>
+		<action name="kcilist_mang" class="perform.norm.action.KCIList_mang">
+			<result name="success">/page/norm/KCInorm_mang.jsp</result>
+		</action>
+		<action name="kpilistquery" class="perform.norm.action.KPIListQuery">
+			<result name="success">/page/norm/KPInormquery.jsp</result>
+		</action>
+		<action name="ktilistquery" class="perform.norm.action.KTIListQuery">
+			<result name="success">/page/norm/KTInormquery.jsp</result>
+		</action>
+		<action name="kbilistquery" class="perform.norm.action.KBIListQuery">
+			<result name="success">/page/norm/KBInormquery.jsp</result>
+		</action>
+		<action name="kcilistquery" class="perform.norm.action.KCIListQuery">
+			<result name="success">/page/norm/KCInormquery.jsp</result>
+		</action>
+	    <action name="ktiadd_mang" class="perform.norm.action.KTIAdd_mang">
+			<result name="success">/page/norm/KTIaddsuccess_mang.jsp</result>
+			<result name="failed">/page/norm/KTIadd_mang.jsp</result>
+		</action>
+		<action name="kbiadd_mang" class="perform.norm.action.KBIAdd_mang">
+			<result name="success">/page/norm/KBIaddsuccess_mang.jsp</result>
+			<result name="failed">/page/norm/KBIadd_mang.jsp</result>
+		</action>
+		<action name="kciadd_mang" class="perform.norm.action.KCIAdd_mang">
+			<result name="success">/page/norm/KCIaddsuccess_mang.jsp</result>
+			<result name="failed">/page/norm/KCIadd_mang.jsp</result>
+		</action>
+		<action name="ktidel_mang" class="perform.norm.action.KTIDel_mang">
+			<result name="success">/page/norm/KTIaddsuccess_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="kbidel_mang" class="perform.norm.action.KBIDel_mang">
+			<result name="success">/page/norm/KBIaddsuccess_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="kcidel_mang" class="perform.norm.action.KCIDel_mang">
+			<result name="success">/page/norm/KCIaddsuccess_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="exportkpinorm" class="perform.norm.action.ExportKpiNorm">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+		<action name="exportktinorm" class="perform.norm.action.ExportKtiNorm">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+		<action name="exportkcinorm" class="perform.norm.action.ExportKciNorm">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+		<action name="exportkbinorm" class="perform.norm.action.ExportKbiNorm">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+	</package>
+</struts>    

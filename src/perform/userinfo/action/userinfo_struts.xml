@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="user_default" extends="struts-default" >
+		<action name="login" class="perform.userinfo.action.UserLogin">
+			<result name="success">/page/performace.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="userlistall" class="perform.userinfo.action.UserList">
+			<result name="success">/page/userinfo/alluserinfo_mang.jsp</result>
+		</action>
+		<action name="userinfo" class="perform.userinfo.action.UserInfo">
+			<result name="success">/page/userinfo/userpwdmodify.jsp</result>
+		</action>
+		<action name="userpassmodify" class="perform.userinfo.action.UserPassModify">
+			<result name="success">/page/public/success.jsp</result>
+			<result name="failed">/page/userinfo/userpwdmodify.jsp</result>
+		</action>
+		<action name="userdel_mang" class="perform.userinfo.action.UserDel_mang">
+			<result name="success">/page/public/successtiao.jsp</result>
+		</action>
+		<action name="useradd_mang" class="perform.userinfo.action.UserAdd_mang">
+			<result name="success">/page/public/successtiao.jsp</result>
+			<result name="failed">/page/userinfo/useradd_mang.jsp</result>
+		</action>
+		<action name="userupdate" class="perform.userinfo.action.UserUpdate">
+			<result name="success">/page/public/successtiao.jsp</result>
+			<result name="failed">/page/userinfo/usermodify_mang.jsp</result>
+		</action>
+		<action name="usermodify_mang" class="perform.userinfo.action.UserModify_mang">
+			<result name="success">/page/userinfo/usermodify_mang.jsp</result>			
+		</action>
+		<action name="getchuajax" class="perform.userinfo.action.GetChuAjax">
+			<result name="success">/page/userinfo/getchuajax.jsp</result>
+		</action>
+		<action name="gettuanajax" class="perform.userinfo.action.GetTuanAjax">
+			<result name="success">/page/userinfo/gettuanajax.jsp</result>
+		</action>
+		<action name="getzuajax" class="perform.userinfo.action.GetZuAjax">
+			<result name="success">/page/userinfo/getzuajax.jsp</result>
+		</action>
+		<action name="showuseradd_mang" class="perform.userinfo.action.ShowUserAdd">
+			<result name="success">/page/userinfo/useradd_mang.jsp</result>
+		</action>
+		<action name="exportuserinfo" class="perform.userinfo.action.ExportUserInfo">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+	</package>
+</struts>    

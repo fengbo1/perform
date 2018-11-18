@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="pdp_default" extends="struts-default" >
+		
+		<action name="pdp_person" class="perform.pdp.action.PDPPerson">
+			<result name="success">/page/ratestandard/ratestandard_person.jsp</result>
+		</action>
+		<action name="pdp_office" class="perform.pdp.action.PDPOffice">
+			<result name="success">/page/ratestandard/ratestandard_office.jsp</result>
+		</action>
+		<action name="pdp_center" class="perform.pdp.action.PDPCenter">
+			<result name="success">/page/ratestandard/ratestandard_center.jsp</result>
+		</action>
+	</package>
+</struts>    

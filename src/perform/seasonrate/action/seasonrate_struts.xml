@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="seasonrate_default" extends="struts-default" >
+		<action name="seasonrate_list_rate" class="perform.seasonrate.action.SeasonRateList">
+			<result name="success">/page/seasonrate/seasonrate_list.jsp</result>
+		</action>
+		<action name="seasonkpi_rate" class="perform.seasonrate.action.SeasonKpiRate">
+			<result name="success">/page/seasonrate/seasonkpi_rate.jsp</result>
+		</action>
+		<action name="seasonkti_rate" class="perform.seasonrate.action.SeasonKtiRate">
+			<result name="success">/page/seasonrate/seasonkti_rate.jsp</result>
+		</action>
+		<action name="seasonkbi_rate" class="perform.seasonrate.action.SeasonKbiRate">
+			<result name="success">/page/seasonrate/seasonkbi_rate.jsp</result>
+		</action>
+		<action name="seasonkci_rate" class="perform.seasonrate.action.SeasonKciRate">
+			<result name="success">/page/seasonrate/seasonkci_rate.jsp</result>
+		</action>
+		<action name="subseasonkti_rate" class="perform.seasonrate.action.SubSeasonKtiRate">
+			<result name="success">/page/seasonrate/before_list.jsp</result>
+		</action>
+		<action name="subseasonkbi_rate" class="perform.seasonrate.action.SubSeasonKbiRate">
+			<result name="success">/page/seasonrate/before_list.jsp</result>
+		</action>
+		<action name="subseasonkci_rate" class="perform.seasonrate.action.SubSeasonKciRate">
+			<result name="success">/page/seasonrate/before_list.jsp</result>
+		</action>
+		<action name="rate_set" class="perform.seasonrate.action.RateSet">
+			<result name="success">/page/seasonrate/rate_set.jsp</result>
+		</action>
+		<action name="rate_begin" class="perform.seasonrate.action.RateBegin">
+			<result name="success">/page/seasonrate/before_rateset.jsp</result>
+		</action>
+		<action name="rate_express" class="perform.seasonrate.action.RateExpress">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+		<action name="rate_jisuan" class="perform.seasonrate.action.RateJisuan">
+			<result name="success">/page/seasonrate/before_rateset.jsp</result>
+		</action>
+		<action name="rate_baocun" class="perform.seasonrate.action.RateBaocun">
+			<result name="success">/page/seasonrate/before_rateset.jsp</result>
+		</action>
+	</package>
+</struts>    

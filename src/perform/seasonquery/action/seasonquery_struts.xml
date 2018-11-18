@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="seasonquery_default" extends="struts-default" >
+		<action name="seasonquery_person" class="perform.seasonquery.action.SeasonQueryPerson">
+			<result name="success">/page/seasonquery/seasonquery_person.jsp</result>
+		</action>
+		<action name="seasonquery_office" class="perform.seasonquery.action.SeasonQueryOffice">
+			<result name="success">/page/seasonquery/seasonquery_office.jsp</result>
+		</action>
+		<action name="seasonquery_center" class="perform.seasonquery.action.SeasonQueryCenter">
+			<result name="success">/page/seasonquery/seasonquery_center.jsp</result>
+			<result name="successfu">/page/seasonquery/seasonquery_centerfu.jsp</result>
+		</action>
+		<action name="seasonquery_kpi" class="perform.seasonquery.action.SeasonQueryKPI">
+			<result name="success">/page/seasonquery/seasonquery_kpi.jsp</result>
+		</action>
+		<action name="seasonkpidetail_query" class="perform.seasonquery.action.SeasonKPIDetailQuery">
+			<result name="success">/page/seasonquery/seasonquerydetail_kpi.jsp</result>
+		</action>
+		<action name="seasonktidetail_query" class="perform.seasonquery.action.SeasonKTIDetailQuery">
+			<result name="success">/page/seasonquery/seasonquerydetail_kti.jsp</result>
+		</action>
+		<action name="seasonkbidetail_query" class="perform.seasonquery.action.SeasonKBIDetailQuery">
+			<result name="success">/page/seasonquery/seasonquerydetail_kbi.jsp</result>
+		</action>
+		<action name="seasonkcidetail_query" class="perform.seasonquery.action.SeasonKCIDetailQuery">
+			<result name="success">/page/seasonquery/seasonquerydetail_kci.jsp</result>
+		</action>
+		<action name="exportpscore" class="perform.seasonquery.action.ExportPscore">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+	</package>
+</struts>    

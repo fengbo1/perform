@@ -1,0 +1,58 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+
+    <description>util</description>
+    <tlib-version>1.0</tlib-version>
+    <short-name>util</short-name>
+    <uri>http://template.fb.com/article/taglib</uri>
+	<function>
+        <description>positionToChu</description>
+        <name>positiontochu</name>
+		<function-class>perform.util.UserUtil</function-class>
+		<function-signature>java.lang.String positionToChu( java.lang.String)</function-signature>
+    </function>
+    <function>
+        <description>positionToTuan</description>
+        <name>positiontotuan</name>
+		<function-class>perform.util.UserUtil</function-class>
+		<function-signature>java.lang.String positionToTuan( java.lang.String)</function-signature>
+    </function>
+    <function>
+        <description>chutuanToTuan</description>
+        <name>chutuanTotuan</name>
+		<function-class>perform.util.UserUtil</function-class>
+		<function-signature>java.lang.String chutuanTotuan( java.lang.String,java.lang.String)</function-signature>
+    </function>
+    <function>
+        <description>positionToZu</description>
+        <name>positiontozu</name>
+		<function-class>perform.util.UserUtil</function-class>
+		<function-signature>java.lang.String positionToZu( java.lang.String)</function-signature>
+    </function>
+   <function>
+        <description>positionToZhi</description>
+        <name>positiontozhi</name>
+		<function-class>perform.util.UserUtil</function-class>
+		<function-signature>java.lang.String positionToZhi( java.lang.String)</function-signature>
+    </function>
+    <function>
+        <description>positionToZx</description>
+        <name>positiontozx</name>
+		<function-class>perform.util.UserUtil</function-class>
+		<function-signature>java.lang.String positionToZX( java.lang.String)</function-signature>
+    </function>
+    <function>
+        <description>pnumToName</description>
+        <name>pnumtoname</name>
+		<function-class>perform.util.UserUtil</function-class>
+		<function-signature>java.lang.String pnumToName( java.lang.Integer)</function-signature>
+    </function>
+     <function>
+        <description>authoToName</description>
+        <name>authotoname</name>
+		<function-class>perform.util.UserUtil</function-class>
+		<function-signature>java.lang.String authoToName( java.lang.String)</function-signature>
+    </function>
+</taglib>

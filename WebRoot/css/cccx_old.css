@@ -1,0 +1,107 @@
+body{
+	margin:0px;
+	}
+.b1,.b2,.b3,.b4,.b1b,.b2b,.b3b,.b4b,.b{display:block;overflow:hidden;}
+
+.b1,.b2,.b3,.b1b,.b2b,.b3b{height:1px;}
+
+.b2,.b3,.b4,.b2b,.b3b,.b4b,.b{border-left:1px solid #FFF;border-right:1px solid #999;}
+
+.b1,.b1b{margin:0 5px;background:#999;}
+
+.b2,.b2b{margin:0 3px;border-width:2px;}
+
+.b3,.b3b{margin:0 2px;}
+
+.b4,.b4b{height:2px;margin:0 1px;}
+
+.d1{background:#ffffff;}  /*瀹氫箟 鍦嗗姬鍨嬭儗鏅殑棰滆壊*/
+
+.k {height:215px;}
+.k2 {height:320px;}
+.k3 {height:635px;}
+.k4{height:90px}
+#zhuti {
+	padding: 0px;
+	left: 0px;
+	top: 0px;
+	width: 1415px;
+	height: auto;
+	border: 0px solid #0033FF;
+	background-color: #ffffff
+}
+#top {
+	height: 65px;
+	width: 1400px;
+	left: 17px;
+	top: 26px;
+	padding-left:10px;
+	padding-top:5px
+}
+.x_beijing{
+	margin: 0px;
+	padding: 0px;
+	width: 1415px;
+	height: 650px;
+	background-color: #0066B3;
+}
+
+/*鐎电懓鍨悰銊﹀瘻闁筋喗澧嶉崷鈥旾V閺嶅洨顒风�姘疅*/
+.x_anniu
+	{
+	float: left;
+	margin-top: 0px;
+	margin-left: 5px;
+	padding: 0px;
+	padding-top: 5px;
+	width: 170px;
+	height: auto;
+	text-align: center;
+	
+}
+/*鐠哄疇娴嗘い鐢告桨閺嶇厧绱＄�姘疅*/
+.x_xianshi
+	{
+	float: left;
+	width: 1230px;
+	margin: 0px;
+	padding: 0px;
+	margin-top: 5px;
+	margin-left: 5px;
+	overflow-y: auto;
+	}
+iframe{padding:0px}
+#frame{
+	margin: 0px;
+	padding: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
+	margin-left: 0px;
+	width: 1230px;
+	height: 629px;
+	border: ;
+	
+}
+ul{margin:0;padding:0;} 
+
+/*閺夊啴妾洪柊宥囩枂鐞涖劑銆夐棃銏ｃ�閺嶅吋鐗稿蹇撶暰娑�/
+.x_b_qxpz{
+	border-collapse: collapse;
+	margin: 0px;
+	padding: 0px;
+	top: 0px;
+	border: 3px solid #00F;
+}
+td,tr {
+	
+	margin:0px;
+	padding: 0px;
+}
+
+.x_gr{
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 50px;
+	padding-top: 20px;
+	padding-bottom:20px;
+}
