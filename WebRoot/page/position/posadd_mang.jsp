@@ -29,31 +29,7 @@
   </style>
   
   <script type="text/javascript">
-   function getchu(){
-    
-    var chus="";
-    var	city=document.getElementById('city').value;
-    var xmlhttp;
-    var time=new Date().getTime();
-	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp = new XMLHttpRequest();
-	} else {// code for IE6, IE5
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}	
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			
-			chus=xmlhttp.responseText;
-			//alert(yesorno);
-			
-				//document.getElementById("chutuan").innerHTML=arr[0];
-			chuname(chus);
-		}				
-	} 
-	xmlhttp.open("GET","getchuajax.action?city="+city+"&nowtime="+time,true);
-	//xmlhttp.open("GET","login.action",true);
-	xmlhttp.send();
-}
+   
 
  function gettuan(){
     
@@ -73,29 +49,15 @@
 			//alert(yesorno);
 			
 				//document.getElementById("chutuan").innerHTML=arr[0];
-			tuanname(tuans);
+			tuanname(chu,tuans);
 		}				
 	} 
 	xmlhttp.open("GET","gettuanajax.action?chu="+chu+"&nowtime="+time,true);
 	//xmlhttp.open("GET","login.action",true);
 	xmlhttp.send();
-}
-
-
-function chuname(chus){
-
-var arry= new Array();
-arry=chus.split("|"); //字符分割 
-var obj=document.getElementById('chu'); 
-obj.options.length=0;
-obj.options.add(new Option("-请选择处室名称-","wu"));
-for (var i=1;i<arry.length;i++){	
-
-	obj.options.add(new Option(chuidtoname(arry[i]),arry[i])); //这个兼容IE与firefox 
-}
 } 
 
-function tuanname(tuans){
+function tuanname(chu,tuans){
 
 var arry= new Array();
 arry=tuans.split("|"); //字符分割 
@@ -104,7 +66,7 @@ obj.options.length=0;
 obj.options.add(new Option("-请选择团队名称-","wu"));
 for (var i=1;i<arry.length;i++){	
 
-	obj.options.add(new Option(tuanidtoname(arry[i]),arry[i])); //这个兼容IE与firefox 
+	obj.options.add(new Option(tuanidtoname(chu,arry[i]),arry[i])); //这个兼容IE与firefox 
 }
 } 
 
@@ -134,30 +96,18 @@ for (var i=1;i<arry.length;i++){
     			
     		</tr>
     		
-    		<tr>
-    			<td width="200" class="as" >
-    				<span style="font-size:12pt;color:black">机构</span><span>*</span>
-    			</td>
-    			<td width="300" class="as">
-    				<select style="width:280px"  id="city" name="city" onchange="getchu()">
-										<option value="wu">请选择机构名称</option>
-										<option value="1">业务处理中心</option>
-										<option value="2">成都分中心</option>
-										<option value="3">武汉生产园区管理办公室</option>
-						</select>
-    				
-    			</td>
-    			
-    		</tr>
-    		
-    		
     		 <tr>
     			<td width="200" class="as" >
     				<span style="font-size:12pt;color:black">岗位所属处室</span><span>*</span>
     			</td>
     			<td width="300" class="as">
     				<select style="width:280px"  id="chu" name="chu" onchange="gettuan()">
-						 <option value="wu">-请选择处室名称-</option>			                        
+						 				<option value="wu">-请选择处室名称-</option>
+						                 <option value="1">综合与生产管理处</option>
+						                 <option value="2">合规与监督二处</option>
+						                 <option value="3">通用业务二处</option>
+						                 <option value="6">专业处理二处</option>
+						                 <option value="5">研发支持二处</option>			                        
 					</select>
     				
     			</td>

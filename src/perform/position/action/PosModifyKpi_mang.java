@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import perform.norm.pojo.PKtinorm;
 import perform.position.dao.PPositionDAO;
 import perform.position.pojo.PPosition;
+import perform.userinfo.pojo.PUser;
 import ccb.hibernate.HibernateSessionFactory;
 
 public class PosModifyKpi_mang {
@@ -21,7 +22,7 @@ public class PosModifyKpi_mang {
 	private String chu;
 	private String tuan;
 	private List<PKtinorm> listkt;	
-		
+	private List<PUser> listu;	
 
 	public String getCity() {
 		return city;
@@ -79,8 +80,6 @@ public class PosModifyKpi_mang {
 		this.message = message;
 	}
 
-
-
 	public int getPosid() {
 		return posid;
 	}
@@ -103,6 +102,14 @@ public class PosModifyKpi_mang {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public List<PUser> getListu() {
+		return listu;
+	}
+
+	public void setListu(List<PUser> listu) {
+		this.listu = listu;
 	}
 
 	public String execute() throws Exception

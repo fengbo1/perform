@@ -449,6 +449,7 @@ function tuanidtonamemodify(id)
 function tijiao()
 {
 	var normlist = document.getElementsByName("ktinorm");
+	var raterlist = document.getElementsByName("rater");
 	//var normprop = document.getElementsByName("kbinormprop");
 	var i=0;
 	for(i=0;i<normlist.length;i++)
@@ -460,12 +461,17 @@ function tijiao()
             // alert(typeof((Number(normlist[i].value)+100000).toString()));
              //alert((Number(normlist[i].value)+100000).toString());
              var prop=document.getElementById((Number(normlist[i].value)+100000).toString()).value;
+             var rater=document.getElementById((Number(raterlist[i].value)+10000000).toString()).value;
              if(prop=="")
              {
                  alert("选中的指标权重未填！");
                  return;
              }    
- 
+ 			if(rater=="")
+             {
+                 alert("指标未选择评分人！");
+                 return;
+             }   
 	    }
 	     
 	}
@@ -502,10 +508,6 @@ function tijiao()
 										<option value="2">成都分中心</option>
 										<option value="3">武汉生产园区管理办公室</option>
 						  </select>
-    				
-    			
-									
-									
 									处室
 									<select style="width:140px"  id="chu" name="chu" onchange="gettuan()">
 						                 <option value="wu">-请选择处室名称-</option>			                        
@@ -598,6 +600,14 @@ function tijiao()
 										align="center"><input id="${kt.id}" type="checkbox" name="ktinorm"  value="${kt.id}" /></div></td>	
 								<td width="80px" height="25" align="center" valign="middle" nowrap><div
 										align="center"><input id="${kt.id+100000}"  style="width:50px" type="text" name="ktinormprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/></div></td>			
+				     			<td width="80px" height="25" align="center" valign="middle" nowrap><div
+										align="center">
+											 <select style="width:80px"  id="${kt.id+10000000}" name="rater">
+											 	<c:forEach items="${listu}" var="u" varStatus="status">
+											 		<option value="${u.newnumber}">${u.name}</option>
+											 	</c:forEach>
+						 					 </select>
+										</div></td>	
 				     </tr>
 					</c:forEach>
 								</table>

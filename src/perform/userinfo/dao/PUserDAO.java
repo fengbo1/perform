@@ -361,4 +361,20 @@ public class PUserDAO extends BaseHibernateDAO  {
 			throw re;
 		}
 	}
+	
+	public List findRaterByChu(String chu) {
+		log.debug("finding all PUser instances");
+		try {
+			if(chu.equals("wu"))
+			{
+				chu="_";
+			}
+			String queryString = "from PUser where position like'__"+chu+"__' and canscore='1' order by position";
+	         Query queryObject = getSession().createQuery(queryString);
+	         return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
 }

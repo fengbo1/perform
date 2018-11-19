@@ -17,6 +17,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import perform.position.dao.PPositionDAO;
 import perform.position.pojo.PPosition;
+import perform.userinfo.dao.PUserDAO;
+import perform.userinfo.pojo.PUser;
+
 import com.opensymphony.xwork2.ActionSupport;
 import ccb.hibernate.HibernateSessionFactory;
 public class PosAddKpi_mang {
@@ -30,7 +33,7 @@ public class PosAddKpi_mang {
 	private String chu;
 	private String tuan;
 	private List<PKtinorm> listkt;	
-	
+	private List<PUser> listu;	
 	
 	public String getCity() {
 		return city;
@@ -112,8 +115,17 @@ public class PosAddKpi_mang {
 		this.category = category;
 	}
 
+	public List<PUser> getListu() {
+		return listu;
+	}
+
+	public void setListu(List<PUser> listu) {
+		this.listu = listu;
+	}
+
 	public String execute() throws Exception
 	{
+		PUserDAO pudao = new PUserDAO();
 		Query query;
 		String hql = "";
 		if(category==null||category=="")
@@ -128,6 +140,7 @@ public class PosAddKpi_mang {
 		PPositiontemp pp =new PPositiontemp();
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans = session.beginTransaction();
+ 	    listu = pudao.findRaterByChu(chu);
  	    pp=ppdao.findByNameandChuandTuan(posname, poschu, postuan);
  	    pp.setKpinorm(category); 
  	    pp.setKpinormprop("1.00");

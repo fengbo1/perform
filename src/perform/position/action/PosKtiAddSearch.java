@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import perform.norm.pojo.PKtinorm;
+import perform.userinfo.dao.PUserDAO;
+import perform.userinfo.pojo.PUser;
 import perform.util.UserUtil;
 import ccb.hibernate.HibernateSessionFactory;
 
@@ -16,95 +18,53 @@ public class PosKtiAddSearch {
 	  private String city;
 	  private String posid;
 	  private String id;
-	  private List<PKtinorm> listkt;	
-	
-	
-	public String getPosid() {
-		return posid;
-	}
-
-
-
-
-	public void setPosid(String posid) {
-		this.posid = posid;
-	}
-
-
-
-
-	public String getId() {
-		return id;
-	}
-
-
-
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-
-
-	public String getCity() {
-		return city;
-	}
-
-
-
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-
-
-
-	public String getChu() {
+	  private List<PKtinorm> listkt;
+	  private List<PUser> listu;	
+	  public String getChu() {
 		return chu;
 	}
-
-
-
-
 	public void setChu(String chu) {
 		this.chu = chu;
 	}
-
-
-
-
 	public String getTuan() {
 		return tuan;
 	}
-
-
-
-
 	public void setTuan(String tuan) {
 		this.tuan = tuan;
 	}
-
-
-
-
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getPosid() {
+		return posid;
+	}
+	public void setPosid(String posid) {
+		this.posid = posid;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public List<PKtinorm> getListkt() {
 		return listkt;
 	}
-
-
-
-
 	public void setListkt(List<PKtinorm> listkt) {
 		this.listkt = listkt;
 	}
-
-
-
-
+	public List<PUser> getListu() {
+		return listu;
+	}
+	public void setListu(List<PUser> listu) {
+		this.listu = listu;
+	}
 	public String execute() throws Exception
 		{
+			PUserDAO pudao = new PUserDAO();
 			Query query;
 			String hql = "";
 			id = posid;
@@ -123,6 +83,7 @@ public class PosKtiAddSearch {
 			Session session = HibernateSessionFactory.getSession();
 			Transaction trans = session.beginTransaction();
 			try {
+				listu = pudao.findRaterByChu(chu);	
 				hql = "from PKtinorm as kt where 1=1";
 				if(city!=null)
 				{
@@ -151,7 +112,7 @@ public class PosKtiAddSearch {
 				System.out.println(hql);
 				query = session.createQuery(hql);
 				listkt = query.list();
-					
+				
 			} catch (Exception e) {
 			// TODO: handle exception
 				e.printStackTrace();
