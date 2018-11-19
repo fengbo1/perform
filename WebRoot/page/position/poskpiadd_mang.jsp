@@ -63,7 +63,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 						<tr>
 							 <td
 								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="8" align="center" bordercolor="#FFFFFF"><b>关键业绩指标KPI选择</b>
+								colspan="8" align="center" bordercolor="#FFFFFF"><b>关键业务指标选择</b>
 							</td>
 						</tr>
 					<tr>
@@ -114,18 +114,18 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								<td  width="50px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
 								
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="center">${kp.name}</div></td>
-								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+								<td width="150px" height="25" align="center" valign="middle" ><div
 										align="left">${kp.pdpname}</div></td>
-								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+								<td width="150px" height="25" align="center" valign="middle" ><div
 										align="left">${kp.target}</div></td>
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="left">${kp.score}</div></td>
-								<td width="400px" height="25" align="center" valign="middle" nowrap><div
+								<td width="400px" height="25" align="center" valign="middle" ><div
 										align="left">${kp.rule}</div></td>
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
-										align="center"><input name=category type="radio" value="${kp.id}"></div></td>				
+								<td width="100px" height="25" align="center" valign="middle" ><div
+										align="center"><input name="category" type="radio" value="${kp.id}"></div></td>				
 				     </tr>
 					</c:forEach>
 						</table>

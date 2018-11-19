@@ -24,7 +24,6 @@ public class PosAdd_mang extends ActionSupport implements ServletResponseAware{
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String chu;
-	private String tuan;
 	private double kpiprop;
 	private double ktiprop;
 	private double kbiprop;
@@ -63,14 +62,6 @@ public class PosAdd_mang extends ActionSupport implements ServletResponseAware{
 
 	public void setChu(String chu) {
 		this.chu = chu;
-	}
-
-	public String getTuan() {
-		return tuan;
-	}
-
-	public void setTuan(String tuan) {
-		this.tuan = tuan;
 	}
 
 	public double getKpiprop() {
@@ -115,7 +106,7 @@ public class PosAdd_mang extends ActionSupport implements ServletResponseAware{
 		PPosition ppcheck = new PPosition();
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans = session.beginTransaction();
- 	    ppcheck = ppcheckdao.findByNameandChuandTuan(name, chu, tuan);
+ 	    ppcheck = ppcheckdao.findByNameandChuandTuan(name, chu);
  	    if(ppcheck!=null)
  	    {
  	    	 this.addFieldError("用户","已存在同名称、同处室、同团队岗位，不许重复添加！");
@@ -135,11 +126,6 @@ public class PosAdd_mang extends ActionSupport implements ServletResponseAware{
 		  else if(chu.equals("")||chu.equals("wu"))
 		  {
 			 this.addFieldError("用户","处室为空");
-		  	 return "failed";
-		  }
-		  else if(tuan.equals("")||tuan.equals("wu"))
-		  {
-			 this.addFieldError("用户","团队为空");
 		  	 return "failed";
 		  }
 		  else if(kpiprop==0.00)
@@ -169,7 +155,6 @@ public class PosAdd_mang extends ActionSupport implements ServletResponseAware{
 		  }
  	    pp.setName(name);
  	    pp.setChu(chu);
- 	    pp.setTuan(tuan);
  	    pp.setKbiprop(kbiprop);
  	    pp.setKciprop(kciprop);
  	    pp.setKpiprop(kpiprop);

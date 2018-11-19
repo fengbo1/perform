@@ -110,7 +110,7 @@ function tijiao()
 					<tr>
 							 <td
 								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="8" align="center" bordercolor="#FFFFFF"><b>关键行为指标KBI选择</b>
+								colspan="8" align="center" bordercolor="#FFFFFF"><b>品能目标选择</b>
 							</td>
 					</tr>
 					<tr>
@@ -183,22 +183,22 @@ function tijiao()
 					<c:forEach items="${listkb}" var="kb" varStatus="status">
 					<tr class="btbj" id="hang" style="height:25px">
 								
-								<td  width="50px" height="25" align="center" valign="middle" nowrap><div
+								<td  width="50px" height="25" align="center" valign="middle" ><div
 										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
 								
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="center">${kb.name}</div></td>
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="center">${fb:positiontozhi(kb.level)}</div></td>
-								<td width="400px" height="25" align="center" valign="middle" nowrap><div
+								<td width="400px" height="25" align="center" valign="middle" ><div
 										align="left">${kb.target}</div></td>
-								<td width="50px" height="25" align="center" valign="middle" nowrap><div
+								<td width="50px" height="25" align="center" valign="middle" ><div
 										align="center">${kb.score}</div></td>
-								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+								<td width="150px" height="25" align="center" valign="middle" ><div
 										align="left">${kb.rule}</div></td>
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="center"><input id="${kb.id}" type="checkbox"  name="kbinorm" value="${kb.id}" /></div></td>	
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="center"><input id="${kb.id+100000}" style="width:50px" type="text" name="kbinormprop"  onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/></div></td>			
 				     </tr>
 					</c:forEach>

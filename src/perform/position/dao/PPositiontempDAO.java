@@ -272,10 +272,10 @@ public class PPositiontempDAO extends BaseHibernateDAO  {
             throw re;
         }
     }
-    public PPositiontemp findByNameandChuandTuan(String name,String chu,String tuan) {
+    public PPositiontemp findByNameandChuandTuan(String name,String chu) {
     	log.debug("finding all PPosition instances");
     	try {
-    		String queryString = "from PPositiontemp as pp where pp.name='"+name+"'and pp.chu='"+chu+"'and pp.tuan='"+tuan+"'";
+    		String queryString = "from PPositiontemp as pp where pp.name='"+name+"'and pp.chu='"+chu+"'";
     		Query queryObject = getSession().createQuery(queryString);
     		List list = queryObject.list();
     		if(list.isEmpty())
@@ -292,4 +292,24 @@ public class PPositiontempDAO extends BaseHibernateDAO  {
     		throw re;
     	}
     }
+    
+    public PPositiontemp findAllById(int id) {
+		log.debug("finding all PPositiontemp instances");
+		try {
+			String queryString = "from PPositiontemp where id='"+id+"'";
+	         Query queryObject = getSession().createQuery(queryString);
+			 List<PPositiontemp> list = queryObject.list();
+			 if(list.isEmpty())
+			 {
+				 return null;
+			 }
+			 else
+			 {
+				 return list.get(0);
+			 }
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
 }

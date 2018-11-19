@@ -6,21 +6,20 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import perform.norm.pojo.PKbinorm;
-import perform.norm.pojo.PKtinorm;
 import perform.position.dao.PPositiontempDAO;
 import perform.position.pojo.PPositiontemp;
+import perform.userinfo.pojo.PUser;
 import ccb.hibernate.HibernateSessionFactory;
 
 public class PosAddKti_mang {
 	private String[] ktinorm;
 	private String[] ktinormprop;
-	private String[] rater;
+	private String raters;
 	private int posid;
 	private int id;
 	private String message;
 	private String level;
 	private List<PKbinorm> listkb;	
-	
 	
 	public String getLevel() {
 		return level;
@@ -55,8 +54,6 @@ public class PosAddKti_mang {
 	}
 
 
-
-
 	public int getPosid() {
 		return posid;
 	}
@@ -80,13 +77,12 @@ public class PosAddKti_mang {
 	public void setKtinormprop(String[] ktinormprop) {
 		this.ktinormprop = ktinormprop;
 	}
-
-	public String[] getRater() {
-		return rater;
+	public String getRaters() {
+		return raters;
 	}
 
-	public void setRater(String[] rater) {
-		this.rater = rater;
+	public void setRaters(String raters) {
+		this.raters = raters;
 	}
 
 	public String execute() throws Exception
@@ -96,7 +92,6 @@ public class PosAddKti_mang {
 		String hql = "";
 		String ktinormcun = "";
 		String ktinormpropcun = "";
-		String ktiratercun = "";
 		int ktipropnum=0;
 		if(ktinorm!=null&&ktinorm.length!=0)
 		{	
@@ -125,14 +120,10 @@ public class PosAddKti_mang {
 		  ktinormpropcun=ktinormpropcun.substring(0, ktinormpropcun.length()-1);
 		 }
 		}
-		if(rater!=null&&rater.length!=0)
+		if(raters.length()>0)
 		{	
-		  ktiratercun =rater[0];
-		 for(int i=1;i<rater.length;i++)
-	    {
-			ktiratercun += "、";
-			ktiratercun += rater[i];
-	    }
+			raters.replace("|", "、");
+			raters = raters.substring(0, raters.length()-1);
 		}
 		if(ktipropnum==0)
 		{
@@ -147,11 +138,6 @@ public class PosAddKti_mang {
 		if(ktinorm.length!=ktipropnum)
 		{
 			message="指标数量和指标权重数量不匹配！";
-			return "failed";
-		}
-		if(ktinorm.length!=rater.length)
-		{
-			message="指标数量和评分人不匹配！";
 			return "failed";
 		}
 		if(ktipropnum!=0)
@@ -182,9 +168,10 @@ public class PosAddKti_mang {
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans = session.beginTransaction();
  	    System.out.println("posid:"+posid);
- 	    pp=ppdao.findById(posid);	    
+ 	    pp=ppdao.findAllById(posid);	    
  	    pp.setKtinorm(ktinormcun);
  	    pp.setKtinormprop(ktinormpropcun);
+ 	    pp.setKtirater(raters);
  	    ppdao.merge(pp);
  	    id=pp.getId();
  	    message="添加成功";

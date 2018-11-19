@@ -4,24 +4,12 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import perform.norm.pojo.PKpinorm;
 import perform.norm.pojo.PKtinorm;
-import perform.position.dao.PPositionDAO;
 import perform.position.dao.PPositiontempDAO;
-import perform.position.pojo.PPosition;
 import perform.position.pojo.PPositiontemp;
 import ccb.hibernate.HibernateSessionFactory;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.struts2.interceptor.ServletResponseAware;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import perform.position.dao.PPositionDAO;
-import perform.position.pojo.PPosition;
 import perform.userinfo.dao.PUserDAO;
 import perform.userinfo.pojo.PUser;
-
-import com.opensymphony.xwork2.ActionSupport;
-import ccb.hibernate.HibernateSessionFactory;
 public class PosAddKpi_mang {
 	private String category;
 	private int id;
@@ -141,7 +129,7 @@ public class PosAddKpi_mang {
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans = session.beginTransaction();
  	    listu = pudao.findRaterByChu(chu);
- 	    pp=ppdao.findByNameandChuandTuan(posname, poschu, postuan);
+ 	    pp=ppdao.findByNameandChuandTuan(posname, poschu);
  	    pp.setKpinorm(category); 
  	    pp.setKpinormprop("1.00");
  	    ppdao.merge(pp);

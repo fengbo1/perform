@@ -107,7 +107,7 @@ function tijiao()
 					<tr>
 							 <td
 								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="8" align="center" bordercolor="#FFFFFF"><b>关键胜任力指标KCI选择</b>
+								colspan="8" align="center" bordercolor="#FFFFFF"><b>加分项选择</b>
 							</td>
 					</tr>
 					<tr>

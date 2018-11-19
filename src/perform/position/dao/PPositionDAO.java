@@ -274,10 +274,10 @@ public class PPositionDAO extends BaseHibernateDAO  {
         }
     }
     
-    public PPosition findByNameandChuandTuan(String name,String chu,String tuan) {
+    public PPosition findByNameandChuandTuan(String name,String chu) {
     	log.debug("finding all PPosition instances");
     	try {
-    		String queryString = "from PPosition as pp where pp.name='"+name+"'and pp.chu='"+chu+"'and pp.tuan='"+tuan+"'";
+    		String queryString = "from PPosition as pp where pp.name='"+name+"'and pp.chu='"+chu+"'";
     		Query queryObject = getSession().createQuery(queryString);
     		List list = queryObject.list();
     		if(list.isEmpty())

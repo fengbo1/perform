@@ -27,50 +27,6 @@
 	color:red;
   }
   </style>
-  
-  <script type="text/javascript">
-   
-
- function gettuan(){
-    
-    var tuans="";
-    var	chu=document.getElementById('chu').value;
-    var xmlhttp;
-    var time=new Date().getTime();
-	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp = new XMLHttpRequest();
-	} else {// code for IE6, IE5
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}	
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			
-			tuans=xmlhttp.responseText;
-			//alert(yesorno);
-			
-				//document.getElementById("chutuan").innerHTML=arr[0];
-			tuanname(chu,tuans);
-		}				
-	} 
-	xmlhttp.open("GET","gettuanajax.action?chu="+chu+"&nowtime="+time,true);
-	//xmlhttp.open("GET","login.action",true);
-	xmlhttp.send();
-} 
-
-function tuanname(chu,tuans){
-
-var arry= new Array();
-arry=tuans.split("|"); //字符分割 
-var obj=document.getElementById('tuan'); 
-obj.options.length=0;
-obj.options.add(new Option("-请选择团队名称-","wu"));
-for (var i=1;i<arry.length;i++){	
-
-	obj.options.add(new Option(tuanidtoname(chu,arry[i]),arry[i])); //这个兼容IE与firefox 
-}
-} 
-
-  </script>
 	</head>
 	<body>
 		<form action="<%=path%>/posadd_mang.action" method="post">
@@ -101,7 +57,7 @@ for (var i=1;i<arry.length;i++){
     				<span style="font-size:12pt;color:black">岗位所属处室</span><span>*</span>
     			</td>
     			<td width="300" class="as">
-    				<select style="width:280px"  id="chu" name="chu" onchange="gettuan()">
+    				<select style="width:280px"  id="chu" name="chu">
 						 				<option value="wu">-请选择处室名称-</option>
 						                 <option value="1">综合与生产管理处</option>
 						                 <option value="2">合规与监督二处</option>
@@ -109,18 +65,6 @@ for (var i=1;i<arry.length;i++){
 						                 <option value="6">专业处理二处</option>
 						                 <option value="5">研发支持二处</option>			                        
 					</select>
-    				
-    			</td>
-    			
-    		</tr>
-    		 <tr>
-    			<td width="200" class="as" >
-    				<span style="font-size:12pt;color:black">岗位所属团队</span><span>*</span>
-    			</td>
-    			<td width="300" class="as">
-    				<select id="tuan" name="tuan" style="width: 280px">
-					  <option value="wu">-请选择团队名称-</option>				
-				    </select>
     				
     			</td>
     			
