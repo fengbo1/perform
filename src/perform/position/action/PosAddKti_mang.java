@@ -14,6 +14,7 @@ import ccb.hibernate.HibernateSessionFactory;
 public class PosAddKti_mang {
 	private String[] ktinorm;
 	private String[] ktinormprop;
+	private String[] rater;
 	private int posid;
 	private int id;
 	private String message;
@@ -80,6 +81,14 @@ public class PosAddKti_mang {
 		this.ktinormprop = ktinormprop;
 	}
 
+	public String[] getRater() {
+		return rater;
+	}
+
+	public void setRater(String[] rater) {
+		this.rater = rater;
+	}
+
 	public String execute() throws Exception
 	{
 		Query query;
@@ -87,6 +96,7 @@ public class PosAddKti_mang {
 		String hql = "";
 		String ktinormcun = "";
 		String ktinormpropcun = "";
+		String ktiratercun = "";
 		int ktipropnum=0;
 		if(ktinorm!=null&&ktinorm.length!=0)
 		{	
@@ -115,6 +125,15 @@ public class PosAddKti_mang {
 		  ktinormpropcun=ktinormpropcun.substring(0, ktinormpropcun.length()-1);
 		 }
 		}
+		if(rater!=null&&rater.length!=0)
+		{	
+		  ktiratercun =rater[0];
+		 for(int i=1;i<rater.length;i++)
+	    {
+			ktiratercun += "、";
+			ktiratercun += rater[i];
+	    }
+		}
 		if(ktipropnum==0)
 		{
 			message="指标权重未填！";
@@ -128,6 +147,11 @@ public class PosAddKti_mang {
 		if(ktinorm.length!=ktipropnum)
 		{
 			message="指标数量和指标权重数量不匹配！";
+			return "failed";
+		}
+		if(ktinorm.length!=rater.length)
+		{
+			message="指标数量和评分人不匹配！";
 			return "failed";
 		}
 		if(ktipropnum!=0)
