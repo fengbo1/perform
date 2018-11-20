@@ -23,15 +23,6 @@ public class KBIList_mang {
 	private int firstPage = 1;
 	private int lastPage = 1;
 	private long totalRows = -1;
-	private String level;
-	
-
-	public String getLevel() {
-		return level;
-	}
-	public void setLevel(String level) {
-		this.level = level;
-	}
 	public List<PKbinorm> getList() {
 		return list;
 	}
@@ -91,18 +82,10 @@ public class KBIList_mang {
 	{
 		Query query;
 		String hql = "";
-		if(level==null)
-		{
-			level="wu";
-		}
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();
 		try {
 			hql = "from PKbinorm as kb where kb.id>0";
-			if(level!=null&&!level.equals("")&&!level.equals("wu"))
-			{
-				hql=hql+" and kb.level='"+level+"'";
-			}
 			hql +=" order by kb.id";
 			System.out.println(hql);
 			query = session.createQuery(hql);

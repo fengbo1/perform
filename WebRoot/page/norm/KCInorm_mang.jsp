@@ -36,8 +36,6 @@ body {
 
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
-var paralevel=document.getElementById("paralevel").value;
-$('#level').attr('value',paralevel);
 brbrbr();
  });
  //导出
@@ -78,27 +76,13 @@ function brbrbr()
 						<tr>
 							<td
 								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="12" align="center" bordercolor="#FFFFFF"><b>关键胜任力指标KCI指标库</b>
+								colspan="12" align="center" bordercolor="#FFFFFF"><b>加分项指标库</b>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="12" height="10px">
 								<div align="center">
-									所属层级：
-									<select id="level" name="level" style="width: 120px">
-										<option value="wu">-请选择层级-</option>
-										<option value="0">主任</option>
-										<option value="1">副主任</option>
-										<option value="2">处室主要负责人</option>
-										<option value="3">处室负责人</option>
-										<option value="4">团队主管</option>
-										<option value="5">班组长</option>
-										<option value="6">经办岗</option>
-									</select>
-														
-									<input type="submit" value="查询"/>
 									<input type="button" value="全量导出" onclick="expressout()"/>
-									<input type="hidden" id="paralevel" name="paralevel" value="${level}"/>
 						</div></td>	
 						</tr>
 						<tr height="50px" class="表格表头背景1" id="hang">
@@ -110,24 +94,20 @@ function brbrbr()
 							<td  width="100px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>指标名称</p>
-								</div></td>						
+								</div></td>
 							<td  width="100px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>所属层级</p>
-								</div></td>
-							<td  width="400px" align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
-									<p>目标值</p>
-								</div></td>
-							<td  width="50px" align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
 									<p>分值</p>
-								</div></td>
+								</div></td>								
 							<td  width="150px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>考核规则</p>
 								</div></td>
-						<c:if test="${authoR=='R'}">	
+							<td  width="150px" align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td>	
+						<c:if test="${authoW=='W'}">	
 							<td  width="100px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>操作</p>
@@ -137,22 +117,19 @@ function brbrbr()
 							<c:forEach items="${list}" var="kc" varStatus="status">
 							<tr class="btbj" id="hang" style="height:20px">
 								
-								<td  width="40px" height="25" align="center" valign="middle" nowrap><div
+								<td  height="25" align="center" valign="middle" nowrap><div
 										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
 									
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">${kc.name}</div></td>		
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
-										align="center">${fb:positiontozhi(kc.level)}</div></td>
-								<td width="400px" height="25" align="center" valign="middle" nowrap><div
-										align="left">${kc.target}</div></td>
-								<td width="50px" height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">${kc.score}</div></td>
-								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" nowrap><div
 										align="left">${kc.rule}</div></td>
-					
-							<c:if test="${authoR=='R'}">
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" nowrap><div
+										align="left">${kc.remark}</div></td>
+							<c:if test="${authoW=='W'}">
+								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
 										
 										<input type="button" value="删除" onclick="del('${kc.id}')"/>
@@ -165,17 +142,17 @@ function brbrbr()
 							</c:forEach>
 							<tr class="表格表头背景">
 						
-							<td colspan="6">
+							<td colspan="5">
 						 		
 							<div align="center">
-								<a	href="<%=path%>/kcilist_mang.action?level=${level}&currentPage=${previousPage}"
+								<a	href="<%=path%>/kcilist_mang.action?currentPage=${previousPage}"
 							style="padding-right: 30px;color: #104E8B">上一页</a> 
 									${currentPage} of ${totalPages}
-								<a	href="<%=path%>/kcilist_mang.action?level=${level}&currentPage=${nextPage}"
+								<a	href="<%=path%>/kcilist_mang.action?currentPage=${nextPage}"
 							style="padding-right: 30px;color: #104E8B">下一页</a> 	
 									共有 ${totalRows} 条记录
 								</div></td>
-							<c:if test="${authoR=='R'}">
+							<c:if test="${authoW=='W'}">
 							<td>
 							
 							 <input type="button" value="添加新指标" onclick="location='<%=path%>/page/norm/KCIadd_mang.jsp'"/>	

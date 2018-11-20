@@ -35,5 +35,8 @@
                 <comment>考核规则</comment>
             </column>
         </property>
+        <property name="remark" type="java.lang.String">
+            <column name="remark" length="512" />
+        </property>
     </class>
 </hibernate-mapping>

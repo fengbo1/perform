@@ -289,10 +289,12 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('ktilist')">关键任务指标管理</li>
 									<li class="cc"  onclick="frame('kbilist')">关键品能目标管理</li>
 									<li class="cc"  onclick="frame('kcilist')">加分项管理</li>
+									<!-- 
 									<li class="cc"  onclick="frame('kpilistquery')">关键业务指标</li>
 									<li class="cc"  onclick="frame('ktilistquery')">关键任务指标</li>
 									<li class="cc"  onclick="frame('kbilistquery')">关键品能目标</li>
 									<li class="cc"  onclick="frame('kcilistquery')">加分项</li>
+									 -->
 								</ul>
 							</li>
 							<li class="a">

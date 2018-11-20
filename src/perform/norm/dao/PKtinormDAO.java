@@ -165,10 +165,10 @@ public class PKtinormDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
-	 public PKtinorm findByChuAndTuanAndName(String chu,String tuan,String name) {
+	 public PKtinorm findByChuAndTuanAndName(String chu,String name) {
 	    	log.debug("finding all PKtinorm instances");
 	    	try {
-	    		String queryString = "from PKtinorm as kt where kt.chu='"+chu+"' and kt.tuan='"+tuan+"' and kt.name='"+name+"'";
+	    		String queryString = "from PKtinorm as kt where kt.chu='"+chu+"' and kt.name='"+name+"'";
 	             Query queryObject = getSession().createQuery(queryString);
 	    		 List list = queryObject.list();
 	    		 if(list.isEmpty())

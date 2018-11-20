@@ -33,7 +33,7 @@
 		<form action="<%=path%>/kbiadd_mang.action" method="post">
 			
 				<div style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';" align="center" bordercolor="#FFFFFF">
-					<b>KBI指标增加</b>
+					<b>品能指标增加</b>
 				</div>
                <table  border="1" align="center" cellpadding="1" cellspacing="0">
     		 <tr>
@@ -42,26 +42,6 @@
     			</td>
     			<td width="300" class="as">
     				<input style="width:500px"  type="text" id="name" name="name" />     				
-    			</td>
-    			
-    		</tr>
-    		
-    		 <tr>
-    			<td width="100" class="as" >
-    				<span style="font-size:16pt;color:black">所属层级</span><span>*</span>
-    			</td>
-    			<td width="300" class="as">
-    				<select id="level" name="level" style="width: 500px">
-										<option value="wu">-请选择层级-</option>
-										<option value="0">主任</option>
-										<option value="1">副主任</option>
-										<option value="2">处室主要负责人</option>
-										<option value="3">处室负责人</option>
-										<option value="4">团队主管</option>
-										<option value="5">班组长</option>
-										<option value="6">经办岗</option>
-				    </select>
-    				
     			</td>
     			
     		</tr>

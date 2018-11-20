@@ -29,21 +29,40 @@
  
 	</head>
 	<body>
-		<form action="<%=path%>/kciadd_mang.action" method="post">
+		<form action="<%=path%>/kpiadd_mang.action" method="post">
 			
 				<div style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';" align="center" bordercolor="#FFFFFF">
-					<b>加分项增加</b>
+					<b>关键业务指标增加</b>
 				</div>
                <table  border="1" align="center" cellpadding="1" cellspacing="0">
-    		 <tr>
+    		  <tr>
     			<td width="100" class="as" >
-    				<span style="font-size:16pt;color:black">项目名称</span><span>*</span>
+    				<span style="font-size:16pt;color:black">指标名称</span><span>*</span>
     			</td>
     			<td width="300" class="as">
     				<input style="width:500px"  type="text" id="name" name="name" />     				
     			</td>
     			
     		</tr>
+    		 <tr>
+    			<td width="100" class="as" >
+    				<span style="font-size:16pt;color:black">目标值</span><span>*</span>
+    			</td>
+    			<td width="300" class="as">
+    				<textarea id="target" name="target" rows="20" cols="30"></textarea>
+    			</td>
+    			
+    		</tr>
+    		 <tr>
+    			<td width="100" class="as" >
+    				<span style="font-size:16pt;color:black">分值</span><span>*</span>
+    			</td>
+    			<td width="300" class="as">
+    				<input style="width:500px"  type="text" id="score" name="score" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
+    			</td>
+    			
+    		</tr>
+    		
     	   <tr>
     			<td width="100" class="as" >
     				<span style="font-size:16pt;color:black">考核规则</span><span>*</span>
@@ -51,6 +70,7 @@
     			<td width="300" class="as">
     				<textarea id="rule" name="rule" rows="10" cols="30"></textarea>
     			</td>
+    			
     		</tr>
     		<tr>
     			<td width="100" class="as" >

@@ -22,7 +22,6 @@ public class KTIAdd_mang extends ActionSupport implements ServletResponseAware {
 	    private double score;
 	    private String rule;
 	    private String chu;
-	    private String tuan;
 	    private String message;    
 	    
 	    public String getMessage() {
@@ -49,14 +48,6 @@ public class KTIAdd_mang extends ActionSupport implements ServletResponseAware {
 
 		public void setChu(String chu) {
 			this.chu = chu;
-		}
-
-		public String getTuan() {
-			return tuan;
-		}
-
-		public void setTuan(String tuan) {
-			this.tuan = tuan;
 		}
 
 		public String getTarget() {
@@ -95,7 +86,7 @@ public class KTIAdd_mang extends ActionSupport implements ServletResponseAware {
 			PKtinorm kttemp = new PKtinorm();
 			Session session = HibernateSessionFactory.getSession();
 	 	    Transaction trans = session.beginTransaction();
-	 	    kttemp=ktdao.findByChuAndTuanAndName(chu, tuan, name);
+	 	    kttemp=ktdao.findByChuAndTuanAndName(chu,name);
 	 	    if(kttemp!=null)
 	 	    {
 	 	    	 this.addFieldError("用户","存在处室，团队，名称完全相同指标，请勿重复添加！");
@@ -127,11 +118,6 @@ public class KTIAdd_mang extends ActionSupport implements ServletResponseAware {
 				 this.addFieldError("用户","处室为空");
 			  	 return "failed";
 			  }
-			  else if(tuan.equals("")||tuan.equals("wu"))
-			  {
-				 this.addFieldError("用户","团队为空");
-			  	 return "failed";
-			  }
 			  /*else if(zu.equals(""))
 			  {
 				 this.addFieldError("用户","班组为空");
@@ -140,7 +126,7 @@ public class KTIAdd_mang extends ActionSupport implements ServletResponseAware {
 			
 	        kt.setName(name);
 	        kt.setChu(chu);
-	        kt.setTuan(tuan);
+	        kt.setTuan("");
 	        kt.setTarget(target);
 	        kt.setScore(score);
 	        kt.setRule(rule);

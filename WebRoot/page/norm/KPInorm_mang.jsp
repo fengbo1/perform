@@ -43,7 +43,14 @@ brbrbr();
 	{
 		window.location = "<%=path%>/exportkpinorm.action";
 	}
-	
+	//删除用户
+ function del(id)
+{
+	var aa= window.confirm("请确认是否删除该指标");
+	if (aa) {
+		window.location = "<%=path%>/kpidel_mang.action?id="+id;
+	}
+}
 function brbrbr()
  	{
  		//var reg1=new RegExp("；","g"); 
@@ -85,10 +92,6 @@ function brbrbr()
 								</div></td>
 							<td  width="150px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>指标内容（PDP）</p>
-								</div></td>
-							<td  width="150px" align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
 									<p>目标值</p>
 								</div></td>
 							<td  width="100px" align="center" valign="middle" nowrap
@@ -99,7 +102,16 @@ function brbrbr()
 								bordercolor=none><div align="center">
 									<p>考核规则</p>
 								</div></td>
-																					
+								<td  width="100px" align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td>
+							  <c:if test="${authoW=='W'}">
+							<td  width="80px" align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>操作</p>
+								</div></td>
+							</c:if>														
 						</tr>
 							<c:forEach items="${list}" var="kp" varStatus="status">
 							<tr class="btbj" id="hang" style="height:20px">
@@ -110,20 +122,27 @@ function brbrbr()
 								<td width="100px" align="center" valign="middle" nowrap><div
 										align="center">${kp.name}</div></td>		
 								<td width="150px" align="center" valign="middle" nowrap><div
-										align="left">${kp.pdpname}</div></td>
-								<td width="150px" align="center" valign="middle" nowrap><div
 										align="left">${kp.target}</div></td>
 								<td width="100px" align="center" valign="middle" nowrap><div
 										align="left">${kp.score}</div></td>
 								<td width="500px" align="center" valign="middle" nowrap><div
 										align="left">${kp.rule}</div></td>
-								
+								<td width="100px" align="center" valign="middle" nowrap><div
+										align="left">${kp.remark}</div></td>
+								<c:if test="${authoW=='W'}">
+								<td width="80px" height="25" align="center" valign="middle" nowrap><div
+										align="center">
+									
+										<input type="button" value="删除" onclick="del('${kp.id}')"/>
+										
+										<!-- <a href="<%=path%>/user.action?type=to_update&id=<s:property value="id"/>">修改</a> -->
+											</div>
+								</td>
+							 </c:if>		
 							</tr>
 							</c:forEach>
 							<tr class="表格表头背景">
-						
-							<td colspan="7">
-						 		
+							<td colspan="5">
 							<div align="center">
 								<a	href="<%=path%>/kpilist_mang.action?currentPage=${previousPage}"
 							style="padding-right: 30px;color: #104E8B">上一页</a> 
@@ -133,7 +152,11 @@ function brbrbr()
 									共有 ${totalRows} 条记录
 									<input type="button" value="全量导出" onclick="expressout()"/>
 								</div>
-							
+							</td>
+							<td>
+							 <c:if test="${authoW=='W'}">
+							 <input  type="button" value="添加新指标" onclick="location='<%=path%>/page/norm/KPIadd_mang.jsp'"/>	
+							</c:if>
 							</td>
 						</tr>
 		</table>

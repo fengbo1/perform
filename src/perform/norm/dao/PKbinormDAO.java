@@ -161,10 +161,10 @@ public class PKbinormDAO extends BaseHibernateDAO {
 		}
 	}
 	
-	 public PKbinorm findByLevelAndName(String level,String name) {
+	 public PKbinorm findByLevelAndName(String name) {
 	    	log.debug("finding all PKtinorm instances");
 	    	try {
-	    		String queryString = "from PKbinorm as kb where kb.level='"+level+"'  and kb.name='"+name+"'";
+	    		String queryString = "from PKbinorm as kb where kb.name='"+name+"'";
 	             Query queryObject = getSession().createQuery(queryString);
 	    		 List list = queryObject.list();
 	    		 if(list.isEmpty())

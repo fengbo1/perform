@@ -13,7 +13,17 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="p_user" catalog="perform" class="PUser">
+	<table name="p_user" catalog="perform" class="PUser">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="p_kcinorm" catalog="perform" class="PKcinorm">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="p_kpinorm" catalog="perform" class="PKpinorm">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

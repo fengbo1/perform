@@ -184,6 +184,9 @@ public class UserLogin extends ActionSupport implements ServletResponseAware{
         	  ActionContext.getContext().getSession().put("authoU",u.getAutho().substring(20,21));
         	  ActionContext.getContext().getSession().put("authoV",u.getAutho().substring(21,22));
         	  ActionContext.getContext().getSession().put("authoW",u.getAutho().substring(22,23));
+        	  ActionContext.getContext().getSession().put("authoX",u.getAutho().substring(23,24));
+        	  ActionContext.getContext().getSession().put("authoY",u.getAutho().substring(24,25));
+        	  ActionContext.getContext().getSession().put("authoZ",u.getAutho().substring(25,26));
         	  ActionContext.getContext().getSession().put("ids",id);
         	  
         	  //访问量统计

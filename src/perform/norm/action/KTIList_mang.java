@@ -21,28 +21,12 @@ public class KTIList_mang {
 	private int firstPage = 1;
 	private int lastPage = 1;
 	private long totalRows = -1;
-	private String city;
 	private String chu;
-	private String tuan;
-	
-	
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
 	public String getChu() {
 		return chu;
 	}
 	public void setChu(String chu) {
 		this.chu = chu;
-	}
-	public String getTuan() {
-		return tuan;
-	}
-	public void setTuan(String tuan) {
-		this.tuan = tuan;
 	}
 	public List<PKtinorm> getList() {
 		return list;
@@ -107,41 +91,14 @@ public class KTIList_mang {
 		{
 			chu="wu";
 		}
-		if(city==null)
-		{
-			city="wu";
-		}
-		if(tuan==null)
-		{
-			tuan="wu";
-		}
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();
 		try {
 			hql = "from PKtinorm as kt where kt.id>0";
 			
-			if(city!=null)
-			{
-				if(city.equals("1"))
-				{
-					hql=hql+" and kt.chu in ("+UserUtil.c_ywclzx+")";
-				}
-				else if(city.equals("2"))
-				{
-					hql=hql+" and kt.chu in ("+UserUtil.c_cdfzx+")";
-				}
-				else if(city.equals("3"))
-				{
-					hql=hql+" and kt.chu in ("+UserUtil.c_whyqb+")";
-				}
-			}
 			if(chu!=null&&!chu.equals("")&&!chu.equals("wu"))
 			{
 				hql=hql+" and kt.chu='"+chu+"'";
-			}
-			if(tuan!=null&&!tuan.equals("")&&!tuan.equals("wu"))
-			{
-				hql=hql+" and kt.tuan='"+tuan+"'";
 			}
 			hql +=" order by kt.id";
 			System.out.println(hql);

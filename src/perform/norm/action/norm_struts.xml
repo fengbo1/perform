@@ -30,6 +30,10 @@
 		<action name="kcilistquery" class="perform.norm.action.KCIListQuery">
 			<result name="success">/page/norm/KCInormquery.jsp</result>
 		</action>
+		<action name="kpiadd_mang" class="perform.norm.action.KPIAdd_mang">
+			<result name="success">/page/norm/KPIaddsuccess_mang.jsp</result>
+			<result name="failed">/page/norm/KTIadd_mang.jsp</result>
+		</action>
 	    <action name="ktiadd_mang" class="perform.norm.action.KTIAdd_mang">
 			<result name="success">/page/norm/KTIaddsuccess_mang.jsp</result>
 			<result name="failed">/page/norm/KTIadd_mang.jsp</result>
@@ -41,6 +45,10 @@
 		<action name="kciadd_mang" class="perform.norm.action.KCIAdd_mang">
 			<result name="success">/page/norm/KCIaddsuccess_mang.jsp</result>
 			<result name="failed">/page/norm/KCIadd_mang.jsp</result>
+		</action>
+		<action name="kpidel_mang" class="perform.norm.action.KPIDel_mang">
+			<result name="success">/page/norm/KPIaddsuccess_mang.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
 		</action>
 		<action name="ktidel_mang" class="perform.norm.action.KTIDel_mang">
 			<result name="success">/page/norm/KTIaddsuccess_mang.jsp</result>

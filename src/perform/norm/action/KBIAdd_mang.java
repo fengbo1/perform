@@ -17,7 +17,6 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 	    private String target;
 	    private double score;
 	    private String rule;
-	    private String level;
 	    private String message;
 	    
 	    
@@ -36,15 +35,6 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 
 		public void setName(String name) {
 			this.name = name;
-		}
-
-
-		public String getLevel() {
-			return level;
-		}
-
-		public void setLevel(String level) {
-			this.level = level;
 		}
 
 		public String getTarget() {
@@ -83,13 +73,8 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 			PKbinorm kbtemp = new PKbinorm();
 			Session session = HibernateSessionFactory.getSession();
 	 	    Transaction trans = session.beginTransaction();
-	 	    kbtemp = kbdao.findByLevelAndName(level, name);
+	 	    kbtemp = kbdao.findByLevelAndName(name);
 	 	   
-	 	    if(kbtemp!=null)
-	 	    {
-	 	    	 this.addFieldError("用户","存在名称，层级完全相同指标，请勿重复添加！");
-			  	 return "failed";
-	 	    }
 	 	    if(name==null||name.equals(""))
 			  {
 	 			 this.addFieldError("用户","指标名为空");
@@ -111,12 +96,6 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 			  	 return "failed";
 			  }
 			
-			  else if(level.equals("")||level.equals("wu"))
-			  {
-				 this.addFieldError("用户","层级为空");
-			  	 return "failed";
-			  }
-			
 			  /*else if(zu.equals(""))
 			  {
 				 this.addFieldError("用户","班组为空");
@@ -124,7 +103,7 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 			  }*/
 			
 	        kb.setName(name);
-	        kb.setLevel(level);
+	        kb.setLevel("");
 	        kb.setTarget(target);
 	        kb.setScore(score);
 	        kb.setRule(rule);

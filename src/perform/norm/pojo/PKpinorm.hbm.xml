@@ -12,27 +12,32 @@
         </id>
         <property name="name" type="java.lang.String">
             <column name="name" length="64" not-null="true">
-                <comment>鎸囨爣鍚嶇О</comment>
+                <comment>指标名称</comment>
             </column>
         </property>
         <property name="target" type="java.lang.String">
             <column name="target" length="1024">
-                <comment>鐩爣鍊�</comment>
+                <comment>目标值</comment>
             </column>
         </property>
         <property name="score" type="java.lang.String">
             <column name="score" length="512">
-                <comment>鍒嗗�</comment>
+                <comment>分值</comment>
             </column>
         </property>
         <property name="rule" type="java.lang.String">
             <column name="rule" length="4096">
-                <comment>鑰冩牳瑙勫垯</comment>
+                <comment>考核规则</comment>
             </column>
         </property>
         <property name="pdpname" type="java.lang.String">
             <column name="pdpname" length="1024">
-                <comment>鎸囨爣鍚嶇ОPDP</comment>
+                <comment>指标名称PDP</comment>
+            </column>
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="remark" length="512">
+                <comment>备注</comment>
             </column>
         </property>
     </class>

@@ -111,25 +111,6 @@ function tijiao()
 							</td>
 					</tr>
 					<tr>
-							<td colspan="8" height="10px">
-								<div align="center">
-									
-									所属层级：
-									<select id="level" name="level" style="width: 120px">
-										<option value="wu">-请选择层级-</option>
-										<option value="0">主任</option>
-										<option value="1">副主任</option>
-										<option value="2">处室主要负责人</option>
-										<option value="3">处室负责人</option>
-										<option value="4">团队主管</option>
-										<option value="5">班组长</option>
-										<option value="6">经办岗</option>
-									</select>										
-								    <input type="button" value="查询" onclick="search()"/>
-									<input type="hidden" name="para" value="${level}"/>
-						</div></td>	
-						</tr>
-					<tr>
 			        <td style="padding-left:1px">
 						<table height="80" align="center" cellpadding="0" cellspacing="2" >
 						<tr height="50px" class="表格表头背景1" id="hang">

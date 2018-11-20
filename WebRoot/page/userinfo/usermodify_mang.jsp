@@ -317,8 +317,8 @@ for (var i=1;i<arry.length;i++){
     			<td width="300" class="as">
     				<select id="role" name="role" style="width: 280px">
 										<option value="wu">-请选择系统角色-</option>
-										<option value="U">绩效管理员</option>
-										<option value="V">数据管理员</option>
+										<option value="W">绩效管理员</option>
+										<option value="X">数据管理员</option>
 										<option value="E">普通用户</option>
 						</select>
     				

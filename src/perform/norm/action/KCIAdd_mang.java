@@ -16,7 +16,7 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 	    private String target;
 	    private double score;
 	    private String rule;
-	    private String level;
+	    private String remark;
 	    private String message;
 	    
 	    
@@ -35,15 +35,6 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 
 		public void setName(String name) {
 			this.name = name;
-		}
-
-
-		public String getLevel() {
-			return level;
-		}
-
-		public void setLevel(String level) {
-			this.level = level;
 		}
 
 		public String getTarget() {
@@ -71,6 +62,14 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 			this.rule = rule;
 		}
 
+		public String getRemark() {
+			return remark;
+		}
+
+		public void setRemark(String remark) {
+			this.remark = remark;
+		}
+
 		public void setServletResponse(HttpServletResponse arg0) {
 			// TODO Auto-generated method stub
 			
@@ -82,7 +81,7 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 			PKcinorm kctemp = new PKcinorm();
 			Session session = HibernateSessionFactory.getSession();
 	 	    Transaction trans = session.beginTransaction();
-	 	    kctemp = kcdao.findByLevelAndName(level, name);
+	 	    kctemp = kcdao.findByLevelAndName(name);
 	 	    if(kctemp!=null)
 	 	    {
 	 	    	 this.addFieldError("用户","存在名称，层级完全相同指标，请勿重复添加！");
@@ -93,25 +92,9 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 	 			 this.addFieldError("用户","指标名为空");
 				  	 return "failed";
 			  } 
-			  else if(target==null||target.equals(""))
-			  {
-				 this.addFieldError("用户","目标值为空");
-			  	 return "failed";
-			  }
-			  else if(score==0.00)
-			  {
-				 this.addFieldError("用户","指标分值为空");
-			  	 return "failed";
-			  }
 			  else if(rule==null||rule.equals(""))
 			  {
 				 this.addFieldError("用户","规则为空");
-			  	 return "failed";
-			  }
-			
-			  else if(level.equals("")||level.equals("wu"))
-			  {
-				 this.addFieldError("用户","层级为空");
 			  	 return "failed";
 			  }
 			
@@ -122,10 +105,11 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 			  }*/
 			
 	        kc.setName(name);
-	        kc.setLevel(level);
 	        kc.setTarget(target);
 	        kc.setScore(score);
+	        kc.setLevel("");
 	        kc.setRule(rule);
+	        kc.setRemark(remark);
 	 	    kcdao.merge(kc);
 	 	    message="添加成功";
 	 	    trans.commit();
