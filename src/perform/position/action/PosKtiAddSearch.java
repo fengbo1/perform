@@ -14,8 +14,6 @@ import ccb.hibernate.HibernateSessionFactory;
 
 public class PosKtiAddSearch {
 	  private String chu;
-	  private String tuan;
-	  private String city;
 	  private String posid;
 	  private String id;
 	  private List<PKtinorm> listkt;
@@ -25,18 +23,6 @@ public class PosKtiAddSearch {
 	}
 	public void setChu(String chu) {
 		this.chu = chu;
-	}
-	public String getTuan() {
-		return tuan;
-	}
-	public void setTuan(String tuan) {
-		this.tuan = tuan;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
 	}
 	public String getPosid() {
 		return posid;
@@ -72,41 +58,14 @@ public class PosKtiAddSearch {
 			{
 				chu="wu";
 			}
-			if(city==null)
-			{
-				city="wu";
-			}
-			if(tuan==null)
-			{
-				tuan="wu";
-			}
 			Session session = HibernateSessionFactory.getSession();
 			Transaction trans = session.beginTransaction();
 			try {
 				listu = pudao.findRaterByChu(chu);	
 				hql = "from PKtinorm as kt where 1=1";
-				if(city!=null)
-				{
-					if(city.equals("1"))
-					{
-						hql=hql+" and kt.chu in ("+UserUtil.c_ywclzx+")";
-					}
-					else if(city.equals("2"))
-					{
-						hql=hql+" and kt.chu in ("+UserUtil.c_cdfzx+")";
-					}
-					else if(city.equals("3"))
-					{
-						hql=hql+" and kt.chu in ("+UserUtil.c_whyqb+")";
-					}
-				}
 				if(chu!=null&&chu!=""&&!chu.equals("wu"))
 				{
 					hql=hql+" and kt.chu='"+chu+"'";
-				}
-				if(tuan!=null&&tuan!=""&&!tuan.equals("wu"))
-				{
-					hql=hql+" and kt.tuan='"+tuan+"'";
 				}
 				hql +=" order by kt.id";
 				System.out.println(hql);

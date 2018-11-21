@@ -82,10 +82,6 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								</div></td>	
 							<td  width="150px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>指标内容(PDP)</p>
-								</div></td>	
-							<td  width="150px"  align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
 									<p>目标值</p>
 								</div></td>
 							<td  width="100px"  align="center" valign="middle" nowrap
@@ -96,6 +92,10 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								bordercolor=none><div align="center">
 									<p>考核规则</p>
 								</div></td>
+							<td  width="150px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td>		
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>操作</p>
@@ -117,13 +117,13 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="center">${kp.name}</div></td>
 								<td width="150px" height="25" align="center" valign="middle" ><div
-										align="left">${kp.pdpname}</div></td>
-								<td width="150px" height="25" align="center" valign="middle" ><div
 										align="left">${kp.target}</div></td>
 								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="left">${kp.score}</div></td>
 								<td width="400px" height="25" align="center" valign="middle" ><div
 										align="left">${kp.rule}</div></td>
+								<td width="150px" height="25" align="center" valign="middle" ><div
+										align="left">${kp.remark}</div></td>		
 								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="center"><input name="category" type="radio" value="${kp.id}"></div></td>				
 				     </tr>
@@ -139,7 +139,6 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
     			     <input style="width: 100px" type="submit" class="but" value="下一步" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     				<input style="width: 100px" type="button" onclick="javascript:history.go(-1);" value="返回" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		   			<input type="hidden" name="poschu" value="${chu}"/>
-					<input type="hidden" name="postuan" value="${tuan}"/>
 					<input type="hidden" name="posname" value="${name}"/>
 		   			</div>	
     			</td>

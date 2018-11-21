@@ -72,47 +72,69 @@
     		
     		 <tr>
     			<td width="500"  colspan=2 class="as" >
-    				<span style="font-size:14pt;color:black">岗位考核指标权重</span><span>*</span>
+    				<span style="font-size:14pt;color:black">岗位考核指标</span><span>*</span>
+    				<br/>
+    				<span style="font-size:9pt;color:red">选择权重的时候请填写权重值，权重值之和为1</span>
     			</td>
   		
     		</tr>
     		
     	    <tr>
     			<td width="200" class="as" >
-    				<span style="font-size:12pt;color:black">关键业绩指标KPI权重</span><span>*</span>
+    				<span style="font-size:12pt;color:black">关键业务指标</span><span>*</span>
     			</td>
     			<td width="300" class="as">
-    				<input style="width:280px"  type="text" id="kpiprop" name="kpiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
+    				<select style="width:100px"  id="typea" name="typea">
+						 				<option value="0">权重</option>
+						                 <option value="2">加分项</option>
+						                 <option value="3">扣分项</option>
+					</select>
+    				<input style="width:120px"  type="text" id="kpiprop" name="kpiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
     				
     			</td>
     			
     		</tr>
     		 <tr>
     			<td width="200" class="as" >
-    				<span style="font-size:12pt;color:black">关键任务指标KTI权重</span><span>*</span>
+    				<span style="font-size:12pt;color:black">关键任务目标</span><span>*</span>
     			</td>
     			<td width="300" class="as">
-    				<input style="width:280px"  type="text" id="ktiprop" name="ktiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
+    			<select style="width:100px"  id="typeb" name="typeb">
+						 				<option value="0">权重</option>
+						                 <option value="2">加分项</option>
+						                 <option value="3">扣分项</option>
+					</select>
+    				<input style="width:120px"  type="text" id="ktiprop" name="ktiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
     				
     			</td>
     			
     		</tr>
     		 <tr>
     			<td width="200" class="as" >
-    				<span style="font-size:12pt;color:black">关键行为指标KBI权重</span><span>*</span>
+    				<span style="font-size:12pt;color:black">品能目标</span><span>*</span>
     			</td>
     			<td width="300" class="as">
-    				<input style="width:280px"  type="text" id="kbiprop" name="kbiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
+    			<select style="width:100px"  id="typec" name="typec">
+						 				<option value="0">权重</option>
+						                 <option value="2">加分项</option>
+						                 <option value="3">扣分项</option>
+					</select>
+    				<input style="width:120px"  type="text" id="kbiprop" name="kbiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
     				
     			</td>
     			
     		</tr>
     		 <tr>
     			<td width="200" class="as" >
-    				<span style="font-size:12pt;color:black">关键胜任力指标KCI权重</span><span>*</span>
+    				<span style="font-size:12pt;color:black">加分项</span><span>*</span>
     			</td>
     			<td width="300" class="as">
-    				<input style="width:280px"  type="text" id="kciprop" name="kciprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
+    			<select style="width:100px"  id="typed" name="typed">
+						 				<option value="0">权重</option>
+						                 <option value="2">加分项</option>
+						                 <option value="3">扣分项</option>
+					</select>
+    				<input style="width:120px"  type="text" id="kciprop" name="kciprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
     				
     			</td>
     			

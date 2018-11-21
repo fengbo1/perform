@@ -39,8 +39,6 @@ $(document).ready(function(){
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 brbrbr();
-var x=document.getElementsByName("para");
-$('#level').attr('value',x[0].value);  
  });
 
 function brbrbr()
@@ -57,9 +55,8 @@ function brbrbr()
  	  
 function search()
 {
-	var level = document.getElementById("level").value;
 	var posid = document.getElementById("posid").value;
-    window.location = "<%=path%>/poskciaddsearch.action?level="+level+"&posid="+posid;
+    window.location = "<%=path%>/poskciaddsearch.action?posid="+posid;
 	
 } 
 
@@ -107,12 +104,9 @@ function tijiao()
 					<tr>
 							 <td
 								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="8" align="center" bordercolor="#FFFFFF"><b>加分项选择</b>
+								colspan="4" align="center" bordercolor="#FFFFFF"><b>加分项选择</b>
 							</td>
 					</tr>
-					<tr>
-			        <td style="padding-left:1px">
-						<table height="80" align="center" cellpadding="0" cellspacing="2" >
 						<tr height="50px" class="表格表头背景1" id="hang">
 							
 							<td  width="50px" align="center" valign="middle" nowrap
@@ -124,20 +118,7 @@ function tijiao()
 								bordercolor=none><div align="center">
 									<p>指标名称</p>
 								</div></td>	
-							<td  width="100px"  align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
-									<p>所属层级</p>
-								</div></td>	
-							
 							<td  width="400px"  align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
-									<p>目标值</p>
-								</div></td>	
-							<td  width="50px"  align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
-									<p>分值</p>
-								</div></td>
-							<td  width="150px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>考核规则</p>
 								</div></td>	
@@ -145,47 +126,25 @@ function tijiao()
 								bordercolor=none><div align="center">
 									<p>操作</p>
 								</div></td>	
-							<td  width="100px"  align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
-									<p>权重</p>
-								</div></td>												
 						</tr>
-						</table>
-						</td>
-					</tr>
 					<tr>
-			        <td style="padding-left:18px">
-			         <div id="scroll" align="center" style="overflow-y: scroll; overflow-x: hidden;height:400px">
-					<table  align="center" style="border: 0px; " cellpadding="0" cellspacing="2" >
 					<c:forEach items="${listkc}" var="kc" varStatus="status">
 					<tr class="btbj" id="hang" style="height:25px">
 								
-								<td  width="50px" height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
-								
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">${kc.name}</div></td>
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
-										align="center">${fb:positiontozhi(kc.level)}</div></td>
-								<td width="400px" height="25" align="center" valign="middle" nowrap><div
-										align="left">${kc.target}</div></td>
-								<td width="50px" height="25" align="center" valign="middle" nowrap><div
-										align="center">${kc.score}</div></td>
-								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" nowrap><div
 										align="left">${kc.rule}</div></td>
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" nowrap><div
 										align="center"><input id="${kc.id}" type="checkbox"  name="kcinorm" value="${kc.id}"  /></div></td>	
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
-										align="center"><input id="${kc.id+100000}" style="width:50px" type="text" name="kcinormprop"  onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/></div></td>			
 				     </tr>
 					</c:forEach>
-								</table>
-			                     </div>  
-			                     </td>	
 			            </tr>
 			  <tr>
     			
-    			<td colspan="8" class="as">
+    			<td colspan="4" class="as">
     			   <div align="center">
     			    <input style="width: 100px"  type="button" value="提交" onclick="tijiao()"/>
     			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

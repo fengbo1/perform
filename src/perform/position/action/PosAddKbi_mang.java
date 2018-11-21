@@ -20,17 +20,6 @@ public class PosAddKbi_mang {
 	private int posid;
 	private String message;
 	private List<PKcinorm> listkc;	
-	private String level;
-
-    
-	public String getLevel() {
-		return level;
-	}
-
-	public void setLevel(String level) {
-		this.level = level;
-	}
-
 	public int getPosid() {
 		return posid;
 	}
@@ -84,7 +73,6 @@ public class PosAddKbi_mang {
 	public String execute() throws Exception
 	{
 		Query query;
-		level="wu";
 		String hql = "";
 		String kbinormcun = "";
 		String kbinormpropcun = "";
@@ -157,7 +145,7 @@ public class PosAddKbi_mang {
 		PPositiontemp pp =new PPositiontemp();
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans = session.beginTransaction();
- 	    pp=ppdao.findById(posid);
+ 	    pp=ppdao.findAllById(posid);
  	    
  	    pp.setKbinorm(kbinormcun);
  	    pp.setKbinormprop(kbinormpropcun);

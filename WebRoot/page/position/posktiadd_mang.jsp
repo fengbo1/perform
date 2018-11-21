@@ -58,11 +58,9 @@ $('#chu').attr('value',chu);
  	 
 function search()
 {
-	var city = "2";
 	var chu = document.getElementById("chu").value;
-	var tuan = document.getElementById("tuan").value;
 	var posid = document.getElementById("posid").value;
-   window.location = "<%=path%>/posktiaddsearch.action?city="+city+"&chu="+chu+"&tuan="+tuan+"&posid="+posid;
+   window.location = "<%=path%>/posktiaddsearch.action?chu="+chu+"&posid="+posid;
 	
 }  
 

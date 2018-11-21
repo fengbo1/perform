@@ -14,12 +14,10 @@ public class PosAddKpi_mang {
 	private String category;
 	private int id;
 	private String posname;
-	private String postuan;
 	private String poschu;
 	private String message;
 	private String city;
 	private String chu;
-	private String tuan;
 	private List<PKtinorm> listkt;	
 	private List<PUser> listu;	
 	
@@ -37,14 +35,6 @@ public class PosAddKpi_mang {
 
 	public void setChu(String chu) {
 		this.chu = chu;
-	}
-
-	public String getTuan() {
-		return tuan;
-	}
-
-	public void setTuan(String tuan) {
-		this.tuan = tuan;
 	}
 
 	public List<PKtinorm> getListkt() {
@@ -69,14 +59,6 @@ public class PosAddKpi_mang {
 
 	public void setPosname(String posname) {
 		this.posname = posname;
-	}
-
-	public String getPostuan() {
-		return postuan;
-	}
-
-	public void setPostuan(String postuan) {
-		this.postuan = postuan;
 	}
 
 	public String getPoschu() {
@@ -118,12 +100,11 @@ public class PosAddKpi_mang {
 		String hql = "";
 		if(category==null||category=="")
 		{
-			message="未选择KPI指标！";
+			message="未选择关键业务指标！";
 			return "failed";
 		}
 		city="wu";
 		chu="wu";
-		tuan="wu";
 		PPositiontempDAO ppdao=new PPositiontempDAO();
 		PPositiontemp pp =new PPositiontemp();
 		Session session = HibernateSessionFactory.getSession();

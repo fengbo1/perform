@@ -39,8 +39,6 @@ $(document).ready(function(){
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 brbrbr();
-var x=document.getElementsByName("para");
-$('#level').attr('value',x[0].value);   
  });
 
 
@@ -59,9 +57,8 @@ $('#level').attr('value',x[0].value);
  	  
 function search()
 {
-	var level = document.getElementById("level").value;
 	var posid = document.getElementById("posid").value;
-    window.location = "<%=path%>/poskbiaddsearch.action?level="+level+"&posid="+posid;
+    window.location = "<%=path%>/poskbiaddsearch.action?posid="+posid;
 	
 } 
 
@@ -114,44 +111,17 @@ function tijiao()
 							</td>
 					</tr>
 					<tr>
-							<td colspan="8" height="10px">
-								<div align="center">
-									
-									所属层级：
-									<select id="level" name="level" style="width: 120px">
-										<option value="wu">-请选择层级-</option>
-										<option value="0">主任</option>
-										<option value="1">副主任</option>
-										<option value="2">处室主要负责人</option>
-										<option value="3">处室负责人</option>
-										<option value="4">团队主管</option>
-										<option value="5">班组长</option>
-										<option value="6">经办岗</option>
-									</select>										
-							
-								    <input type="button" value="查询" onclick="search()"/>
-									<input type="hidden" name="para" value="${level}"/>
-						</div></td>	
-						</tr>
-					<tr>
 			        <td style="padding-left:1px">
 						<table height="80" align="center" cellpadding="0" cellspacing="2" >
 						<tr height="50px" class="表格表头背景1" id="hang">
-							
 							<td  width="50px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>序号</p>
 								</div></td>
-						
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>指标名称</p>
 								</div></td>	
-							<td  width="100px"  align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
-									<p>所属层级</p>
-								</div></td>	
-							
 							<td  width="400px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>目标值</p>
@@ -188,8 +158,6 @@ function tijiao()
 								
 								<td width="100px" height="25" align="center" valign="middle" ><div
 										align="center">${kb.name}</div></td>
-								<td width="100px" height="25" align="center" valign="middle" ><div
-										align="center">${fb:positiontozhi(kb.level)}</div></td>
 								<td width="400px" height="25" align="center" valign="middle" ><div
 										align="left">${kb.target}</div></td>
 								<td width="50px" height="25" align="center" valign="middle" ><div
