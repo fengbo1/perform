@@ -202,4 +202,23 @@ public class PKpinormDAO extends BaseHibernateDAO  {
 	    		throw re;
 	    	}
 	    }
+		public PKpinorm findAllById(int id) {
+			log.debug("finding all PKpinorm instances");
+			try {
+				String queryString = "from PKpinorm where id='"+id+"'";
+		         Query queryObject = getSession().createQuery(queryString);
+				 List<PKpinorm> list = queryObject.list();
+				 if(list.isEmpty())
+				 {
+					 return null;
+				 }
+				 else
+				 {
+					 return list.get(0);
+				 }
+			} catch (RuntimeException re) {
+				log.error("find all failed", re);
+				throw re;
+			}
+		}
 }

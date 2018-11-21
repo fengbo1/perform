@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import perform.norm.pojo.PKcinorm;
+import perform.norm.pojo.PKtinorm;
 
 /**
  	* A data access object (DAO) providing persistence and search support for PKcinorm entities.
@@ -202,4 +203,24 @@ public class PKcinormDAO extends BaseHibernateDAO  {
 	    		throw re;
 	    	}
 	    }
+	 
+	 public PKcinorm findAllById(int id) {
+			log.debug("finding all PKcinorm instances");
+			try {
+				String queryString = "from PKcinorm where id='"+id+"'";
+		         Query queryObject = getSession().createQuery(queryString);
+				 List<PKcinorm> list = queryObject.list();
+				 if(list.isEmpty())
+				 {
+					 return null;
+				 }
+				 else
+				 {
+					 return list.get(0);
+				 }
+			} catch (RuntimeException re) {
+				log.error("find all failed", re);
+				throw re;
+			}
+		}
 }

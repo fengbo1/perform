@@ -8,6 +8,7 @@ import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import perform.norm.pojo.PKbinorm;
+import perform.norm.pojo.PKpinorm;
 import perform.norm.pojo.PKtinorm;
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -181,4 +182,24 @@ public class PKbinormDAO extends BaseHibernateDAO {
 	    		throw re;
 	    	}
 	    }
+	 
+	 public PKbinorm findAllById(int id) {
+			log.debug("finding all PKbinorm instances");
+			try {
+				String queryString = "from PKbinorm where id='"+id+"'";
+		         Query queryObject = getSession().createQuery(queryString);
+				 List<PKbinorm> list = queryObject.list();
+				 if(list.isEmpty())
+				 {
+					 return null;
+				 }
+				 else
+				 {
+					 return list.get(0);
+				 }
+			} catch (RuntimeException re) {
+				log.error("find all failed", re);
+				throw re;
+			}
+		}
 }

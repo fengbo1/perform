@@ -30,7 +30,7 @@ public class UserUtil {
 	public static String whyqb = "'物业服务处','安保及基础设施运维处'";
 	public static String c_ywclzx = "'A','B','C','D','E','F','G'";
 	public static String c_cdfzx = "'1','2','3','4','5'";
-	public static String c_whyqb = "'U','V'";
+	public static String c_whyqb = "'W','X'";
 
 	/**
 	 * position转处室

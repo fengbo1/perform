@@ -90,14 +90,12 @@ public class PosShow_mang {
         		String[] kbis = pp.getKbinorm().split("、");
         		String[] kcis = pp.getKcinorm().split("、");
         		
-        		String[] kpips = pp.getKpinormprop().split("、");
         		String[] ktips = pp.getKtinormprop().split("、");
         		String[] kbips = pp.getKbinormprop().split("、");
-        		String[] kcips = pp.getKcinormprop().split("、");
         		for(int i=0;i<kpis.length;i++)
         		{
         			int tempkpi = Integer.valueOf(kpis[i]);
-        			PKpinorm tempkpin = kpindao.findById(tempkpi);
+        			PKpinorm tempkpin = kpindao.findAllById(tempkpi);
         			if(tempkpin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -106,13 +104,14 @@ public class PosShow_mang {
         				temppb.setTarget(tempkpin.getTarget());
         				temppb.setScore(tempkpin.getScore());
         				temppb.setRule(tempkpin.getRule());
+        				temppb.setRemark(tempkpin.getRemark());
         				listkpi.add(temppb);
         			}
         		}
         		for(int i=0;i<ktis.length;i++)
         		{
         			int tempkti = Integer.valueOf(ktis[i]);
-        			PKtinorm tempktin = ktindao.findById(tempkti);
+        			PKtinorm tempktin = ktindao.findAllById(tempkti);
         			if(tempktin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -127,7 +126,7 @@ public class PosShow_mang {
         		for(int i=0;i<kbis.length;i++)
         		{
         			int tempkbi = Integer.valueOf(kbis[i]);
-        			PKbinorm tempkbin = kbindao.findById(tempkbi);
+        			PKbinorm tempkbin = kbindao.findAllById(tempkbi);
         			if(tempkbin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -142,15 +141,16 @@ public class PosShow_mang {
         		for(int i=0;i<kcis.length;i++)
         		{
         			int tempkci = Integer.valueOf(kcis[i]);
-        			PKcinorm tempkcin = kcindao.findById(tempkci);
+        			PKcinorm tempkcin = kcindao.findAllById(tempkci);
         			if(tempkcin!=null)
         			{
         				PdpBean temppb = new PdpBean();
         				temppb.setId(tempkcin.getId());
         				temppb.setName(tempkcin.getName());
         				temppb.setTarget(tempkcin.getTarget());
-        				temppb.setScore(Util.DoubleTo2(tempkcin.getScore()*Double.parseDouble(kcips[i])*pp.getKciprop()));
+        				temppb.setScore("");
         				temppb.setRule(tempkcin.getRule());
+        				temppb.setRemark(tempkcin.getRemark());
         				listkci.add(temppb);
         			}
         		}

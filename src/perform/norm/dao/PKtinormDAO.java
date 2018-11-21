@@ -7,6 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import perform.norm.pojo.PKpinorm;
 import perform.norm.pojo.PKtinorm;
 import perform.seasonrate.pojo.PScore;
 /**
@@ -185,4 +187,24 @@ public class PKtinormDAO extends BaseHibernateDAO {
 	    		throw re;
 	    	}
 	    }
+	 
+	 public PKtinorm findAllById(int id) {
+			log.debug("finding all PKtinorm instances");
+			try {
+				String queryString = "from PKtinorm where id='"+id+"'";
+		         Query queryObject = getSession().createQuery(queryString);
+				 List<PKtinorm> list = queryObject.list();
+				 if(list.isEmpty())
+				 {
+					 return null;
+				 }
+				 else
+				 {
+					 return list.get(0);
+				 }
+			} catch (RuntimeException re) {
+				log.error("find all failed", re);
+				throw re;
+			}
+		}
 }

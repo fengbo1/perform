@@ -145,7 +145,7 @@ public class PosAdd_mang extends ActionSupport implements ServletResponseAware{
  	    ppcheck = ppcheckdao.findByNameandChuandTuan(name, chu);
  	    if(ppcheck!=null)
  	    {
- 	    	 this.addFieldError("用户","已存在同名称、同处室、同团队岗位，不许重复添加！");
+ 	    	 this.addFieldError("用户","已存在同名称、同处室岗位，不许重复添加！");
 		  	 return "failed";
  	    }
  	    BigDecimal b1 = new BigDecimal(Double.valueOf(kpiprop));

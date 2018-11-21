@@ -62,27 +62,6 @@ function search()
 
 function tijiao()
 {
-	var normlist = document.getElementsByName("kcinorm");
-	//var normprop = document.getElementsByName("kbinormprop");
-	var i=0;
-	for(i=0;i<normlist.length;i++)
-	{
-	  
-	    if(normlist[i].checked)
-	    {
-             //alert(normlist[i].value);
-            // alert(typeof((Number(normlist[i].value)+100000).toString()));
-             //alert((Number(normlist[i].value)+100000).toString());
-             var prop=document.getElementById((Number(normlist[i].value)+100000).toString()).value;
-             if(prop=="")
-             {
-                 alert("选中的指标权重未填！");
-                 return;
-             }    
- 
-	    }
-	     
-	}
 	 with(document.forms[0])
 	 {
 		action='posaddkci_mang.action';

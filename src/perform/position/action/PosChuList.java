@@ -15,9 +15,8 @@ import ccb.hibernate.HibernateSessionFactory;
 
 public class PosChuList {
 	private static final Log log = LogFactory.getLog(PPosition.class);
+	private List<PPosition> list;
 	private String newnumber;
-	private String tuan;
-	private List<PPosition> list;	
 	private int pageSize = 20;
 	private int totalPages = -1;
 	private int currentPage = -1;
@@ -27,14 +26,6 @@ public class PosChuList {
 	private int lastPage = 1;
 	private long totalRows = -1;
 	
-	public String getNewnumber() {
-		return newnumber;
-	}
-	public void setNewnumber(String newnumber) {
-		this.newnumber = newnumber;
-	}
-
-
 	public List<PPosition> getList() {
 		return list;
 	}
@@ -89,12 +80,11 @@ public class PosChuList {
 	public void setTotalRows(long totalRows) {
 		this.totalRows = totalRows;
 	}
-	
-	public String getTuan() {
-		return tuan;
+	public String getNewnumber() {
+		return newnumber;
 	}
-	public void setTuan(String tuan) {
-		this.tuan = tuan;
+	public void setNewnumber(String newnumber) {
+		this.newnumber = newnumber;
 	}
 	public String execute() throws Exception
 	{
@@ -104,19 +94,10 @@ public class PosChuList {
 		PUserDAO uidao = new PUserDAO();
 		ui = uidao.findByNewNumber(newnumber);
 		String chu = ui.getPosition().substring(2, 3);
-		if(tuan==null)
-		{
-			tuan="wu";
-		}
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();
 		try {
 			hql = "from PPosition as pos where 1=1 and pos.chu='"+chu+"'";
-		
-			if(tuan!=null&&tuan!=""&&!tuan.equals("wu"))
-			{
-				hql=hql+" and pos.tuan='"+tuan+"'";
-			}
 			hql +=" order by pos.id";
 			
 			System.out.println(hql);
