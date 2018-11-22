@@ -105,7 +105,7 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     		</tr>
     		<tr height="20px">
     			<td class="b" colspan="6">
-    				一、关键业绩指标KPI（<fmt:formatNumber type="number" value="${pp.kpiprop*100}" pattern="0.00" maxFractionDigits="2"/>分）
+    				一、关键业务指标（${kpisum}）
     			</td>
     		</tr>	
     		<c:forEach items="${listkpi}" var="kpi" varStatus="status">
@@ -126,13 +126,13 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     				${kpi.rule}
     			</td>
     			<td>
-    				&nbsp;
+    				&nbsp;;${kpi.remark}
     			</td>
     		</tr>
     		</c:forEach>
     		<tr height="20px">
     			<td class="b" colspan="6">
-    				二、关键任务指标KTI（<fmt:formatNumber type="number" value="${pp.ktiprop*100}" pattern="0.00" maxFractionDigits="2"/>分）
+    				二、关键任务目标（${ktisum}）
     			</td>
     		</tr>	
     		<c:forEach items="${listkti}" var="kti" varStatus="status">
@@ -159,7 +159,7 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     		</c:forEach>
     		<tr height="20px">
     			<td class="b" colspan="6">
-    				三、关键行为指标KBI（<fmt:formatNumber type="number" value="${pp.kbiprop*100}" pattern="0.00" maxFractionDigits="2"/>分）
+    				三、品能目标（${kbisum}）
     			</td>
     		</tr>	
     		<c:forEach items="${listkbi}" var="kbi" varStatus="status">
@@ -186,7 +186,7 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     		</c:forEach>
     		<tr height="20px">
     			<td class="b" colspan="6">
-    				四、关键胜任力指标KCI（<fmt:formatNumber type="number" value="${pp.kciprop*100}" pattern="0.00" maxFractionDigits="2"/>分）
+    				四、加分项（${kcisum}）
     			</td>
     		</tr>	
     		<c:forEach items="${listkci}" var="kci" varStatus="status">
@@ -201,13 +201,13 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     				${kci.target}
     			</td>
     			<td>
-    				<fmt:formatNumber type="number" value="${kci.score}" pattern="0.00" maxFractionDigits="2"/>
+    				&nbsp;<fmt:formatNumber type="number" value="${kci.score}" pattern="0.00" maxFractionDigits="2"/>
     			</td>
     			<td>
     				${kci.rule}
     			</td>
     			<td>
-    				&nbsp;
+    				&nbsp;${kci.remark}
     			</td>
     		</tr>
     		</c:forEach>

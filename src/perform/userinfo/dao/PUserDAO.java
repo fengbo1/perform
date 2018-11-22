@@ -202,11 +202,15 @@ public class PUserDAO extends BaseHibernateDAO  {
 			String queryString = "";
 			if(para.equals("year"))
 			{
-				queryString = "from PUser as pu where mid(pu.position,1,1)>1 order by pu.position";
+				queryString = "from PUser as pu where mid(pu.position,1,1)>0 order by pu.position";
 			}
 			else if(para.equals("season"))
 			{
-				queryString = "from PUser as pu where mid(pu.position,1,1)>3 order by pu.position";
+				queryString = "from PUser as pu where mid(pu.position,1,1)>0 order by pu.position";
+			}
+			else if(para.equals("test"))
+			{
+				queryString = "from PUser as pu where pu.position like '__5__' order by pu.position";
 			}
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
@@ -223,17 +227,29 @@ public class PUserDAO extends BaseHibernateDAO  {
 	public List findRaterByPostion(String position) {
 		log.debug("finding all PUser instances");
 		try {
-			String chu = "无";
-			if(position.length()==1)
-			{
-				chu = position.substring(0, 1);
-			}
-			else if(position.length()==UserUtil.positionlength)
-			{
-				chu = position.substring(2, 3);
-			}
+			String chu = position.substring(2, 3);
+			String zhi = position.substring(0, 1);
+			String tuan = position.substring(3, 4);
+			String zu = position.substring(4, 5);
 			List list =  new ArrayList<PUser>();
-			String queryString = "from PUser as pu where pu.position like '3_"+chu+"____' or pu.position like '2_"+chu+"____' order by pu.position";
+			String posrater = "";
+			if(zhi.equals("1"))
+			{
+				posrater="00000";
+			}
+			else if(zhi.equals("2"))
+			{
+				posrater="1_"+chu+"__";
+			}
+			else if(zhi.equals("3"))
+			{
+				posrater="4_"+chu+tuan+zu;
+			}
+			else if(zhi.equals("4"))
+			{
+				posrater="2_"+chu+tuan+"_";
+			}
+			String queryString = "from PUser as pu where pu.position like '"+posrater+"' or pu.position like '"+posrater+"' order by pu.position";
 			System.out.println(queryString);
 			Query queryObject = getSession().createQuery(queryString);
 			list =  queryObject.list();

@@ -101,7 +101,7 @@ b{
     		</tr>
     		<tr height="20px">
     			<td class="b" colspan="6">
-    				一、关键业绩指标KPI（${pp.kpiprop*100}分）
+    				一、关键业务指标（${kpisum}）
     			</td>
     		</tr>	
     		<c:forEach items="${listkpi}" var="kpi" varStatus="status">
@@ -122,13 +122,13 @@ b{
     				${kpi.rule}
     			</td>
     			<td>
-    				&nbsp;
+    				&nbsp;${kpi.remark}
     			</td>
     		</tr>
     		</c:forEach>
     		<tr height="20px">
     			<td class="b" colspan="6">
-    				二、关键任务指标KTI（${pp.ktiprop*100}分）
+    				二、关键任务目标（${ktisum}）
     			</td>
     		</tr>	
     		<c:forEach items="${listkti}" var="kti" varStatus="status">
@@ -155,7 +155,7 @@ b{
     		</c:forEach>
     		<tr height="20px">
     			<td class="b" colspan="6">
-    				三、关键行为指标KBI（${pp.kbiprop*100}分）
+    				三、品能目标（${kbisum}）
     			</td>
     		</tr>	
     		<c:forEach items="${listkbi}" var="kbi" varStatus="status">
@@ -182,7 +182,7 @@ b{
     		</c:forEach>
     		<tr height="20px">
     			<td class="b" colspan="6">
-    				四、关键胜任力指标KCI（${pp.kciprop*100}分）
+    				四、加分项（${kcisum}）
     			</td>
     		</tr>	
     		<c:forEach items="${listkci}" var="kci" varStatus="status">
@@ -197,13 +197,13 @@ b{
     				${kci.target}
     			</td>
     			<td>
-    				${kci.score}
+    				&nbsp;${kci.score}
     			</td>
     			<td>
     				${kci.rule}
     			</td>
     			<td>
-    				&nbsp;
+    				&nbsp;${kci.remark}
     			</td>
     		</tr>
     		</c:forEach>

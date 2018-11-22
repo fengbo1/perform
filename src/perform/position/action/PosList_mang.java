@@ -12,10 +12,7 @@ import ccb.hibernate.HibernateSessionFactory;
 
 public class PosList_mang {
 	private static final Log log = LogFactory.getLog(PPosition.class);
-	private String newnumber;
 	private String chu;
-	private String tuan;
-	private String city;
 	private List<PPosition> list;	
 	private int pageSize = 20;
 	private int totalPages = -1;
@@ -26,19 +23,6 @@ public class PosList_mang {
 	private int lastPage = 1;
 	private long totalRows = -1;
 	
-	public String getNewnumber() {
-		return newnumber;
-	}
-	public void setNewnumber(String newnumber) {
-		this.newnumber = newnumber;
-	}
-
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
 	public List<PPosition> getList() {
 		return list;
 	}
@@ -100,12 +84,7 @@ public class PosList_mang {
 	public void setChu(String chu) {
 		this.chu = chu;
 	}
-	public String getTuan() {
-		return tuan;
-	}
-	public void setTuan(String tuan) {
-		this.tuan = tuan;
-	}
+	
 	public String execute() throws Exception
 	{
 		Query query;
@@ -114,41 +93,17 @@ public class PosList_mang {
 		{
 			chu="wu";
 		}
-		if(city==null)
-		{
-			city="wu";
-		}
-		if(tuan==null)
-		{
-			tuan="wu";
-		}
+		
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();
 		try {
 			hql = "from PPosition as pos where 1=1";
-			if(city!=null)
-			{
-				if(city.equals("1"))
-				{
-					hql=hql+" and pos.chu in ("+UserUtil.c_ywclzx+")";
-				}
-				else if(city.equals("2"))
-				{
-					hql=hql+" and pos.chu in ("+UserUtil.c_cdfzx+")";
-				}
-				else if(city.equals("3"))
-				{
-					hql=hql+" and pos.chu in ("+UserUtil.c_whyqb+")";
-				}
-			}
+			
 			if(chu!=null&&chu!=""&&!chu.equals("wu"))
 			{
 				hql=hql+" and pos.chu='"+chu+"'";
 			}
-			if(tuan!=null&&tuan!=""&&!tuan.equals("wu"))
-			{
-				hql=hql+" and pos.tuan='"+tuan+"'";
-			}
+			
 			hql +=" order by pos.id";
 			System.out.println(hql);
 			query = session.createQuery(hql);

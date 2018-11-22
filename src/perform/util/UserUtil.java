@@ -421,11 +421,11 @@ public class UserUtil {
 			}
 			else if(chutuan.equals("51"))//
 			{
-				result = "研发支持团队";
+				result = "研发支持团队1";
 			}
 			else if(chutuan.equals("52"))//
 			{
-				result = "研发支持团队";
+				result = "研发支持团队2";
 			}
 			else if(chutuan.equals("U0"))//物业服务处
 			{
@@ -476,6 +476,7 @@ public class UserUtil {
 	public static String positionToZu(String position)
 	{
 		String result="";
+		char chu = ' ';
 		char zu = ' ';
 		if(position.length()!=1&&position.length()!=positionlength)
 		{
@@ -489,6 +490,7 @@ public class UserUtil {
 			}
 			else
 			{
+				chu = position.charAt(2);
 				zu = position.charAt(0);
 			}
 			if(zu=='A')
@@ -525,7 +527,30 @@ public class UserUtil {
 			}
 			else if(zu>'0'&&zu<='9')
 			{
-				result = "班组"+zu;
+				if(chu=='5')
+				{
+					if(zu=='1')
+					{
+						result = "智慧柜员机组";
+					}
+					else if(zu=='2')
+					{
+						result = "龙易行组";
+					}
+					else if(zu=='3')
+					{
+						result = "柜面组";
+					}
+					else if(zu=='4')
+					{
+						result = "智慧银行组";
+					}
+				}
+				else
+				{
+					result = "班组"+zu;
+				}
+				
 			}
 			else
 			{

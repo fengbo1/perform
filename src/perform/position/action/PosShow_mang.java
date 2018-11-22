@@ -27,7 +27,10 @@ public class PosShow_mang {
 	private List<PdpBean> listkti;
 	private List<PdpBean> listkbi;
 	private List<PdpBean> listkci;
-	
+	private String kpisum;
+	private String ktisum;
+	private String kbisum;
+	private String kcisum;
 
 	public int getPnum() {
 		return pnum;
@@ -66,9 +69,32 @@ public class PosShow_mang {
 	public void setListkci(List<PdpBean> listkci) {
 		this.listkci = listkci;
 	}
+	public String getKpisum() {
+		return kpisum;
+	}
+	public void setKpisum(String kpisum) {
+		this.kpisum = kpisum;
+	}
+	public String getKtisum() {
+		return ktisum;
+	}
+	public void setKtisum(String ktisum) {
+		this.ktisum = ktisum;
+	}
+	public String getKbisum() {
+		return kbisum;
+	}
+	public void setKbisum(String kbisum) {
+		this.kbisum = kbisum;
+	}
+	public String getKcisum() {
+		return kcisum;
+	}
+	public void setKcisum(String kcisum) {
+		this.kcisum = kcisum;
+	}
 	public String execute() throws Exception
 	{
-		
 		PKpinormDAO kpindao = new PKpinormDAO();
 		PKtinormDAO ktindao = new PKtinormDAO();
 		PKbinormDAO kbindao = new PKbinormDAO();
@@ -83,6 +109,54 @@ public class PosShow_mang {
     	try {
     		
     		pp = ppdao.findByID(pnum);
+    		if(pp.getKpiprop()==3)
+    		{
+    			kpisum="扣分项";
+    		}
+    		else if(pp.getKpiprop()==2)
+    		{
+    			kpisum="加分项";
+    		}
+    		else
+    		{
+    			kpisum="共"+String.valueOf(pp.getKpiprop()*100)+"分";
+    		}
+    		if(pp.getKtiprop()==3)
+    		{
+    			ktisum="扣分项";
+    		}
+    		else if(pp.getKtiprop()==2)
+    		{
+    			ktisum="加分项";
+    		}
+    		else
+    		{
+    			ktisum="共"+String.valueOf(pp.getKtiprop()*100)+"分";
+    		}
+    		if(pp.getKbiprop()==3)
+    		{
+    			kbisum="扣分项";
+    		}
+    		else if(pp.getKbiprop()==2)
+    		{
+    			kbisum="加分项";
+    		}
+    		else
+    		{
+    			kbisum="共"+String.valueOf(pp.getKbiprop()*100)+"分";
+    		}
+    		if(pp.getKciprop()==3)
+    		{
+    			kcisum="扣分项";
+    		}
+    		else if(pp.getKciprop()==2)
+    		{
+    			kcisum="加分项";
+    		}
+    		else
+    		{
+    			kcisum="共"+String.valueOf(pp.getKciprop()*100)+"分";
+    		}
     		if(pp!=null)
     		{
     			String[] kpis = pp.getKpinorm().split("、");

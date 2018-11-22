@@ -31,7 +31,10 @@ public class PDPPerson {
 	private List<PdpBean> listkti;
 	private List<PdpBean> listkbi;
 	private List<PdpBean> listkci;
-	
+	private String kpisum;
+	private String ktisum;
+	private String kbisum;
+	private String kcisum;
 	
 	public String getRater() {
 		return rater;
@@ -75,6 +78,30 @@ public class PDPPerson {
 	public void setListkci(List<PdpBean> listkci) {
 		this.listkci = listkci;
 	}
+	public String getKpisum() {
+		return kpisum;
+	}
+	public void setKpisum(String kpisum) {
+		this.kpisum = kpisum;
+	}
+	public String getKtisum() {
+		return ktisum;
+	}
+	public void setKtisum(String ktisum) {
+		this.ktisum = ktisum;
+	}
+	public String getKbisum() {
+		return kbisum;
+	}
+	public void setKbisum(String kbisum) {
+		this.kbisum = kbisum;
+	}
+	public String getKcisum() {
+		return kcisum;
+	}
+	public void setKcisum(String kcisum) {
+		this.kcisum = kcisum;
+	}
 	public String execute() throws Exception
 	{
 		PUserDAO pudao = new PUserDAO();
@@ -93,6 +120,54 @@ public class PDPPerson {
     		pu = pudao.findByNewNumber(rater);
     		int pnum = pu.getPnum();
     		pp = ppdao.findByID(pnum);
+    		if(pp.getKpiprop()==3)
+    		{
+    			kpisum="扣分项";
+    		}
+    		else if(pp.getKpiprop()==2)
+    		{
+    			kpisum="加分项";
+    		}
+    		else
+    		{
+    			kpisum="共"+String.valueOf(pp.getKpiprop()*100)+"分";
+    		}
+    		if(pp.getKtiprop()==3)
+    		{
+    			ktisum="扣分项";
+    		}
+    		else if(pp.getKtiprop()==2)
+    		{
+    			ktisum="加分项";
+    		}
+    		else
+    		{
+    			ktisum="共"+String.valueOf(pp.getKtiprop()*100)+"分";
+    		}
+    		if(pp.getKbiprop()==3)
+    		{
+    			kbisum="扣分项";
+    		}
+    		else if(pp.getKbiprop()==2)
+    		{
+    			kbisum="加分项";
+    		}
+    		else
+    		{
+    			kbisum="共"+String.valueOf(pp.getKbiprop()*100)+"分";
+    		}
+    		if(pp.getKciprop()==3)
+    		{
+    			kcisum="扣分项";
+    		}
+    		else if(pp.getKciprop()==2)
+    		{
+    			kcisum="加分项";
+    		}
+    		else
+    		{
+    			kcisum="共"+String.valueOf(pp.getKciprop()*100)+"分";
+    		}
     		if(pp!=null)
     		{
     			String[] kpis = pp.getKpinorm().split("、");
@@ -100,14 +175,12 @@ public class PDPPerson {
         		String[] kbis = pp.getKbinorm().split("、");
         		String[] kcis = pp.getKcinorm().split("、");
         		
-        		String[] kpips = pp.getKpinormprop().split("、");
         		String[] ktips = pp.getKtinormprop().split("、");
         		String[] kbips = pp.getKbinormprop().split("、");
-        		String[] kcips = pp.getKcinormprop().split("、");
         		for(int i=0;i<kpis.length;i++)
         		{
         			int tempkpi = Integer.valueOf(kpis[i]);
-        			PKpinorm tempkpin = kpindao.findById(tempkpi);
+        			PKpinorm tempkpin = kpindao.findAllById(tempkpi);
         			if(tempkpin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -117,13 +190,14 @@ public class PDPPerson {
         				temppb.setScore(tempkpin.getScore());
         				temppb.setRule(tempkpin.getRule());
         				temppb.setPdpname(tempkpin.getPdpname());
+        				temppb.setRemark(tempkpin.getRemark());
         				listkpi.add(temppb);
         			}
         		}
         		for(int i=0;i<ktis.length;i++)
         		{
         			int tempkti = Integer.valueOf(ktis[i]);
-        			PKtinorm tempktin = ktindao.findById(tempkti);
+        			PKtinorm tempktin = ktindao.findAllById(tempkti);
         			if(tempktin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -138,7 +212,7 @@ public class PDPPerson {
         		for(int i=0;i<kbis.length;i++)
         		{
         			int tempkbi = Integer.valueOf(kbis[i]);
-        			PKbinorm tempkbin = kbindao.findById(tempkbi);
+        			PKbinorm tempkbin = kbindao.findAllById(tempkbi);
         			if(tempkbin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -153,15 +227,16 @@ public class PDPPerson {
         		for(int i=0;i<kcis.length;i++)
         		{
         			int tempkci = Integer.valueOf(kcis[i]);
-        			PKcinorm tempkcin = kcindao.findById(tempkci);
+        			PKcinorm tempkcin = kcindao.findAllById(tempkci);
         			if(tempkcin!=null)
         			{
         				PdpBean temppb = new PdpBean();
         				temppb.setId(tempkcin.getId());
         				temppb.setName(tempkcin.getName());
         				temppb.setTarget(tempkcin.getTarget());
-        				temppb.setScore(Util.DoubleTo2(tempkcin.getScore()*Double.parseDouble(kcips[i])*pp.getKciprop()));
+        				temppb.setScore("");
         				temppb.setRule(tempkcin.getRule());
+        				temppb.setRemark(tempkcin.getRemark());
         				listkci.add(temppb);
         			}
         		}

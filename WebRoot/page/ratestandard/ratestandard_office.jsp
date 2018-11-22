@@ -39,86 +39,7 @@ body {
 
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
-var x=document.getElementsByName("para");
-gettuan();
-$('#tuan').attr('value',x[0].value);
-getzu();
-$('#zu').attr('value',x[1].value);
 });
-
-
- function gettuan(){
-	    
-	    var tuans="";
-	    var	chu=document.getElementById('chu').value;
-	    chu=encodeURI(chu);
-	    var xmlhttp;
-	    var time=new Date().getTime();
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}	
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				
-				tuans=xmlhttp.responseText;
-				tuanname(tuans);
-			}				
-		} 
-		xmlhttp.open("GET","gettuanajax.action?chu="+chu+"&nowtime="+time,false);
-		xmlhttp.send();
-	}
-
-	 function getzu(){
-	    
-	    var zus="";
-	    var	chu=document.getElementById('chu').value;
-	    var	tuan=document.getElementById('tuan').value;
-	    chu=encodeURI(chu);
-	    tuan=encodeURI(tuan);
-	    var xmlhttp;
-	    var time=new Date().getTime();
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}	
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				
-				zus=xmlhttp.responseText;
-				zuname(zus);
-			}				
-		} 
-		xmlhttp.open("GET","getzuajax.action?chu="+chu+"&tuan="+tuan+"&nowtime="+time,false);
-		xmlhttp.send();
-	}
-
-	 function tuanname(tuans){
-
-		 var arry= new Array();
-		 arry=tuans.split("|"); //字符分割 
-		 var obj=document.getElementById('tuan'); 
-		 obj.options.length=0;
-		 obj.options.add(new Option("-请选择团队-","wu"));
-		 for (var i=1;i<arry.length;i++){	
-
-		 	obj.options.add(new Option(tuanidtoname(arry[i]),arry[i])); //这个兼容IE与firefox 
-		 }
-		 }
-
-	 function zuname(zus){
-
-		 var arry= new Array();
-		 arry=zus.split("|"); //字符分割 
-		 var obj=document.getElementById('zu'); 
-		 obj.options.length=0;
-		 obj.options.add(new Option("-请选择班组-","wu"));
-		 for (var i=1;i<arry.length;i++){	
-		 	obj.options.add(new Option(zuidtoname(arry[i]),arry[i])); //这个兼容IE与firefox 
-		 }
-		 }
  </script>
  <link href="<%=path%>/css/table_back.css" rel="stylesheet" type="text/css">
   </head>
@@ -132,27 +53,6 @@ $('#zu').attr('value',x[1].value);
 								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
 								colspan="8" align="center" bordercolor="#FFFFFF"><b>处室员工绩效与发展计划书</b>
 							</td>
-						</tr>
-						<tr  >
-							<td colspan="8" height="10px">
-								<div align="center">
-								团队
-								<select id="tuan" name="tuan" style="width: 150px"  onchange="getzu()">
-										<option value="wu">-全部-</option>
-								</select>		
-								班组
-								<select id="zu" name="zu" style="width: 100px">
-										<option value="wu">-全部-</option>
-								</select>
-								姓名
-								<input style="width:100px" type="text" id="name" name="name" value="${name}"/>			
-								<input type="submit" value="查询"/>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="hidden" id="chu" name="chu" value="${chu}"/>	
-								<input type="hidden" name="para" value="${tuan}"/>
-								<input type="hidden" name="para" value="${zu}"/>
-								<input type="hidden" name="rater" value="${newnumber}"/>	
-						</div></td>	
 						</tr>
 						<tr height="50px" class="表格表头背景1" id="hang">
 							<td  width="40px" align="center" valign="middle" nowrap
@@ -173,14 +73,6 @@ $('#zu').attr('value',x[1].value);
 								</div></td>	
 							<td  width="150px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>团队</p>
-								</div></td>	
-							<td  width="150px"  align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
-									<p>班组</p>
-								</div></td>
-							<td  width="150px"  align="center" valign="middle" nowrap
-								bordercolor=none><div align="center">
 									<p>岗位</p>
 								</div></td>
 							<td  width="80px"  align="center" valign="middle" nowrap
@@ -199,17 +91,11 @@ $('#zu').attr('value',x[1].value);
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">${fb:positiontochu(entity.position)}</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
-										align="center">${fb:positiontotuan(entity.position)}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
-										align="center">${fb:positiontozu(entity.position)}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">${fb:pnumtoname(entity.pnum)}</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<c:if test="${fn:substring(entity.position,0,1)!='0'&&fn:substring(entity.position,0,1)!='1'&&fn:substring(entity.position,0,1)!='2'&&fn:substring(entity.position,0,1)!='3'}">
 								<a	href="<%=path%>/pdp_person.action?rater=${entity.newnumber}">显示详情</a>		
 								</div></td>
-								</c:if>
 							</tr>
 						</c:forEach>	
 							<tr class="表格表头背景">
