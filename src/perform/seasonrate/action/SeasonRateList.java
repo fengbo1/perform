@@ -25,6 +25,7 @@ public class SeasonRateList {
 	private int zhuan;
 	private String name;
 	private String rater;
+	private String message;
 	private List<SeasonScoreBean2> list2;
 	private List<Integer> listyear;
 	
@@ -65,6 +66,12 @@ public class SeasonRateList {
 	public void setRater(String rater) {
 		this.rater = rater;
 	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public List<Integer> getListyear() {
 		return listyear;
 	}
@@ -100,17 +107,23 @@ public class SeasonRateList {
 //			{
 //				chu = uu.positionToChu(purater.getPosition());
 //			}
-			if(year==0||season==0)//未选年和季度
-			{
+//			if(year==0||season==0)//未选年和季度
+//			{
 				PFlag pf = pfdao.findByIsNew(1);
 				year = pf.getYear();
 				season = pf.getSeason();
-			}
-			sql = "select * from p_score as p where p.year='"+year+"' and p.season='"+season+"' and (p.kpirater like '%"+rater+"%' or p.ktirater like '%"+rater+"%' or p.kbirater like '%"+rater+"%' or p.kcirater like '%"+rater+"%') order by locate(mid(position,1,1),'01243')";
+//			}
+				if(pf.getAlreadyrate()!=null&&pf.getAlreadyrate().contains(rater))
+				{
+					message = "您已经提交了所有评分，无法再次评分。";
+					return "failed";
+				}
+			sql = "select * from p_score as p where p.year='"+year+"' and p.season='"+season+"' and (p.kpirater like '%"+rater+"%' or p.ktirater like '%"+rater+"%' or p.kbirater like '%"+rater+"%' or p.kcirater like '%"+rater+"%')";
 			if(name!=null&&!name.equals(""))
 			{
 				sql +=" and p.name='"+name+"'";
 			}
+			sql+=" order by locate(mid(position,1,1),'01243')";
 			List<PScore> list = session.createSQLQuery(sql).addEntity(PScore.class).list();
 			double score=0.0;
 			for(int i=0;i<list.size();i++)

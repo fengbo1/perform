@@ -7,6 +7,8 @@
 	<package name="seasonrate_default" extends="struts-default" >
 		<action name="seasonrate_list_rate" class="perform.seasonrate.action.SeasonRateList">
 			<result name="success">/page/seasonrate/seasonrate_list.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+			
 		</action>
 		<action name="seasonkpi_rate" class="perform.seasonrate.action.SeasonKpiRate">
 			<result name="success">/page/seasonrate/seasonkpi_rate.jsp</result>
@@ -43,6 +45,9 @@
 		</action>
 		<action name="rate_baocun" class="perform.seasonrate.action.RateBaocun">
 			<result name="success">/page/seasonrate/before_rateset.jsp</result>
+		</action>
+		<action name="suballrate" class="perform.seasonrate.action.SubAllRate">
+			<result name="success">/page/seasonrate/before_list.jsp</result>
 		</action>
 	</package>
 </struts>    

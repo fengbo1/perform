@@ -92,6 +92,7 @@ public class RateBegin {
         				pf.setSeason(season);
         				pf.setIsnew(1);
         				pf.setFlag(1);
+        				pf.setAlreadyrate("");//已评分人
         				pfdao.merge(pf);
         			}
         			else
@@ -102,6 +103,7 @@ public class RateBegin {
             				session.createSQLQuery(sql).executeUpdate();
         					pf.setFlag(1);
         					pf.setIsnew(1);
+        					pf.setAlreadyrate("");//已评分人
         					pfdao.merge(pf);
         				}
         				if(pf.getFlag()==3)//打分完毕，删除原有记录，重新开始打分
@@ -116,6 +118,7 @@ public class RateBegin {
             				pf.setSeason(season);
             				pf.setIsnew(1);
             				pf.setFlag(1);
+            				pf.setAlreadyrate("");//已评分人
             				pfdao.merge(pf);
         				}
         			}

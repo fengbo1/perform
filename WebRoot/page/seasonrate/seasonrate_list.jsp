@@ -39,6 +39,16 @@ body {
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 });
+
+function tijiao()
+{
+	 message = "提交之后将无法修改评分！请确认是否提交！";
+	 if (window.confirm(message)) {
+		with(document.forms[0]) {
+			window.location = "<%=path%>/suballrate.action?year=${year}&season=${season}&rater=${newnumber}";
+		}
+	}
+}
  </script>
  <link href="<%=path%>/css/table_back.css" rel="stylesheet" type="text/css">
   </head>
@@ -46,7 +56,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
   <body>
   <form action="<%=path%>/seasonrate_list_rate.action" method="post" name="fm1">
 					<table height="80" align="center" cellpadding="0"
-						cellspacing="2" border: 0px;">
+						cellspacing="2" border="0px;">
 						<tr>
 							<td
 								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
@@ -136,30 +146,36 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 										align="center">${entity.position}</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-										   <fmt:formatNumber type="number" value=" ${entity.kpi}" pattern="0.000" maxFractionDigits="3"/>         
+										   -      
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<c:if test="${entity.ktirater==newnumber}"><a href="<%=path%>/seasonkti_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kti}" pattern="0.00" maxFractionDigits="2"/></a></c:if>
-								<c:if test="${entity.ktirater!=newnumber}"><fmt:formatNumber type="number" value="${entity.kti}" pattern="0.00" maxFractionDigits="2"/></c:if>		
+										<!-- <fmt:formatNumber type="number" value="${entity.kti}" pattern="0.00" maxFractionDigits="2"/> -->
+								<c:if test="${entity.ktirater==newnumber}"><a href="<%=path%>/seasonkti_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">评分</a></c:if>
+								<c:if test="${entity.ktirater!=newnumber}">-</c:if>		
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<c:if test="${entity.kbirater==newnumber}"><a href="<%=path%>/seasonkbi_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kbi}" pattern="0.00" maxFractionDigits="2"/></a></c:if>
-								<c:if test="${entity.kbirater!=newnumber}"><fmt:formatNumber type="number" value="${entity.kbi}" pattern="0.00" maxFractionDigits="2"/></c:if>		
+								<c:if test="${entity.kbirater==newnumber}"><a href="<%=path%>/seasonkbi_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">评分</a></c:if>
+								<c:if test="${entity.kbirater!=newnumber}">-</c:if>		
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<c:if test="${entity.kcirater==newnumber}"><a href="<%=path%>/seasonkci_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kci}" pattern="0.00" maxFractionDigits="2"/></a></c:if>
-								<c:if test="${entity.kcirater!=newnumber}"><fmt:formatNumber type="number" value="${entity.kci}" pattern="0.00" maxFractionDigits="2"/></c:if>		
+								<c:if test="${entity.kcirater==newnumber}"><a href="<%=path%>/seasonkci_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">评分</a></c:if>
+								<c:if test="${entity.kcirater!=newnumber}">-</c:if>		
 										</div></td>	
 							   	<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								       <fmt:formatNumber type="number" value="${entity.score}" pattern="0.000" maxFractionDigits="3"/>
+								       -
 										</div></td>						
 							</tr>
 						</c:forEach>	
 							<tr class="表格表头背景">
+							<td align="center" colspan="12">
+							<c:if test="${name==null||name==''}">
+							  <input style="width: 100px"  type="button" value="提交所有评分" onclick="tijiao()"/>
+							 </c:if>
+							  </td>
 						</tr>
 		</table>
 		</form>

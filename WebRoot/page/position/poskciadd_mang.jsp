@@ -67,10 +67,7 @@ function tijiao()
 		action='posaddkci_mang.action';
 	    method="post";
 	    submit();
-					
 	  }
-	
-	
 }
  </script>
  <link href="<%=path%>/css/table_back.css" rel="stylesheet" type="text/css">
