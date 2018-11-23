@@ -16,8 +16,8 @@ public class PFlag extends AbstractPFlag implements java.io.Serializable {
 
     
     /** full constructor */
-    public PFlag(Integer year, Integer season, Integer flag, Integer isnew) {
-        super(year, season, flag, isnew);        
+    public PFlag(Integer year, Integer season, Integer flag, Integer isnew, String alreadyrate) {
+        super(year, season, flag, isnew, alreadyrate);        
     }
    
 }

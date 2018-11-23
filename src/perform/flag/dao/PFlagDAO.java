@@ -27,6 +27,7 @@ public class PFlagDAO extends BaseHibernateDAO  {
 	public static final String SEASON = "season";
 	public static final String FLAG = "flag";
 	public static final String ISNEW = "isnew";
+	public static final String ALREADYRATE = "alreadyrate";
 
 
 
@@ -117,6 +118,12 @@ public class PFlagDAO extends BaseHibernateDAO  {
 	public List findByIsnew(Object isnew
 	) {
 		return findByProperty(ISNEW, isnew
+		);
+	}
+	
+	public List findByAlreadyrate(Object alreadyrate
+	) {
+		return findByProperty(ALREADYRATE, alreadyrate
 		);
 	}
 	

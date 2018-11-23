@@ -38,91 +38,7 @@ body {
 
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
-var x=document.getElementsByName("para");
-$('#year').attr('value',x[0].value);
-$('#season').attr('value',x[1].value);
-gettuan();
-$('#tuan').attr('value',x[2].value);
-getzu();
-$('#zu').attr('value',x[3].value);
 });
-
-
- function gettuan(){
-	    
-	    var tuans="";
-	    var	chu=document.getElementById('chu').value;
-	    chu=encodeURI(chu);
-	    var xmlhttp;
-	    var time=new Date().getTime();
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}	
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				
-				tuans=xmlhttp.responseText;
-				tuanname(tuans);
-			}				
-		} 
-		xmlhttp.open("GET","gettuanajax.action?chu="+chu+"&nowtime="+time,false);
-		xmlhttp.send();
-	}
-
-	 function getzu(){
-	    
-	    var zus="";
-	    var	chu=document.getElementById('chu').value;
-	    var	tuan=document.getElementById('tuan').value;
-	    chu=encodeURI(chu);
-	    tuan=encodeURI(tuan);
-	    var xmlhttp;
-	    var time=new Date().getTime();
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}	
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				
-				zus=xmlhttp.responseText;
-				zuname(zus);
-			}				
-		} 
-		xmlhttp.open("GET","getzuajax.action?chu="+chu+"&tuan="+tuan+"&nowtime="+time,false);
-		xmlhttp.send();
-	}
-
-	 function tuanname(tuans){
-
-		 var arry= new Array();
-		 arry=tuans.split("|"); //字符分割 
-		 var obj=document.getElementById('tuan'); 
-		 obj.options.length=0;
-		 obj.options.add(new Option("-请选择团队-","wu"));
-		 for (var i=1;i<arry.length;i++){	
-
-		 	obj.options.add(new Option(arry[i],arry[i])); //这个兼容IE与firefox 
-		 }
-		 }
-
-	 function zuname(zus){
-
-		 var arry= new Array();
-		 arry=zus.split("|"); //字符分割 
-		 var obj=document.getElementById('zu'); 
-		 obj.options.length=0;
-		 obj.options.add(new Option("-请选择班组-","wu"));
-		 for (var i=1;i<arry.length;i++){	
-		     
-		 	obj.options.add(new Option(arry[i],arry[i])); //这个兼容IE与firefox 
-		 }
-		 }
-		 
-
  </script>
  <link href="<%=path%>/css/table_back.css" rel="stylesheet" type="text/css">
   </head>
@@ -142,23 +58,12 @@ $('#zu').attr('value',x[3].value);
 								<div align="center">
 									年度：${year}&nbsp;&nbsp;&nbsp;			
 									季度：${season}&nbsp;&nbsp;&nbsp;					
-								 团队
-								<select id="tuan" name="tuan" style="width: 150px"  onchange="getzu()">
-										<option value="wu">-全部-</option>
-								</select>		
-								班组
-								<select id="zu" name="zu" style="width: 100px">
-										<option value="wu">-全部-</option>
-									</select>
 									姓名	
 								<input style="width:100px" type="text" id="name" name="name" value="${name}"/>
 									<input type="submit" value="查询"/>
 									
-									<input type="hidden" id="chu" name="chu" value="${chu}"/>	
-									<input type="hidden" name="para" value="${year}"/>
-									<input type="hidden" name="para" value="${season}"/>
-									<input type="hidden" name="para" value="${tuan}"/>
-									<input type="hidden" name="para" value="${zu}"/>
+									<input type="hidden" name="year" value="${year}"/>
+									<input type="hidden" name="season" value="${season}"/>
 									<input id="rater" type="hidden" name="rater" value="${rater}"/>
 									
 						</div></td>	
@@ -194,23 +99,23 @@ $('#zu').attr('value',x[3].value);
 								</div></td>
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>关键业绩指标</p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=1&rater=${newnumber}&tuan=${tuan}&zu=${zu}&name=${name}&zhuan=1"  style="color:purple;">KPI</a>
+									<p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=1&rater=${newnumber}&name=${name}&zhuan=1"  style="color:white;">关键业务指标</a></p>
 								</div></td>	
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>关键任务指标</p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=2&rater=${newnumber}&tuan=${tuan}&zu=${zu}&name=${name}&zhuan=1" style="color:purple;">KTI</a>
+									<p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=2&rater=${newnumber}&name=${name}&zhuan=1" style="color:white;">关键任务目标</a></p>
 								</div></td>	
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>关键行为指标</p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=3&rater=${newnumber}&tuan=${tuan}&zu=${zu}&name=${name}&zhuan=1" style="color:purple;">KBI</a>
+									<p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=3&rater=${newnumber}&name=${name}&zhuan=1" style="color:white;">品能目标</a></p>
 								</div></td>
 							<td  width="120px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>关键胜任力指标</p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=4&rater=${newnumber}&tuan=${tuan}&zu=${zu}&name=${name}&zhuan=1" style="color:purple;">KCI</a>
+									<p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=4&rater=${newnumber}&name=${name}&zhuan=1" style="color:white;">加分项</a></p>
 								</div></td>
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>季度总分</p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=5&rater=${newnumber}&tuan=${tuan}&zu=${zu}&name=${name}&zhuan=1" style="color:purple;">SUM</a>
+									<p><a href="<%=path%>/seasonrate_list_rate.action?sorttype=5&rater=${newnumber}&name=${name}&zhuan=1" style="color:white;">季度总分</a></p>
 								</div></td>							
 						</tr>
 						<c:forEach items="${list2}" var="entity" varStatus="status">
@@ -231,20 +136,22 @@ $('#zu').attr('value',x[3].value);
 										align="center">${entity.position}</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<!-- <a	href="<%=path%>/seasonkpi_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">${entity.kpi}</a> -->		
 										   <fmt:formatNumber type="number" value=" ${entity.kpi}" pattern="0.000" maxFractionDigits="3"/>         
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<a	href="<%=path%>/seasonkti_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kti}" pattern="0.00" maxFractionDigits="2"/></a>
+								<c:if test="${entity.ktirater==newnumber}"><a href="<%=path%>/seasonkti_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kti}" pattern="0.00" maxFractionDigits="2"/></a></c:if>
+								<c:if test="${entity.ktirater!=newnumber}"><fmt:formatNumber type="number" value="${entity.kti}" pattern="0.00" maxFractionDigits="2"/></c:if>		
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<a	href="<%=path%>/seasonkbi_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kbi}" pattern="0.00" maxFractionDigits="2"/></a>
+								<c:if test="${entity.kbirater==newnumber}"><a href="<%=path%>/seasonkbi_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kbi}" pattern="0.00" maxFractionDigits="2"/></a></c:if>
+								<c:if test="${entity.kbirater!=newnumber}"><fmt:formatNumber type="number" value="${entity.kbi}" pattern="0.00" maxFractionDigits="2"/></c:if>		
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<a	href="<%=path%>/seasonkci_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kci}" pattern="0.00" maxFractionDigits="2"/></a>
+								<c:if test="${entity.kcirater==newnumber}"><a href="<%=path%>/seasonkci_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kci}" pattern="0.00" maxFractionDigits="2"/></a></c:if>
+								<c:if test="${entity.kcirater!=newnumber}"><fmt:formatNumber type="number" value="${entity.kci}" pattern="0.00" maxFractionDigits="2"/></c:if>		
 										</div></td>	
 							   	<td height="25" align="center" valign="middle" nowrap><div
 										align="center">

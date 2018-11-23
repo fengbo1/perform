@@ -20,6 +20,9 @@
                 <comment>姓名</comment>
             </column>
         </property>
+        <property name="position" type="java.lang.String">
+            <column name="position" length="12" />
+        </property>
         <property name="positionname" type="java.lang.String">
             <column name="positionname" length="64">
                 <comment>岗位名称</comment>
@@ -37,6 +40,18 @@
         </property>
         <property name="positionzu" type="java.lang.String">
             <column name="positionzu" length="64" />
+        </property>
+        <property name="kpirater" type="java.lang.String">
+            <column name="kpirater" length="64" />
+        </property>
+        <property name="ktirater" type="java.lang.String">
+            <column name="ktirater" length="64" />
+        </property>
+        <property name="kbirater" type="java.lang.String">
+            <column name="kbirater" length="64" />
+        </property>
+        <property name="kcirater" type="java.lang.String">
+            <column name="kcirater" length="64" />
         </property>
         <property name="kpiscore" type="java.lang.Double">
             <column name="kpiscore" precision="22" scale="0">

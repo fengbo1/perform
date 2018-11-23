@@ -30,5 +30,10 @@
                 <comment>是否是最新季度</comment>
             </column>
         </property>
+        <property name="alreadyrate" type="java.lang.String">
+            <column name="alreadyrate" length="512">
+                <comment>已打分人员名单</comment>
+            </column>
+        </property>
     </class>
 </hibernate-mapping>

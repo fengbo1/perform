@@ -25,10 +25,15 @@ public class PScoreDAO extends BaseHibernateDAO  {
 		//property constants
 	public static final String NEWNUMBER = "newnumber";
 	public static final String NAME = "name";
+	public static final String POSITION = "position";
 	public static final String POSITIONNAME = "positionname";
 	public static final String POSITIONCHU = "positionchu";
 	public static final String POSITIONTUAN = "positiontuan";
 	public static final String POSITIONZU = "positionzu";
+	public static final String KPIRATER = "kpirater";
+	public static final String KTIRATER = "ktirater";
+	public static final String KBIRATER = "kbirater";
+	public static final String KCIRATER = "kcirater";
 	public static final String KPISCORE = "kpiscore";
 	public static final String KTISCORE = "ktiscore";
 	public static final String KBISCORE = "kbiscore";
@@ -121,6 +126,12 @@ public class PScoreDAO extends BaseHibernateDAO  {
 		);
 	}
 	
+	public List findByPosition(Object position
+	) {
+		return findByProperty(POSITION, position
+		);
+	}
+	
 	public List findByPositionname(Object positionname
 	) {
 		return findByProperty(POSITIONNAME, positionname
@@ -142,6 +153,30 @@ public class PScoreDAO extends BaseHibernateDAO  {
 	public List findByPositionzu(Object positionzu
 	) {
 		return findByProperty(POSITIONZU, positionzu
+		);
+	}
+	
+	public List findByKpirater(Object kpirater
+	) {
+		return findByProperty(KPIRATER, kpirater
+		);
+	}
+	
+	public List findByKtirater(Object ktirater
+	) {
+		return findByProperty(KTIRATER, ktirater
+		);
+	}
+	
+	public List findByKbirater(Object kbirater
+	) {
+		return findByProperty(KBIRATER, kbirater
+		);
+	}
+	
+	public List findByKcirater(Object kcirater
+	) {
+		return findByProperty(KCIRATER, kcirater
 		);
 	}
 	

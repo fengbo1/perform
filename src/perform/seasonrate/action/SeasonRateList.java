@@ -10,10 +10,7 @@ import ccb.hibernate.HibernateSessionFactory;
 
 import perform.flag.dao.PFlagDAO;
 import perform.flag.pojo.PFlag;
-import perform.seasonrate.bean.SeasonScoreBean;
 import perform.seasonrate.bean.SeasonScoreBean2;
-import perform.seasonrate.dao.PKTIScoreDAO;
-import perform.seasonrate.pojo.PKTIScore;
 import perform.seasonrate.pojo.PScore;
 import perform.userinfo.dao.PUserDAO;
 import perform.userinfo.pojo.PUser;
@@ -26,12 +23,8 @@ public class SeasonRateList {
 	private int season;
 	private int sorttype;
 	private int zhuan;
-	private String chu;
-	private String tuan;
-	private String zu;
 	private String name;
 	private String rater;
-	private List<PScore> list;
 	private List<SeasonScoreBean2> list2;
 	private List<Integer> listyear;
 	
@@ -60,24 +53,6 @@ public class SeasonRateList {
 	public void setSeason(int season) {
 		this.season = season;
 	}
-	public String getChu() {
-		return chu;
-	}
-	public void setChu(String chu) {
-		this.chu = chu;
-	}
-	public String getTuan() {
-		return tuan;
-	}
-	public void setTuan(String tuan) {
-		this.tuan = tuan;
-	}
-	public String getZu() {
-		return zu;
-	}
-	public void setZu(String zu) {
-		this.zu = zu;
-	}
 	public String getName() {
 		return name;
 	}
@@ -96,12 +71,6 @@ public class SeasonRateList {
 	public void setListyear(List<Integer> listyear) {
 		this.listyear = listyear;
 	}
-	public List<PScore> getList() {
-		return list;
-	}
-	public void setList(List<PScore> list) {
-		this.list = list;
-	}
 	public List<SeasonScoreBean2> getList2() {
 		return list2;
 	}
@@ -112,60 +81,37 @@ public class SeasonRateList {
 	{
 		String result = "success";
 		String sql = "";
+//		String chu = "";
 		UserUtil uu = new UserUtil();
 		DateTimeUtil dtu = new DateTimeUtil();
 		PFlagDAO pfdao = new PFlagDAO();
 		PUserDAO pudao = new PUserDAO();
 		listyear = dtu.getLast10Years();
 		list2 = new ArrayList<SeasonScoreBean2>();
-		if(tuan!=null&&zhuan==1)
-		{
-			tuan= new String(tuan.getBytes("ISO8859-1"),"UTF-8");
-		}
-		if(zu!=null&&zhuan==1)
-		{
-			zu= new String(zu.getBytes("ISO8859-1"),"UTF-8");
-		}
 		if(name!=null&&zhuan==1)
 		{
 			name = new String(name.getBytes("ISO8859-1"),"UTF-8");
-		}
-		if(tuan==null)
-		{
-			tuan="wu";
-		}
-		if(zu==null)
-		{
-			zu="wu";
 		}
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();
 		try {
 			PUser purater = pudao.findByNewNumber(rater);
-			if(purater!=null)
-			{
-				chu = uu.positionToChu(purater.getPosition());
-			}
+//			if(purater!=null)
+//			{
+//				chu = uu.positionToChu(purater.getPosition());
+//			}
 			if(year==0||season==0)//未选年和季度
 			{
 				PFlag pf = pfdao.findByIsNew(1);
 				year = pf.getYear();
 				season = pf.getSeason();
 			}
-			sql = "select * from p_score as p where p.year='"+year+"' and p.season='"+season+"' and p.positionchu='"+chu+"'";
-			if(tuan!=null&&!tuan.equals("wu"))
-			{
-				sql +=" and p.positiontuan='"+tuan+"'";
-			}
-			if(zu!=null&&!zu.equals("wu"))
-			{
-				sql +=" and p.positionzu='"+zu+"'";
-			}
+			sql = "select * from p_score as p where p.year='"+year+"' and p.season='"+season+"' and (p.kpirater like '%"+rater+"%' or p.ktirater like '%"+rater+"%' or p.kbirater like '%"+rater+"%' or p.kcirater like '%"+rater+"%') order by locate(mid(position,1,1),'01243')";
 			if(name!=null&&!name.equals(""))
 			{
 				sql +=" and p.name='"+name+"'";
 			}
-			list = session.createSQLQuery(sql).addEntity(PScore.class).list();
+			List<PScore> list = session.createSQLQuery(sql).addEntity(PScore.class).list();
 			double score=0.0;
 			for(int i=0;i<list.size();i++)
 			{
@@ -186,6 +132,39 @@ public class SeasonRateList {
 				ssb2.setKci(session.createSQLQuery(sql).uniqueResult().toString());
 				score = Double.valueOf(ssb2.getKpi())*ps.getKpiprop()+Double.valueOf(ssb2.getKti())*ps.getKtiprop()+Double.valueOf(ssb2.getKbi())*ps.getKbiprop()+Double.valueOf(ssb2.getKci())*ps.getKciprop();
 				ssb2.setScore(String.valueOf(score));
+				//是否本人打分标志
+				if(ps.getKpirater()!=null&&ps.getKpirater().contains(rater))
+				{
+					ssb2.setKpirater(rater);
+				}
+				else
+				{
+					ssb2.setKpirater("");
+				}
+				if(ps.getKtirater()!=null&&ps.getKtirater().contains(rater))
+				{
+					ssb2.setKtirater(rater);
+				}
+				else
+				{
+					ssb2.setKtirater("");
+				}
+				if(ps.getKbirater()!=null&&ps.getKbirater().contains(rater))
+				{
+					ssb2.setKbirater(rater);
+				}
+				else
+				{
+					ssb2.setKbirater("");
+				}
+				if(ps.getKcirater()!=null&&ps.getKcirater().contains(rater))
+				{
+					ssb2.setKcirater(rater);
+				}
+				else
+				{
+					ssb2.setKcirater("");
+				}
 				list2.add(ssb2);
 				
 			}

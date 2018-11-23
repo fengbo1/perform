@@ -23,7 +23,17 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="p_kpinorm" catalog="perform" class="PKpinorm">
+	<table name="p_kpinorm" catalog="perform" class="PKpinorm">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="p_score" catalog="perform" class="PScore">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="p_flag" catalog="perform" class="PFlag">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

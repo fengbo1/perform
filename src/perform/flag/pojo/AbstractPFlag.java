@@ -17,6 +17,7 @@ public abstract class AbstractPFlag  implements java.io.Serializable {
      private Integer season;
      private Integer flag;
      private Integer isnew;
+     private String alreadyrate;
 
 
     // Constructors
@@ -27,11 +28,12 @@ public abstract class AbstractPFlag  implements java.io.Serializable {
 
     
     /** full constructor */
-    public AbstractPFlag(Integer year, Integer season, Integer flag, Integer isnew) {
+    public AbstractPFlag(Integer year, Integer season, Integer flag, Integer isnew, String alreadyrate) {
         this.year = year;
         this.season = season;
         this.flag = flag;
         this.isnew = isnew;
+        this.alreadyrate = alreadyrate;
     }
 
    
@@ -75,6 +77,14 @@ public abstract class AbstractPFlag  implements java.io.Serializable {
     
     public void setIsnew(Integer isnew) {
         this.isnew = isnew;
+    }
+
+    public String getAlreadyrate() {
+        return this.alreadyrate;
+    }
+    
+    public void setAlreadyrate(String alreadyrate) {
+        this.alreadyrate = alreadyrate;
     }
    
 

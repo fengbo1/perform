@@ -15,10 +15,15 @@ public abstract class AbstractPScore  implements java.io.Serializable {
      private Integer id;
      private String newnumber;
      private String name;
+     private String position;
      private String positionname;
      private String positionchu;
      private String positiontuan;
      private String positionzu;
+     private String kpirater;
+     private String ktirater;
+     private String kbirater;
+     private String kcirater;
      private Double kpiscore;
      private Double ktiscore;
      private Double kbiscore;
@@ -40,13 +45,18 @@ public abstract class AbstractPScore  implements java.io.Serializable {
 
     
     /** full constructor */
-    public AbstractPScore(String newnumber, String name, String positionname, String positionchu, String positiontuan, String positionzu, Double kpiscore, Double ktiscore, Double kbiscore, Double kciscore, Double kpiprop, Double ktiprop, Double kbiprop, Double kciprop, Double score, Integer year, Integer season) {
+    public AbstractPScore(String newnumber, String name, String position, String positionname, String positionchu, String positiontuan, String positionzu, String kpirater, String ktirater, String kbirater, String kcirater, Double kpiscore, Double ktiscore, Double kbiscore, Double kciscore, Double kpiprop, Double ktiprop, Double kbiprop, Double kciprop, Double score, Integer year, Integer season) {
         this.newnumber = newnumber;
         this.name = name;
+        this.position = position;
         this.positionname = positionname;
         this.positionchu = positionchu;
         this.positiontuan = positiontuan;
         this.positionzu = positionzu;
+        this.kpirater = kpirater;
+        this.ktirater = ktirater;
+        this.kbirater = kbirater;
+        this.kcirater = kcirater;
         this.kpiscore = kpiscore;
         this.ktiscore = ktiscore;
         this.kbiscore = kbiscore;
@@ -87,6 +97,14 @@ public abstract class AbstractPScore  implements java.io.Serializable {
         this.name = name;
     }
 
+    public String getPosition() {
+        return this.position;
+    }
+    
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     public String getPositionname() {
         return this.positionname;
     }
@@ -117,6 +135,38 @@ public abstract class AbstractPScore  implements java.io.Serializable {
     
     public void setPositionzu(String positionzu) {
         this.positionzu = positionzu;
+    }
+
+    public String getKpirater() {
+        return this.kpirater;
+    }
+    
+    public void setKpirater(String kpirater) {
+        this.kpirater = kpirater;
+    }
+
+    public String getKtirater() {
+        return this.ktirater;
+    }
+    
+    public void setKtirater(String ktirater) {
+        this.ktirater = ktirater;
+    }
+
+    public String getKbirater() {
+        return this.kbirater;
+    }
+    
+    public void setKbirater(String kbirater) {
+        this.kbirater = kbirater;
+    }
+
+    public String getKcirater() {
+        return this.kcirater;
+    }
+    
+    public void setKcirater(String kcirater) {
+        this.kcirater = kcirater;
     }
 
     public Double getKpiscore() {

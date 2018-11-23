@@ -486,12 +486,8 @@ public class UserUtil {
 		{
 			if(position.length()==positionlength)
 			{
-				zu = position.charAt(4);
-			}
-			else
-			{
 				chu = position.charAt(2);
-				zu = position.charAt(0);
+				zu = position.charAt(4);
 			}
 			if(zu=='A')
 			{

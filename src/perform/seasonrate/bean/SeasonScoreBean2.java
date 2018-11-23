@@ -9,9 +9,13 @@ public class SeasonScoreBean2 {
 	private String zu;
 	private String position;
 	private String kpi;
+	private String kpirater;//kpt评分人
 	private String kti;
+	private String ktirater;//kti评分人
 	private String kbi;
+	private String kbirater;//kbi评分人
 	private String kci;
+	private String kcirater;//kci评分人
 	private String score;
 	
 	public String getScore() {
@@ -79,5 +83,29 @@ public class SeasonScoreBean2 {
 	}
 	public void setKci(String kci) {
 		this.kci = kci;
+	}
+	public String getKpirater() {
+		return kpirater;
+	}
+	public void setKpirater(String kpirater) {
+		this.kpirater = kpirater;
+	}
+	public String getKtirater() {
+		return ktirater;
+	}
+	public void setKtirater(String ktirater) {
+		this.ktirater = ktirater;
+	}
+	public String getKbirater() {
+		return kbirater;
+	}
+	public void setKbirater(String kbirater) {
+		this.kbirater = kbirater;
+	}
+	public String getKcirater() {
+		return kcirater;
+	}
+	public void setKcirater(String kcirater) {
+		this.kcirater = kcirater;
 	}
 }

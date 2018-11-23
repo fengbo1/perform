@@ -195,6 +195,7 @@ public class RateBegin {
 			ps.setNewnumber(pu.getNewnumber());
 			System.out.println(pu.getName());
 			ps.setName(pu.getName());
+			ps.setPosition(pu.getPosition());
 			ps.setPositionname(uu.pnumToName(session, pu.getPnum()));
 			ps.setPositionchu(uu.positionToChu(pu.getPosition()));
 			ps.setPositiontuan(uu.positionToTuan(pu.getPosition()));
@@ -207,6 +208,10 @@ public class RateBegin {
 			ps.setKtiprop(pp.getKtiprop());
 			ps.setKbiprop(pp.getKbiprop());
 			ps.setKciprop(pp.getKciprop());
+			ps.setKpirater("");
+			ps.setKtirater(pp.getKtirater());
+			ps.setKbirater(listrater.get(0).getNewnumber());
+			ps.setKcirater(listrater.get(0).getNewnumber());
 			ps.setScore(0.0);
 			//初始化kpiscore
 			String[] kpinorms = pp.getKpinorm().split("、");//kpi指标
@@ -244,7 +249,7 @@ public class RateBegin {
 			//初始化ktiscore
 			String[] ktinorms = pp.getKtinorm().split("、");//kti指标
 			String[] ktinormprops = pp.getKtinormprop().split("、");//kti指标比重
-			String[] ktirater = pp.getKtirater().split("|");
+			String[] ktirater = pp.getKtirater().split("\\|");
 			for(int j=0;j<ktinorms.length;j++)
 			{
 				int ktin = Integer.valueOf(ktinorms[j]);//指标编号
