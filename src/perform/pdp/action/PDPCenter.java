@@ -65,7 +65,7 @@ public class PDPCenter {
 			String hql = "from PUser as pu where 1=1";
 			if(chu!=null&&!chu.equals("wu"))
 			{
-				hql += " and pu.position like '__"+chu+"____'";
+				hql += " and pu.position like '__"+chu+"__'";
 			}
 			if(name!=null&&!name.equals(""))
 			{

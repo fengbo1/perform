@@ -22,8 +22,6 @@ public class ExportPscore {
 	private int year;
 	private int season;
 	private String chu;
-	private String tuan;
-	private String zu;
 	private String Path;
 	private String type;//kpi/all
 	public int getYear() {
@@ -44,18 +42,7 @@ public class ExportPscore {
 	public void setChu(String chu) {
 		this.chu = chu;
 	}
-	public String getTuan() {
-		return tuan;
-	}
-	public void setTuan(String tuan) {
-		this.tuan = tuan;
-	}
-	public String getZu() {
-		return zu;
-	}
-	public void setZu(String zu) {
-		this.zu = zu;
-	}
+
 	public String getPath() {
 		return Path;
 	}
@@ -77,8 +64,8 @@ public class ExportPscore {
 		List<PScoreBean> listpsb = new ArrayList<PScoreBean>();
 		ExportExcel<PScoreBean> ex = new ExportExcel<PScoreBean>();
 		String[] headers = {"年","季度","新一代编号","姓名",
-				"处室","团队","班组","岗位","kpi占比","kpi得分",
-				"kti占比","kti得分","kbi占比","kbi得分","kci占比","kci得分","总得分"};
+				"处室","团队","班组","岗位","关键业务指标占比","关键业务指标得分",
+				"关键任务目标占比","关键任务目标得分","品能目标占比","品能目标得分","加分项占比","加分项","总得分"};
 		Query query;
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();

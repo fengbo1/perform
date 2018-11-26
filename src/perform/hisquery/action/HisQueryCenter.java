@@ -1,12 +1,10 @@
-package perform.seasonquery.action;
+package perform.hisquery.action;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import perform.flag.dao.PFlagDAO;
 import perform.flag.pojo.PFlag;
 import perform.seasonrate.pojo.PScore;
@@ -17,17 +15,18 @@ import perform.util.UserUtil;
 import perform.util.Util;
 import ccb.hibernate.HibernateSessionFactory;
 
-public class SeasonQueryCenter {
+public class HisQueryCenter {
 	private int year;
 	private int season;
 	private String chu;
 	private String name;
 	private String rater;
+	private String paixu;
 	private int zhuan;
 	private int sorttype;
 	private List<PScore> list;
 	private List<Integer> listyear;
-	private int pageSize = Util.PAGESIZE;
+	private int pageSize = 15;
 	private int totalPages = -1;
 	private int currentPage = -1;
 	private int previousPage = 1;
@@ -35,8 +34,6 @@ public class SeasonQueryCenter {
 	private int firstPage = 1;
 	private int lastPage = 1;
 	private long totalRows = -1;
-	private String alreadyrate;//已评分人
-	private String notrate;//未评分人
 	
 	public int getZhuan() {
 		return zhuan;
@@ -79,6 +76,12 @@ public class SeasonQueryCenter {
 	}
 	public void setRater(String rater) {
 		this.rater = rater;
+	}
+	public String getPaixu() {
+		return paixu;
+	}
+	public void setPaixu(String paixu) {
+		this.paixu = paixu;
 	}
 	public List<PScore> getList() {
 		return list;
@@ -140,23 +143,9 @@ public class SeasonQueryCenter {
 	public void setTotalRows(long totalRows) {
 		this.totalRows = totalRows;
 	}
-	public String getAlreadyrate() {
-		return alreadyrate;
-	}
-	public void setAlreadyrate(String alreadyrate) {
-		this.alreadyrate = alreadyrate;
-	}
-	public String getNotrate() {
-		return notrate;
-	}
-	public void setNotrate(String notrate) {
-		this.notrate = notrate;
-	}
 	public String execute() throws Exception
 	{
 		Query query;
-		alreadyrate = "";
-		notrate = "";
 		String result = "success";
 		String hql = "";
 		UserUtil uu = new UserUtil();
@@ -188,23 +177,6 @@ public class SeasonQueryCenter {
 				PFlag pf = pfdao.findByIsNew(1);
 				year = pf.getYear();
 				season = pf.getSeason();
-			}
-			List<PUser> listrater = pudao.findRaterByChu(chu);
-			PFlag pf = pfdao.findByYearSeason(year, season);
-			String adyrate = pf.getAlreadyrate();
-			for(int i=0;i<listrater.size();i++)
-			{
-				PUser pu = listrater.get(i);
-				if(!adyrate.contains(pu.getNewnumber()))
-				{
-					notrate+=pu.getName();
-					notrate+="、";
-				}
-				else
-				{
-					alreadyrate+=pu.getName();
-					alreadyrate+="、";
-				}
 			}
 			hql = "from PScore as p where p.year='"+year+"' and p.season='"+season+"'";
 			if(chu!=null&&!chu.equals("wu"))

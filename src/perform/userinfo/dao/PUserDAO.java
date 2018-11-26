@@ -393,4 +393,5 @@ public class PUserDAO extends BaseHibernateDAO  {
 			throw re;
 		}
 	}
+	
 }

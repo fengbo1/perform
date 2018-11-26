@@ -48,6 +48,7 @@ $('#season').attr('value',x[1].value);
   <body>
     <form action="seasonquery_person.action" method="post">
     	  <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>员工季度绩效得分</strong></p></br>
+       		<c:if test="${type=='his'}">
        		<p align="center" style="padding:0px;margin:0px; font-size: 16px;">
 				年度						
 								<select id="year" name="year" style="width: 100px" >
@@ -65,10 +66,10 @@ $('#season').attr('value',x[1].value);
 								<input type="hidden" name="querynewnumber" value="${querynewnumber}"/>
 								<input type="hidden" name="para" value="${year}"/>
 								<input type="hidden" name="para" value="${season}"/>
-									
+								<input type="hidden" name="type" value="${type}"/>	
 				<input type="submit" value="查询"/>
-			</p>
-			</br>
+			</p> 
+			</c:if> 
         <table width="910" height="398" border="1" align="center" cellpadding="1" cellspacing="0">
     		
     		<tr>

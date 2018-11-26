@@ -62,9 +62,17 @@ function frame(o)
 	{
 		document.getElementById("frame").src="<%=path%>/userlistall.action";
 	}
+	else if(obj=="hisquery_person")
+	{
+		document.getElementById("frame").src="<%=path%>/seasonquery_person.action?querynewnumber=${newnumber}&type=his";
+	}
+	else if(obj=="hisquery_center")
+	{
+		document.getElementById("frame").src="<%=path%>/hisquery_center.action?rater=${newnumber}";
+	}
 	else if(obj=="seasonquery_person")
 	{
-		document.getElementById("frame").src="<%=path%>/seasonquery_person.action?querynewnumber=${newnumber}";
+		document.getElementById("frame").src="<%=path%>/seasonquery_person.action?querynewnumber=${newnumber}&type=season";
 	}
 	else if(obj=="seasonquery_office")
 	{
@@ -72,7 +80,7 @@ function frame(o)
 	}
 	else if(obj=="seasonquery_center")
 	{
-		document.getElementById("frame").src="<%=path%>/seasonquery_center.action?rater=${newnumber}&paixu=${paixus}";
+		document.getElementById("frame").src="<%=path%>/seasonquery_center.action?rater=${newnumber}";
 	}
 	else if(obj=="seasonquery_kpi")
 	{
@@ -246,9 +254,7 @@ $(document).ready(function(){
 								</div>
 								<ul class="menu1">
 									<li class="cc"  onclick="frame('seasonquery_person')">个人绩效得分查询</li>
-									<li class="cc"  onclick="frame('seasonquery_office')">处室员工绩效得分查询</li>
 									<li class="cc"  onclick="frame('seasonquery_center')">中心员工绩效得分查询</li>
-									<li class="cc"  onclick="frame('seasonquery_kpi')">KPI绩效得分查询</li>
 								</ul>
 							</li>
 							<li class="a">
@@ -256,10 +262,10 @@ $(document).ready(function(){
 									<span class="label">考核结果</span>
 								</div>
 								<ul class="menu1">
-									<li class="cc"  onclick="frame('seasonquery_person')">个人绩效得分查询</li>
-									<li class="cc"  onclick="frame('seasonquery_office')">处室员工绩效得分查询</li>
-									<li class="cc"  onclick="frame('seasonquery_center')">中心员工绩效得分查询</li>
-									<li class="cc"  onclick="frame('seasonquery_kpi')">KPI绩效得分查询</li>
+									<li class="cc"  onclick="frame('hisquery_person')">个人绩效得分查询</li>
+								<!-- 
+									<li class="cc"  onclick="frame('seasonquery_office')">处室员工绩效得分查询</li> -->	
+									<li class="cc"  onclick="frame('hisquery_center')">中心员工绩效得分查询</li>
 								</ul>
 							</li>
 							<li class="a">
@@ -276,7 +282,7 @@ $(document).ready(function(){
 								</div>
 								<ul class="menu1">
 									<li class="cc"  onclick="frame('pdp_person')">个人绩效与发展计划书</li>
-									<li class="cc"  onclick="frame('pdp_office')">处室员工绩效与发展计划书</li>
+								<!-- 	<li class="cc"  onclick="frame('pdp_office')">处室员工绩效与发展计划书</li>-->	
 									<li class="cc"  onclick="frame('pdp_center')">中心员工绩效与发展计划书</li>
 								</ul>
 							</li>

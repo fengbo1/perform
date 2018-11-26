@@ -32,6 +32,7 @@ public class SeasonQueryPerson {
 	private List<Integer> listyear;
 	private int year;
 	private int season;
+	private String type;
 	
 	public int getScoreallrank() {
 		return scoreallrank;
@@ -123,7 +124,12 @@ public class SeasonQueryPerson {
 	public void setSeason(int season) {
 		this.season = season;
 	}
-	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public String execute() throws Exception
 	{
 		String result = "success";

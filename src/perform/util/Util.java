@@ -9,6 +9,7 @@ public class Util {
 	//public static final String downloadpath ="C:/Program Files (x86)/Apache Software Foundation/Tomcat 7.0/webapps/performance/derive/";
 	public static final String autho = "00000000000000000000000000";
 	public static final String AUTHO = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static final int PAGESIZE = 10;
 	/**
 	 *double保留小数点后两位 
 	 *

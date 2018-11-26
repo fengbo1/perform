@@ -42,9 +42,9 @@ body {
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 var x=document.getElementsByName("para");
-//$('#year').attr('value',x[0].value);
-//$('#season').attr('value',x[1].value);
-$('#chu').attr('value',x[0].value);
+$('#year').attr('value',x[0].value);
+$('#season').attr('value',x[1].value);
+$('#chu').attr('value',x[2].value);
 });
 
 	 function express()
@@ -59,19 +59,18 @@ $('#chu').attr('value',x[0].value);
   </head>
   
   <body>
-  <form action="<%=path%>/seasonquery_center.action" method="post" name="fm1">
+  <form action="<%=path%>/hisquery_center.action" method="post" name="fm1">
 					<table height="80" align="center" cellpadding="0"
 						cellspacing="2" border="0px;">
 						<tr>
 							<td
 								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="13" align="center" bordercolor="#FFFFFF"><b>员工季度绩效查询</b>
+								colspan="13" align="center" bordercolor="#FFFFFF"><b>员工历史季度绩效查询</b>
 							</td>
 						</tr>
 						<tr  >
 							<td colspan="13" height="10px">
 								<div align="center">
-								<!-- 
 								年度	:	
 								<select id="year" name="year" style="width: 60px" >
 									<c:forEach items="${listyear}" var="year" varStatus="status">
@@ -85,9 +84,6 @@ $('#chu').attr('value',x[0].value);
 									<option value="3">3</option>
 									<option value="4">4</option>
 								</select>
-								 -->
-								 年度: ${year}
-								  季度: ${season}
 								处室
 								<select id="chu" name="chu" style="width: 150px" onchange="gettuan()">
 										<option value="wu">-请选择处室名称-</option>
@@ -102,8 +98,8 @@ $('#chu').attr('value',x[0].value);
 								<input type="submit" value="查询"/>
 								<input type="button" onclick="express()" value="导出"/>	
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-								<input type="hidden" name="year" value="${year}"/>
-								<input type="hidden" name="season" value="${season}"/>
+								<input type="hidden" name="para" value="${year}"/>
+								<input type="hidden" name="para" value="${season}"/>
 								<input type="hidden" name="para" value="${chu}"/>
 								<input type="hidden" name="rater" value="${newnumber}"/>	
 								<input type="hidden" name="paixu" value="${paixu}"/>	
@@ -140,7 +136,7 @@ $('#chu').attr('value',x[0].value);
 								</div></td>
 							<td  width="80px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<!-- <p><a href="<%=path%>/seasonquery_center.action?sorttype=1&rater=${newnumber}&paixu=${paixus}&chu=${chu}&name=${name}&zhuan=1" style="color:white;">关键业务指标</a></p> -->
+									<!-- <p><a href="<%=path%>/hisquery_center.action?sorttype=1&rater=${newnumber}&paixu=${paixus}&chu=${chu}&name=${name}&zhuan=1" style="color:white;">关键业务指标</a></p> -->
 									<p>关键业务指标</p>
 								</div></td>	
 							<td  width="80px"  align="center" valign="middle" nowrap
@@ -210,39 +206,14 @@ $('#chu').attr('value',x[0].value);
 						<tr class="表格表头背景">
 							<td colspan="13">
 								<div align="center">
-								<a	href="<%=path%>/seasonquery_center.action?currentPage=${previousPage}&rater=${newnumber}&paixu=${paixus}&chu=${chu}&name=${name}&zhuan=1"
+								<a	href="<%=path%>/hisquery_center.action?currentPage=${previousPage}&rater=${newnumber}&paixu=${paixus}&chu=${chu}&name=${name}&zhuan=1"
 							style="padding-right: 30px;color: #104E8B">上一页</a> 
 									${currentPage} of ${totalPages}
-								<a	href="<%=path%>/seasonquery_center.action?currentPage=${nextPage}&rater=${newnumber}&paixu=${paixus}&chu=${chu}&name=${name}&zhuan=1"
+								<a	href="<%=path%>/hisquery_center.action?currentPage=${nextPage}&rater=${newnumber}&paixu=${paixus}&chu=${chu}&name=${name}&zhuan=1"
 							style="padding-right: 30px;color: #104E8B">下一页</a> 	
 									共有 ${totalRows} 条记录
 								</div></td>
 						</tr>
-		</table>
-		 <br/> <br/> <br/> <br/>
-		<table height="80" align="center" cellpadding="0" cellspacing="2" border="0px;">
-			<tr>
-					<td
-						style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
-							colspan="13" align="center" bordercolor="#FFFFFF"><b>考核统计</b>
-						</td>
-			</tr>
-			<tr class="btbj" id="hang" style="height:20px">
-				<td width="100px" height="40" align="center" valign="middle" nowrap>
-				已提交考核：
-				</td>
-				<td width="1000px"  height="40" align="center" valign="middle" nowrap>
-					${alreadyrate}
-				</td>
-			</tr>
-			<tr class="btbj" id="hang" style="height:20px">
-				<td width="100px"  height="40" align="center" valign="middle" nowrap>
-				未已提交考核：
-				</td>
-				<td width="1000px"  height="40" align="center" valign="middle" nowrap>
-				${notrate}
-				</td>
-			</tr>
 		</table>
 		</form>
 		

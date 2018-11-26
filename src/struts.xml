@@ -13,8 +13,8 @@
 	<include file="perform/seasonrate/action/seasonrate_struts.xml"></include>
 	<include file="perform/pdp/action/pdp_struts.xml"></include>
 	<include file="perform/seasonquery/action/seasonquery_struts.xml"></include>
+	<include file="perform/hisquery/action/hisquery_struts.xml"></include>
 	<include file="perform/position/action/position_struts.xml"></include>
 	<include file="perform/dataimport/action/dataimport_struts.xml"></include>
 	<include file="perform/welcome/action/welcome_struts.xml"></include>
-
 </struts>

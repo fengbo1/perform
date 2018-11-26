@@ -230,7 +230,7 @@ public class RateBegin {
 				pkpis.setNewnumber(pu.getNewnumber());
 				pkpis.setName(pu.getName());
 				pkpis.setKpiname(pkpinorm.getName());
-				pkpis.setKpipdpname(pkpinorm.getPdpname());
+				//pkpis.setKpipdpname(pkpinorm.getPdpname());
 				pkpis.setKpinumber(kpin);
 				pkpis.setTarget(pkpinorm.getTarget());
 				if(ps.getKpiprop()==2)
@@ -247,6 +247,7 @@ public class RateBegin {
 				}
 				pkpis.setRule(pkpinorm.getRule());
 				pkpis.setSum(0.0);
+				pkpis.setKpipdpname(pkpinorm.getRemark());
 				pkpisdao.merge(pkpis);
 			}
 			//初始化ktiscore

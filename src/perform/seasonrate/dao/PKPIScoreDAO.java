@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import perform.seasonrate.pojo.PKPIScore;
+import perform.seasonrate.pojo.PKTIScore;
 import perform.userinfo.pojo.PUser;
 
 /**
@@ -238,4 +239,17 @@ public class PKPIScoreDAO extends BaseHibernateDAO  {
 			throw re;
 		}
 	}
+    
+    public List<PKPIScore> findByYearSeasonNewnumber(int year,int season,String newnumber) {
+    	log.debug("finding all PKPIScore instances");
+    	try {
+    		String queryString = "from PKPIScore as kp where kp.newnumber='"+newnumber+"' and kp.year='"+year+"'  and kp.season='"+season+"'";
+			 Query queryObject = getSession().createQuery(queryString);
+    		 List<PKPIScore> list = queryObject.list();
+    		 return list;
+    	} catch (RuntimeException re) {
+    		log.error("find all failed", re);
+    		throw re;
+    	}
+    }
 }

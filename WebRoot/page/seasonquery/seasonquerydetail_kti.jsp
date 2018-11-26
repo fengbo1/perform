@@ -63,7 +63,7 @@ brbrbr();
 						<tr>
 							<td
 								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="11" align="center" bordercolor="#FFFFFF"><b>关键任务指标（KTI）得分明细</b>
+								colspan="11" align="center" bordercolor="#FFFFFF"><b>关键任务目标得分明细</b>
 							</td>
 						</tr>
 						<tr>
@@ -94,24 +94,6 @@ brbrbr();
 								bordercolor=none><div align="center">
 									<p>分值</p>
 								</div></td>
-							<c:if test="${(rater1!='')&&(rater1==username||zhis=='0'||zhis=='1'||authoR=='R')}">
-								<td  width="5%"  align="center" valign="middle"
-									bordercolor=none><div align="center">
-									<p>${rater1}评分</p>
-								</div></td>
-							</c:if>
-							<c:if test="${(rater2!='')&&(rater2==username||zhis=='0'||zhis=='1'||authoR=='R')}">
-								<td  width="5%"  align="center" valign="middle" 
-									bordercolor=none><div align="center">
-									<p>${rater2}评分</p>
-								</div></td>
-							</c:if>
-							<c:if test="${(rater3!='')&&(rater3==username||zhis=='0'||zhis=='1'||authoR=='R')}">
-								<td  width="5%"  align="center" valign="middle" 
-									bordercolor=none><div align="center">
-									<p>${rater3}评分</p>
-								</div></td>
-							</c:if>		
 							<td  width="5%"  align="center" valign="middle" 
 								bordercolor=none><div align="center">
 									<p>期末得分</p>
@@ -133,18 +115,6 @@ brbrbr();
 										align="left">${entity.rule}</div></td>
 								<td  align="center" valign="middle" ><div
 										align="center">${entity.score}</div></td>
-									<c:if test="${(entity.rater1!=''&&entity.rater1!=null)&&(entity.rater1==newnumber||zhis=='0'||zhis=='1'||authoR=='R')}">
-										<td  align="center" valign="middle" ><div
-										align="center">${entity.result1}</div></td>
-									</c:if>
-									<c:if test="${(entity.rater2!=''&&entity.rater2!=null)&&(entity.rater2==newnumber||zhis=='0'||zhis=='1'||authoR=='R')}">
-										<td  align="center" valign="middle" ><div
-										align="center">${entity.result2}</div></td>
-									</c:if>
-									<c:if test="${(entity.rater3!=''&&entity.rater3!=null)&&(entity.rater3==newnumber||zhis=='0'||zhis=='1'||authoR=='R')}">
-										<td  align="center" valign="middle"><div
-										align="center">${entity.result3}</div></td>
-									</c:if>		
 								<td align="center" valign="middle" ><div
 										align="center">${entity.sum}</div></td>
 								<td align="center" valign="middle"><div

@@ -9,6 +9,7 @@ import perform.seasonrate.dao.PKBIScoreDAO;
 import perform.seasonrate.dao.PKPIScoreDAO;
 import perform.seasonrate.pojo.PKBIScore;
 import perform.seasonrate.pojo.PKPIScore;
+import perform.seasonrate.pojo.PKTIScore;
 import perform.userinfo.dao.PUserDAO;
 import perform.userinfo.pojo.PUser;
 import ccb.hibernate.HibernateSessionFactory;
@@ -23,6 +24,7 @@ public class SeasonKPIDetailQuery {
 	private int year;
 	private int season;
 	private double score;
+	private List<PKPIScore> list;
 	public String getRater() {
 		return rater;
 	}
@@ -77,6 +79,12 @@ public class SeasonKPIDetailQuery {
 	public void setPs(PKPIScore ps) {
 		this.ps = ps;
 	}
+	public List<PKPIScore> getList() {
+		return list;
+	}
+	public void setList(List<PKPIScore> list) {
+		this.list = list;
+	}
 	public String execute() throws Exception
 	{
 		PUserDAO pudao = new PUserDAO();
@@ -91,6 +99,7 @@ public class SeasonKPIDetailQuery {
     			ratepeoplename = pu.getName();
     			ratepeopleposition = pu.getPosition();
     		}
+    		list = psdao.findByYearSeasonNewnumber(year, season, ratepeople);
     	}catch (Exception e) {
 			trans.rollback();//出错回滚
 			e.printStackTrace();

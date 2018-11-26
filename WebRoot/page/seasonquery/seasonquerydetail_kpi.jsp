@@ -22,16 +22,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=path%>/js/jquery-1.2.6.js" charset= "gbk"></script>
 	
   <style type="text/css">
-  .as {
-	text-align: left;
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	background-color: #ffffff;
 }
-b{
-	color:red;
-}
+-->
   </style>
   
     <script type="text/javascript">
   $(document).ready(function(){ 
+$("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
+$("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 	  brbrbr();
 	  });
   function brbrbr()
@@ -46,110 +49,83 @@ b{
 	     });
 	 }
   </script>
+   <link href="<%=path%>/css/table_back.css" rel="stylesheet" type="text/css">
   </head>
   
   <body>
-    <form action="seasonquery_person.action" method="post">
-    	  <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>关键业绩指标（KPI）得分明细</strong></p>
-       		<p align="center" style="padding:0px;margin:0px; font-size: 16px;">
-				年度	:${year }					
-								
-									&nbsp;&nbsp;&nbsp;季度:${season}
-								</select>&nbsp;&nbsp;&nbsp;
-			</p>
-			
-        <table width="910" height="398" border="1" align="center" cellpadding="1" cellspacing="0">
-    		<tr height="70px">
-    			<td colspan="6" class="as">
-    				基本信息：
-    			</td>
-    		</tr>
-    		<tr>
-    			<td class="as" width="100px">
-    				姓名
-    			</td>
-    			<td class="as" width="200px">
-    				${pu.name}&nbsp;
-    			</td>
-    			<td class="as" width="100px">
-    				新一代编号
-    			</td>
-    			<td class="as" width="200px">
-    				${pu.newnumber}&nbsp;
-    			</td>
-    			<td class="as" width="100px">
-    				岗位
-    			</td>
-    			<td class="as" width="200px">
-    				${fb:pnumtoname(pu.pnum)}&nbsp;
-    			</td>
-    		</tr>
-    		<tr>
-    			<td class="as">
-    				处室
-    			</td>
-    			<td class="as">
-    				${fb:positiontochu(pu.position)}&nbsp;
-    			</td>
-    			<td class="as">
-    				团队
-    			</td>
-    			<td class="as">
-    				${fb:positiontotuan(pu.position)}&nbsp;
-    			</td>
-    			<td class="as">
-    				班组
-    			</td>
-    			<td class="as">
-    				${fb:positiontozu(pu.position)}&nbsp;
-    			</td>
-    		</tr>
-    		<tr>
-    			<td class="as">
-    				指标名称
-    			</td>
-    			<td class="as">
-    				${ps.kpiname}&nbsp;
-    			</td>
-    			<td class="as">
-    				指标内容
-    			</td>
-    			<td class="as">
-    				${ps.kpipdpname}&nbsp;
-    			</td>
-    			<td class="as">
-    				目标值
-    			</td>
-    			<td class="as">
-    				${ps.target}&nbsp;
-    			</td>
-    		</tr>
-    		<tr>
-    			<td class="as">
-    				分值
-    			</td>
-    			<td class="as">
-    				${ps.score}&nbsp;
-    			</td>
-    			<td class="as">
-    				考核规则
-    			</td>
-    			<td class="as">
-    				${ps.rule}&nbsp;
-    			</td>
-    			<td class="as" >
-    				关键业绩指标（KPI）得分：
-    			</td>
-    			<td class="as" >
-    				${score}&nbsp;
-    			</td>
-    		</tr>
-    		<tr>
-    			<td class="as" colspan="6">
-    				<input type="button" onclick="javascript:history.go(-1);" value="返 回" />
-    			</td>
-    		</tr>
-    	</table>
-    </form>
+   <form action="<%=path%>/subseasonkpi_rate.action" method="post" name="fm1">
+					<table height="80" align="center" cellpadding="0" style="width:1100px" 
+						cellspacing="2" border: 0px;">
+						<tr>
+							<td
+								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
+								colspan="11" align="center" bordercolor="#FFFFFF"><b>关键业务指标得分明细</b>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="11" height="10px">
+								<div align="center">
+								年度:${year}&nbsp;&nbsp;&nbsp;&nbsp;季度:${season}&nbsp;&nbsp;&nbsp;&nbsp;姓名:${ratepeoplename}&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+							</td>
+						</tr>		
+						<tr height="50px" class="表格表头背景1" id="hang">
+							<td  width="5%" align="center" valign="middle"
+								bordercolor=none><div align="center">
+									<p>序号</p>
+								</div></td>
+							<td  width="10%" align="center" valign="middle" 
+								bordercolor=none><div align="center">
+									<p>指标/任务名称</p>
+								</div></td>
+							<td  width="20%" align="center" valign="middle" 
+								bordercolor=none><div align="center">
+									<p>目标值/任务目标</p>
+								</div></td>
+							<td  width="25%"  align="center" valign="middle" 
+								bordercolor=none><div align="center">
+									<p>考核规则</p>
+								</div></td>	
+							<td  width="5%"  align="center" valign="middle" 
+								bordercolor=none><div align="center">
+									<p>分值</p>
+								</div></td>
+							<td  width="5%"  align="center" valign="middle" 
+								bordercolor=none><div align="center">
+									<p>期末得分</p>
+								</div></td>
+							<td  width="15%"  align="center" valign="middle" 
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td>
+						</tr>
+						<c:forEach items="${list}" var="entity" varStatus="status">
+							<tr class="btbj" id="hang" style="height:20px">
+								<td  align="center" valign="middle" ><div
+										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
+								<td align="center" valign="middle" ><div
+										align="center">${entity.kpiname}</div></td>
+								<td  align="left" valign="middle" >
+										 ${entity.target}</td>
+								<td  align="left" valign="middle" ><div
+										align="left">${entity.rule}</div></td>
+								<td  align="center" valign="middle" ><div
+										align="center">${entity.score}</div></td>
+								<td align="center" valign="middle" ><div
+										align="center">${entity.sum}</div></td>
+								<td align="center" valign="middle"><div
+										align="center">${entity.kpipdpname}</div></td>
+							</tr>
+						</c:forEach>	
+							<tr class="表格表头背景">
+						</tr>
+    				<tr class="表格表头背景">
+    					<td colspan="11" height="25" align="center" valign="middle" ><div
+										align="center">
+								<input type="button" onclick="javascript:history.go(-1);" value="返 回" />
+							</div></td>
+    				</tr>
+		</table>
+		</form>
   </body>
 </html>
