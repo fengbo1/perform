@@ -22,23 +22,21 @@
 </head>
 <body>
 	<div style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
-			colspan="14" align="center" bordercolor="#FFFFFF"><b>KPI得分导入</b>
+			colspan="14" align="center" bordercolor="#FFFFFF"><b>数据导入</b>
 	</div>
 	<div class="layout">
 		<form name="filename" method="post" action="importkpiscore_rate.action"
 			enctype="multipart/form-data">
-			<div class="title" ><b>KPI得分导入,选择上传文件</b></div>
+			<div class="title" ><b></b></div>
 			<div id="content" >
 				<div class="four_columns">
-					
 					<div class="four_columns_input">
 						<input type="file" name="file" />
-				
 						 <input type="submit" name="submit"value="上传">
 					</div>
 						<br/>
 					<div class="four_columns_input" >
-						<a href="<%=path%>/templet/kpiscore.xls">下载【KPI得分表】模板</a>
+						<a href="<%=path%>/templet/yewuscore.xls">下载【业务指标得分表】模板</a>
 					</div>
 				</div>
 			</div>
@@ -53,17 +51,49 @@
 					<td width="35%">示例如下：</td>
 				</tr>
 				<tr>
-					<td>KPI得分表：</td>
-					<td>年季度&nbsp;+&nbsp;kpiscore</td>
-					<td>201701kpiscore.xls</td>
-					
+					<td>业务指标得分表：</td>
+					<td>年季度&nbsp;+&nbsp;yewuscore</td>
+					<td>201801yewuscore.xls</td>
 				</tr>
-				
 			</table>
 	</div>
 	<br/>
-	
-	
+	<!-- 
+	<div class="layout">
+		<form name="filename" method="post" action="importkciscore_rate.action"
+			enctype="multipart/form-data">
+			<div class="title" ><b></b></div>
+			<div id="content" >
+				<div class="four_columns">
+					<div class="four_columns_input">
+						<input type="file" name="file" />
+						 <input type="submit" name="submit"value="上传">
+					</div>
+						<br/>
+					<div class="four_columns_input" >
+						<a href="<%=path%>/templet/jiafenscore.xls">下载【加分统计表】模板</a>
+					</div>
+				</div>
+			</div>
+		</form>
+		<table border="1px"width="100%">
+				<tr>
+					<td colspan="3" class="title">提示：上传文件命名规则</td>
+				</tr>
+				<tr>
+					<td width="30%">&nbsp;</td>
+					<td width="35%">文件名规则如下：</td>
+					<td width="35%">示例如下：</td>
+				</tr>
+				<tr>
+					<td>业务指标得分表：</td>
+					<td>年季度&nbsp;+&nbsp;jiafenscore</td>
+					<td>201801jiafenscore.xls</td>
+				</tr>
+			</table>
+	</div>
+	<br/>
+	 -->
 	<!--  
 	<div class="layout">
 			<form name="filename" method="post" action="exportkqjl.action"

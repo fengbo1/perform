@@ -62,6 +62,22 @@ function search()
 
 function tijiao()
 {
+	var normlist = document.getElementsByName("kcinorm");
+	var i=0;
+	for(i=0;i<normlist.length;i++)
+	{
+	    if(normlist[i].checked)
+	    {
+             var prop=document.getElementById((Number(normlist[i].value)+100000).toString()).value;
+             if(prop=="")
+             {
+                 alert("选中的指标折算系数未填！");
+                 return;
+             }    
+ 
+	    }
+	     
+	}
 	 with(document.forms[0])
 	 {
 		action='posaddkci_mang.action';
@@ -80,7 +96,7 @@ function tijiao()
 					<tr>
 							 <td
 								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="4" align="center" bordercolor="#FFFFFF"><b>加分项选择</b>
+								colspan="5" align="center" bordercolor="#FFFFFF"><b>加分项选择</b>
 							</td>
 					</tr>
 						<tr height="50px" class="表格表头背景1" id="hang">
@@ -101,7 +117,11 @@ function tijiao()
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>操作</p>
-								</div></td>	
+								</div></td>
+							<td  width="100px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>折算系数</p>
+								</div></td>		
 						</tr>
 					<tr>
 					<c:forEach items="${listkc}" var="kc" varStatus="status">
@@ -115,12 +135,14 @@ function tijiao()
 										align="left">${kc.rule}</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center"><input id="${kc.id}" type="checkbox"  name="kcinorm" value="${kc.id}"  /></div></td>	
-				     </tr>
+				    			 <td width="100px" height="25" align="center" valign="middle" ><div
+										align="center"><input id="${kc.id+100000}" style="width:50px" type="text" name="kcinormprop"  onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/></div></td>			
+				   </tr>
 					</c:forEach>
 			            </tr>
 			  <tr>
     			
-    			<td colspan="4" class="as">
+    			<td colspan="5" class="as">
     			   <div align="center">
     			    <input style="width: 100px"  type="button" value="提交" onclick="tijiao()"/>
     			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

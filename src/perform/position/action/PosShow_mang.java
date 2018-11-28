@@ -109,11 +109,11 @@ public class PosShow_mang {
     	try {
     		
     		pp = ppdao.findByID(pnum);
-    		if(pp.getKpiprop()==3)
+    		if(pp.getKpiprop()==-1)
     		{
     			kpisum="扣分项";
     		}
-    		else if(pp.getKpiprop()==2)
+    		else if(pp.getKpiprop()==1)
     		{
     			kpisum="加分项";
     		}
@@ -121,11 +121,11 @@ public class PosShow_mang {
     		{
     			kpisum="共"+String.valueOf(pp.getKpiprop()*100)+"分";
     		}
-    		if(pp.getKtiprop()==3)
+    		if(pp.getKtiprop()==-1)
     		{
     			ktisum="扣分项";
     		}
-    		else if(pp.getKtiprop()==2)
+    		else if(pp.getKtiprop()==1)
     		{
     			ktisum="加分项";
     		}
@@ -133,11 +133,11 @@ public class PosShow_mang {
     		{
     			ktisum="共"+String.valueOf(pp.getKtiprop()*100)+"分";
     		}
-    		if(pp.getKbiprop()==3)
+    		if(pp.getKbiprop()==-1)
     		{
     			kbisum="扣分项";
     		}
-    		else if(pp.getKbiprop()==2)
+    		else if(pp.getKbiprop()==1)
     		{
     			kbisum="加分项";
     		}
@@ -145,11 +145,11 @@ public class PosShow_mang {
     		{
     			kbisum="共"+String.valueOf(pp.getKbiprop()*100)+"分";
     		}
-    		if(pp.getKciprop()==3)
+    		if(pp.getKciprop()==-1)
     		{
     			kcisum="扣分项";
     		}
-    		else if(pp.getKciprop()==2)
+    		else if(pp.getKciprop()==1)
     		{
     			kcisum="加分项";
     		}

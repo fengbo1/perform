@@ -326,7 +326,7 @@ $(document).ready(function(){
 									<span class="label">数据导入</span>
 								</div>
 								<ul class="menu1">
-									<li class="cc"  onclick="frame('dataimport')">KPI得分导入</li>
+									<li class="cc"  onclick="frame('dataimport')">数据导入</li>
 								</ul>
 							</li>
 						</ul>

@@ -86,8 +86,8 @@
     			<td width="300" class="as">
     				<select style="width:100px"  id="typea" name="typea">
 						 				<option value="0">权重</option>
-						                 <option value="2">加分项</option>
-						                 <option value="3">扣分项</option>
+						                 <option value="1">加分项</option>
+						                 <option value="-1">扣分项</option>
 					</select>
     				<input style="width:120px"  type="text" id="kpiprop" name="kpiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
     				
@@ -101,8 +101,8 @@
     			<td width="300" class="as">
     			<select style="width:100px"  id="typeb" name="typeb">
 						 				<option value="0">权重</option>
-						                 <option value="2">加分项</option>
-						                 <option value="3">扣分项</option>
+						                <option value="1">加分项</option>
+						                 <option value="-1">扣分项</option>
 					</select>
     				<input style="width:120px"  type="text" id="ktiprop" name="ktiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
     				
@@ -116,8 +116,8 @@
     			<td width="300" class="as">
     			<select style="width:100px"  id="typec" name="typec">
 						 				<option value="0">权重</option>
-						                 <option value="2">加分项</option>
-						                 <option value="3">扣分项</option>
+						               <option value="1">加分项</option>
+						                 <option value="-1">扣分项</option>
 					</select>
     				<input style="width:120px"  type="text" id="kbiprop" name="kbiprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
     				
@@ -131,8 +131,8 @@
     			<td width="300" class="as">
     			<select style="width:100px"  id="typed" name="typed">
 						 				<option value="0">权重</option>
-						                 <option value="2">加分项</option>
-						                 <option value="3">扣分项</option>
+						                <option value="1">加分项</option>
+						                <option value="-1">扣分项</option>
 					</select>
     				<input style="width:120px"  type="text" id="kciprop" name="kciprop" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
     				

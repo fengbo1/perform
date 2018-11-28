@@ -1,11 +1,7 @@
 package perform.position.action;
 
-import java.math.BigDecimal;
-import java.util.List;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import perform.norm.pojo.PKcinorm;
 import perform.position.dao.PPositionDAO;
 import perform.position.dao.PPositiontempDAO;
 import perform.position.pojo.PPosition;
@@ -14,11 +10,9 @@ import ccb.hibernate.HibernateSessionFactory;
 
 public class PosAddKci_mang {
 	private String[] kcinorm;
+	private String[] kcinormprop;
 	private int posid;
 	private String message;
-
-	
-
 	public String getMessage() {
 		return message;
 	}
@@ -43,10 +37,19 @@ public class PosAddKci_mang {
 	public void setKcinorm(String[] kcinorm) {
 		this.kcinorm = kcinorm;
 	}
+	public String[] getKcinormprop() {
+		return kcinormprop;
+	}
+
+	public void setKcinormprop(String[] kcinormprop) {
+		this.kcinormprop = kcinormprop;
+	}
 
 	public String execute() throws Exception
 	{
 		String kcinormcun = "";
+		String kcinormpropcun = "";
+		int kcipropnum=0;
 		if(kcinorm!=null&&kcinorm.length!=0)
 		{	
 		  kcinormcun =kcinorm[0];
@@ -57,9 +60,36 @@ public class PosAddKci_mang {
 			
 	    }
 		}
+		if(kcinormprop!=null&&kcinormprop.length!=0)
+		{	
+		  //kcinormpropcun =kcinormprop[0];
+		  for(int i=0;i<kcinormprop.length;i++)
+	    {
+			if(kcinormprop[i]!="")
+			{				
+			   kcinormpropcun += kcinormprop[i];
+			   kcinormpropcun += "、";
+			   kcipropnum++;
+			}
+	    }
+		  if(kcipropnum!=0)
+		  {	  
+		  kcinormpropcun=kcinormpropcun.substring(0, kcinormpropcun.length()-1);
+		  }
+		}
+		if(kcipropnum==0)
+		{
+			message="指标系数未填！";
+			return "failed";
+		}
 		if(kcinorm==null||kcinorm.length==0)
 		{
 			message="指标未选！";
+			return "failed";
+		}
+		if(kcinorm.length!=kcipropnum)
+		{
+			message="指标数量和指标系数数量不匹配！";
 			return "failed";
 		}
 		PPositiontempDAO pptdao=new PPositiontempDAO();
@@ -70,6 +100,7 @@ public class PosAddKci_mang {
  	    Transaction trans = session.beginTransaction();
  	    ppt=pptdao.findAllById(posid);  
  	    ppt.setKcinorm(kcinormcun);
+ 	    pp.setKcinormprop(kcinormpropcun);
  	    pptdao.merge(ppt);
  	    pp.setName(ppt.getName());
  	    pp.setChu(ppt.getChu());

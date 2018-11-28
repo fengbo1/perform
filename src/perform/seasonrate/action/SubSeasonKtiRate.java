@@ -104,6 +104,7 @@ public class SubSeasonKtiRate {
     				pstemp.setResult3(score[i]);
     				//pstemp.setRemark3(remark[i]);
     			}
+    			pstemp.setSum(score[i]);
     			pdao.merge(pstemp);
     			list = pdao.findByYearSeasonNewnumber(year, season, ratepeople);
         		ps = psdao.findByNewnumberYearSeason(ratepeople, year, season);

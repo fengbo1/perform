@@ -117,48 +117,50 @@ public String execute() throws Exception {
 					PKPIScoreDAO pkpdao = new PKPIScoreDAO();
 					PScore ps = new PScore();
 					PScoreDAO psdao = new PScoreDAO();
-					
+					String newnumber = sheet.getCell(0, i).getContents().trim();
 					//AssetInfo ki = new AssetInfo();
 					//String strsum = sheet.getCell(1, i).getContents().trim();
-					if(sheet.getCell(1, i).getContents().trim()==null||sheet.getCell(2, i).getContents().trim().equals(""))
-					{
-						message="导入的分值为空";
-						return "failed";
-					}
-					double sum =Double.parseDouble(sheet.getCell(2, i).getContents().trim());
-					String newnumber = sheet.getCell(0, i).getContents().trim();
 					if(newnumber==null||newnumber.equals("")||newnumber.isEmpty())
 					{
-						message="导入的新一代编号为空";
-						return "failed";
+//						message="导入的新一代编号为空";
+//						return "failed";
 					}
-					pkp = pkpdao.findByNewNumbernew(newnumber,flag.getYear(),flag.getSeason());
-					ps = psdao.findByNewnumberYearSeasonnew(newnumber, flag.getYear(), flag.getSeason());
-					if(pkp==null)
-					{
-						message="导入的新一代编号"+newnumber+"有误";
-						//this.addFieldError("用户","导入失败");
-						return "failed";
-					}
-					
 					else
-				    {
-						pkp.setSum(sum);
-				    }
-					if(ps==null)
 					{
-						message="导入的新一代编号"+newnumber+"有误";
-						//this.addFieldError("用户","导入失败");
-						return "failed";
+						if(sheet.getCell(1, i).getContents().trim()==null||sheet.getCell(2, i).getContents().trim().equals(""))
+						{
+							message="导入的分值为空";
+							return "failed";
+						}
+						double sum =Double.parseDouble(sheet.getCell(2, i).getContents().trim());
+						
+						
+						pkp = pkpdao.findByNewNumbernew(newnumber,flag.getYear(),flag.getSeason());
+						ps = psdao.findByNewnumberYearSeasonnew(newnumber, flag.getYear(), flag.getSeason());
+						if(pkp==null)
+						{
+							message="导入的新一代编号"+newnumber+"有误";
+							//this.addFieldError("用户","导入失败");
+							return "failed";
+						}
+						else
+					    {
+							pkp.setSum(sum);
+					    }
+						if(ps==null)
+						{
+							message="导入的新一代编号"+newnumber+"有误";
+							//this.addFieldError("用户","导入失败");
+							return "failed";
+						}
+						else
+					    {
+							ps.setKpiscore(sum);
+					    }
+						    pkpdao.merge(pkp);
+						    psdao.merge(ps);
+		    	        }
 					}
-					
-					else
-				    {
-						ps.setKpiscore(sum);
-				    }
-					    pkpdao.merge(pkp);
-					    psdao.merge(ps);
-	    	        }
 				}
 				catch (Exception e) {
 				trans.rollback();//出错回滚
