@@ -393,5 +393,15 @@ public class PUserDAO extends BaseHibernateDAO  {
 			throw re;
 		}
 	}
-	
+	public List findAllByAuthority(String authority) {1
+		log.debug("finding all PUser instances");
+		try {
+			String queryString = "from PUser where autho like'%"+authority+"%' order by position";
+	         Query queryObject = getSession().createQuery(queryString);
+	         return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
 }

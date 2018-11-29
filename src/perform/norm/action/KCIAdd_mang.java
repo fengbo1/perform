@@ -104,7 +104,7 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 			  	 return "false";
 			  }*/
 			
-	        kc.setName(name);
+	        kc.setName(name.trim());
 	        kc.setTarget(target);
 	        kc.setScore(score);
 	        kc.setLevel("");

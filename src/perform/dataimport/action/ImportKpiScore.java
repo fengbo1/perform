@@ -35,7 +35,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import ccb.hibernate.HibernateSessionFactory;
-public class ImportKpiScore  extends ActionSupport implements ServletResponseAware{
+public class ImportKpiScore{
 	/**
 	 * 
 	 */
@@ -75,7 +75,8 @@ public String execute() throws Exception {
 		String realpath = "D:/import/performance/";
 		message = "导入成功";
 		//UserInfoDAO uidao = new UserInfoDAO();
-		
+		PKPIScoreDAO pkpdao = new PKPIScoreDAO();
+		PScoreDAO psdao = new PScoreDAO();
 		int nn=0;
 		if (file != null) {
 	       File savefile = new File(new File(realpath), fileFileName);
@@ -97,7 +98,6 @@ public String execute() throws Exception {
 			//this.addFieldError("用户","文件名不符合规范");
 			return "failed";
 		}
-	
 			Session session = HibernateSessionFactory.getSession();
 	    	Transaction trans=session.beginTransaction();
 	    	//AssetInfoDAO kidao = new AssetInfoDAO();
@@ -114,9 +114,8 @@ public String execute() throws Exception {
 				for (int i = 1; i < nn; i++) {
 					
 					PKPIScore pkp = new PKPIScore();
-					PKPIScoreDAO pkpdao = new PKPIScoreDAO();
+					
 					PScore ps = new PScore();
-					PScoreDAO psdao = new PScoreDAO();
 					String newnumber = sheet.getCell(0, i).getContents().trim();
 					//AssetInfo ki = new AssetInfo();
 					//String strsum = sheet.getCell(1, i).getContents().trim();
@@ -127,7 +126,7 @@ public String execute() throws Exception {
 					}
 					else
 					{
-						if(sheet.getCell(1, i).getContents().trim()==null||sheet.getCell(2, i).getContents().trim().equals(""))
+						if(sheet.getCell(2, i).getContents().trim()==null||sheet.getCell(2, i).getContents().trim().equals(""))
 						{
 							message="导入的分值为空";
 							return "failed";
@@ -178,8 +177,4 @@ public String execute() throws Exception {
 		
 		return "success";
    }
-public void setServletResponse(HttpServletResponse arg0) {
-	// TODO Auto-generated method stub
-	
-}
 }

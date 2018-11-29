@@ -33,7 +33,12 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="p_flag" catalog="perform" class="PFlag">
+	<table name="p_flag" catalog="perform" class="PFlag">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="p_kciscore" catalog="perform" class="PKCIScore">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

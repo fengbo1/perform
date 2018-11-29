@@ -84,6 +84,11 @@
         <property name="remark3" type="java.lang.String">
             <column name="remark3" length="256" />
         </property>
+        <property name="prop" type="java.lang.Double">
+            <column name="prop" precision="22" scale="0">
+                <comment>系数（有些填次数要乘）</comment>
+            </column>
+        </property>
         <property name="sum" type="java.lang.Double">
             <column name="sum" precision="22" scale="0">
                 <comment>最终得分</comment>

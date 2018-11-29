@@ -58,7 +58,7 @@
 			</table>
 	</div>
 	<br/>
-	<!-- 
+	 
 	<div class="layout">
 		<form name="filename" method="post" action="importkciscore_rate.action"
 			enctype="multipart/form-data">
@@ -93,7 +93,7 @@
 			</table>
 	</div>
 	<br/>
-	 -->
+	 
 	<!--  
 	<div class="layout">
 			<form name="filename" method="post" action="exportkqjl.action"

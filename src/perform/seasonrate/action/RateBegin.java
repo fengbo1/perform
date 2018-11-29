@@ -233,11 +233,11 @@ public class RateBegin {
 				//pkpis.setKpipdpname(pkpinorm.getPdpname());
 				pkpis.setKpinumber(kpin);
 				pkpis.setTarget(pkpinorm.getTarget());
-				if(ps.getKpiprop()==2)
+				if(ps.getKpiprop()==1)
 				{
 					pkpis.setScore(100.0);
 				}
-				else if(ps.getKpiprop()==3)
+				else if(ps.getKpiprop()==-1)
 				{
 					pkpis.setScore(0.0);
 				}
@@ -333,11 +333,11 @@ public class RateBegin {
 			}
 			//初始化kciscore
 			String[] kcinorms = pp.getKcinorm().split("、");//kci指标
-//			String[] kcinormprops = pp.getKcinormprop().split("、");//kci指标比重
+			String[] kcinormprops = pp.getKcinormprop().split("、");//kci指标比重
 			for(int j=0;j<kcinorms.length;j++)
 			{
 				int kcin = Integer.valueOf(kcinorms[j]);//指标编号
-//				double kcip = Double.valueOf(kcinormprops[j]);//指标权重
+				double kcip = Double.valueOf(kcinormprops[j]);//指标权重
 				PKcinorm pkcinorm = pkcindao.findAllById(kcin); 
 				PKCIScore pkcis = new PKCIScore();
 				pkcis.setYear(year);
@@ -347,11 +347,11 @@ public class RateBegin {
 				pkcis.setKciname(pkcinorm.getName());
 				pkcis.setKcinumber(kcin);
 				pkcis.setTarget(pkcinorm.getTarget());
-				if(ps.getKciprop()==2)
+				if(ps.getKciprop()==1)
 				{
 					pkcis.setScore(100.0);
 				}
-				else if(ps.getKpiprop()==3)
+				else if(ps.getKpiprop()==-1)
 				{
 					pkcis.setScore(0.0);
 				}
@@ -360,6 +360,7 @@ public class RateBegin {
 					pkcis.setScore(100.0);
 				}
 				pkcis.setRule(pkcinorm.getRule());
+				pkcis.setProp(kcip);
 				pkcis.setSum(0.0);
 				pkcis.setRater1(listrater.get(0).getNewnumber());
 				pkcis.setResult1(0.0);

@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import perform.seasonrate.pojo.PKCIScore;
-import perform.seasonrate.pojo.PKTIScore;
 
 /**
  	* A data access object (DAO) providing persistence and search support for PKCIScore entities.
@@ -40,6 +39,7 @@ public class PKCIScoreDAO extends BaseHibernateDAO  {
 	public static final String RESULT3 = "result3";
 	public static final String RATER3 = "rater3";
 	public static final String REMARK3 = "remark3";
+	public static final String PROP = "prop";
 	public static final String SUM = "sum";
 	public static final String YEAR = "year";
 	public static final String SEASON = "season";
@@ -208,6 +208,12 @@ public class PKCIScoreDAO extends BaseHibernateDAO  {
 		);
 	}
 	
+	public List findByProp(Object prop
+	) {
+		return findByProperty(PROP, prop
+		);
+	}
+	
 	public List findBySum(Object sum
 	) {
 		return findByProperty(SUM, sum
@@ -280,6 +286,26 @@ public class PKCIScoreDAO extends BaseHibernateDAO  {
              Query queryObject = getSession().createQuery(queryString);
     		 List<PKCIScore> list = queryObject.list();
     		 return list;
+    	} catch (RuntimeException re) {
+    		log.error("find all failed", re);
+    		throw re;
+    	}
+    }
+    public PKCIScore findByYearSeasonNewnumberKciname(int year,int season,String newnumber,String kciname) {
+    	log.debug("finding all PKCIScore instances");
+    	try {
+    		String queryString = "from PKCIScore as p where p.year='"+year+"' and p.season='"+season+"' and p.newnumber='"+newnumber+"' and p.kciname='"+kciname+"'";
+             Query queryObject = getSession().createQuery(queryString);
+    		 List<PKCIScore> list = queryObject.list();
+    		 if(list.isEmpty())
+    		 {
+    			 return null;
+    		 }
+    		 else
+    		 {
+    			 return list.get(0);
+    		 }
+    		 
     	} catch (RuntimeException re) {
     		log.error("find all failed", re);
     		throw re;

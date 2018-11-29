@@ -29,6 +29,7 @@ public abstract class AbstractPKCIScore  implements java.io.Serializable {
      private Double result3;
      private String rater3;
      private String remark3;
+     private Double prop;
      private Double sum;
      private Integer year;
      private Integer season;
@@ -42,7 +43,7 @@ public abstract class AbstractPKCIScore  implements java.io.Serializable {
 
     
     /** full constructor */
-    public AbstractPKCIScore(String kciname, String target, Double score, String rule, Integer kcinumber, String name, String newnumber, Double result1, String rater1, String remark1, Double result2, String rater2, String remark2, Double result3, String rater3, String remark3, Double sum, Integer year, Integer season) {
+    public AbstractPKCIScore(String kciname, String target, Double score, String rule, Integer kcinumber, String name, String newnumber, Double result1, String rater1, String remark1, Double result2, String rater2, String remark2, Double result3, String rater3, String remark3, Double prop, Double sum, Integer year, Integer season) {
         this.kciname = kciname;
         this.target = target;
         this.score = score;
@@ -59,6 +60,7 @@ public abstract class AbstractPKCIScore  implements java.io.Serializable {
         this.result3 = result3;
         this.rater3 = rater3;
         this.remark3 = remark3;
+        this.prop = prop;
         this.sum = sum;
         this.year = year;
         this.season = season;
@@ -201,6 +203,14 @@ public abstract class AbstractPKCIScore  implements java.io.Serializable {
     
     public void setRemark3(String remark3) {
         this.remark3 = remark3;
+    }
+
+    public Double getProp() {
+        return this.prop;
+    }
+    
+    public void setProp(Double prop) {
+        this.prop = prop;
     }
 
     public Double getSum() {
