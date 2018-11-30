@@ -37,6 +37,7 @@
 						<br/>
 					<div class="four_columns_input" >
 						<a href="<%=path%>/templet/yewuscore.xls">下载【业务指标得分表】模板</a>
+						<input type="hidden" name="newnumber" value="${newnumber}"/>
 					</div>
 				</div>
 			</div>
@@ -72,6 +73,7 @@
 						<br/>
 					<div class="four_columns_input" >
 						<a href="<%=path%>/templet/jiafenscore.xls">下载【加分统计表】模板</a>
+						<input type="hidden" name="newnumber" value="${newnumber}"/>
 					</div>
 				</div>
 			</div>

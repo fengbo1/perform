@@ -16,6 +16,7 @@ import perform.seasonrate.dao.PScoreDAO;
 import perform.seasonrate.pojo.PKCIScore;
 import perform.seasonrate.pojo.PScore;
 import perform.userinfo.dao.PUserDAO;
+import perform.userinfo.pojo.PUser;
 import ccb.hibernate.HibernateSessionFactory;
 
 public class ImportKciScore {
@@ -28,6 +29,7 @@ public class ImportKciScore {
     private String fileFileName;
     private String fileContentType;
     private String message;
+    private String newnumber;
 	public File getFile() {
 		return file;
 	}
@@ -52,7 +54,12 @@ public class ImportKciScore {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+	public String getNewnumber() {
+		return newnumber;
+	}
+	public void setNewnumber(String newnumber) {
+		this.newnumber = newnumber;
+	}
 public String execute() throws Exception {
 		
 		String realpath = "D:/import/performance/";
@@ -67,7 +74,6 @@ public String execute() throws Exception {
 	       if (!savefile.getParentFile().exists())
 	            savefile.getParentFile().mkdirs();
 	           FileUtils.copyFile(file, savefile);
-	           
 	     }
 	    else
 	    {
@@ -155,7 +161,11 @@ public String execute() throws Exception {
 					}
 					else if(flag.getAlreadyrate().contains("shujutemp"))
 					{
-						flag.setAlreadyrate("shujutemp");//
+						flag.setAlreadyrate(flag.getAlreadyrate().replace("shujutemp",newnumber));
+					}
+					else
+					{
+						flag.setAlreadyrate(flag.getAlreadyrate()+"、shujutemp");
 					}
 				}
 				catch (Exception e) {

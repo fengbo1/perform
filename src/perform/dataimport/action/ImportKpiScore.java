@@ -45,6 +45,7 @@ public class ImportKpiScore{
     private String fileFileName;
     private String fileContentType;
     private String message;
+    private String newnumber;
 	public File getFile() {
 		return file;
 	}
@@ -69,7 +70,12 @@ public class ImportKpiScore{
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+	public String getNewnumber() {
+		return newnumber;
+	}
+	public void setNewnumber(String newnumber) {
+		this.newnumber = newnumber;
+	}
 public String execute() throws Exception {
 		
 		String realpath = "D:/import/performance/";
@@ -160,6 +166,18 @@ public String execute() throws Exception {
 						    psdao.merge(ps);
 		    	        }
 					}
+				if(flag.getAlreadyrate()==null)
+				{
+					flag.setAlreadyrate("shujutemp");//
+				}
+				else if(flag.getAlreadyrate().contains("shujutemp"))
+				{
+					flag.setAlreadyrate(flag.getAlreadyrate().replace("shujutemp",newnumber));
+				}
+				else
+				{
+					flag.setAlreadyrate(flag.getAlreadyrate()+"、shujutemp");
+				}
 				}
 				catch (Exception e) {
 				trans.rollback();//出错回滚

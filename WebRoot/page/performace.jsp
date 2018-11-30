@@ -224,7 +224,7 @@ $(document).ready(function(){
 							
 							<p style="margin:0px；padding:0px;font-size:20px">${username}</p>
 							<br/>
-							<p style="font-size:16px">欢迎访问业务处理中心绩效评价系统</p>
+							<p style="font-size:16px">欢迎访问绩效考核工具</p>
 							<br/>
 							<p>
 								<input align="right" name="logout" type="button" value="修改密码" onclick="frame('pwdmodify')" />&nbsp;
@@ -268,6 +268,7 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('hisquery_center')">中心员工绩效得分查询</li>
 								</ul>
 							</li>
+							<c:if test="${authoW=='W'}">	
 							<li class="a">
 								<div class="header">
 									<span class="label">考核管理</span>
@@ -276,43 +277,51 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('rate_set')">考核管理</li>
 								</ul>
 							</li>
+							</c:if>
 							<li class="a">
 								<div class="header">
 									<span class="label">绩效考核标准</span>
 								</div>
 								<ul class="menu1">
 									<li class="cc"  onclick="frame('pdp_person')">个人绩效与发展计划书</li>
-								<!-- 	<li class="cc"  onclick="frame('pdp_office')">处室员工绩效与发展计划书</li>-->	
+								<!-- 	<li class="cc"  onclick="frame('pdp_office')">处室员工绩效与发展计划书</li>-->
+									<c:if test="${zhis=='0'||zhis=='1'||zhis=='2'||authoW=='W'}">	
 									<li class="cc"  onclick="frame('pdp_center')">中心员工绩效与发展计划书</li>
+									</c:if>
 								</ul>
 							</li>
+							<c:if test="${zhis=='0'||zhis=='1'||authoW=='W'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">指标库管理</span>
 								</div>
 								<ul class="menu1">
 									<li class="cc"  onclick="frame('kpilist')">关键业务指标管理</li>
-									<li class="cc"  onclick="frame('ktilist')">关键任务指标管理</li>
+									<li class="cc"  onclick="frame('ktilist')">关键任务目标管理</li>
 									<li class="cc"  onclick="frame('kbilist')">关键品能目标管理</li>
 									<li class="cc"  onclick="frame('kcilist')">加分项管理</li>
-									<!-- 
-									<li class="cc"  onclick="frame('kpilistquery')">关键业务指标</li>
-									<li class="cc"  onclick="frame('ktilistquery')">关键任务指标</li>
-									<li class="cc"  onclick="frame('kbilistquery')">关键品能目标</li>
-									<li class="cc"  onclick="frame('kcilistquery')">加分项</li>
-									 -->
 								</ul>
 							</li>
+							</c:if>
+							<c:if test="${zhis=='0'||zhis=='1'||authoW=='W'||zhis=='2'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">岗位管理</span>
 								</div>
 								<ul class="menu1">
+									<c:if test="${zhis=='0'}">
 									<li class="cc"  onclick="frame('poszxlist')">中心岗位信息查询</li>
+									</c:if>
+									<c:if test="${zhis=='1'||zhis=='2'}">
 									<li class="cc"  onclick="frame('poschulist')">处室岗位信息查询</li>
+									</c:if>
+									<c:if test="${authoW=='W'}">
 									<li class="cc"  onclick="frame('poslist')">岗位信息维护</li>
+									</c:if>
 								</ul>
 							</li>
+							</c:if>
+							<c:if test="${authoW=='W'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">用户管理</span>
@@ -321,6 +330,8 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('userinfo')">员工信息管理</li>
 								</ul>
 							</li>
+							</c:if>
+							<c:if test="${authoX=='X'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">数据导入</span>
@@ -329,6 +340,7 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('dataimport')">数据导入</li>
 								</ul>
 							</li>
+							</c:if>
 						</ul>
 					</div>
 			</div>

@@ -84,6 +84,7 @@ $('#chu').attr('value',x[2].value);
 									<option value="3">3</option>
 									<option value="4">4</option>
 								</select>
+								<c:if test="${zhis=='0'||authoW=='W'}">
 								处室
 								<select id="chu" name="chu" style="width: 150px" onchange="gettuan()">
 										<option value="wu">-请选择处室名称-</option>
@@ -92,7 +93,11 @@ $('#chu').attr('value',x[2].value);
 						                 <option value="3">通用业务二处</option>
 						                 <option value="6">专业处理二处</option>
 						                 <option value="5">研发支持二处</option>	
-								</select>				
+								</select>
+								</c:if>
+								<c:if test="${zhis!='0'&&authoW!='W'}">
+								<input type="hidden" name="chu" value="${chu}"/>
+								</c:if>				
 								姓名
 								<input style="width:60px" type="text" id="name" name="name" value="${name}"/>			
 								<input type="submit" value="查询"/>

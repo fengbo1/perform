@@ -86,7 +86,7 @@ top.document.location.href="<%=path%>/index.jsp";
 <div><b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 		   		<div class="b d1 k">
 		   		 <br/>
-		   		<div style="width: 308px; font-family: '宋体'; text-align: center; font-size: 22px; margin-top: 10px;">业务处理中心绩效评价系统</div>
+		   		<div style="width: 308px; font-family: '宋体'; text-align: center; font-size: 22px; margin-top: 10px;">绩效考核工具</div>
                 <div style="width : 308px; height: 250px; background-color: #FFF; MARGIN-TOP: 30PX; padding-top: 20px; font-family: '黑体'; font-size: 10px;">
 
 	<form name="frmLogin" method="post"  action="<%=path%>/login.action"  onsubmit="return validateLogin()">

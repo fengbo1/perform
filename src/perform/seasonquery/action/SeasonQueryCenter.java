@@ -163,7 +163,6 @@ public class SeasonQueryCenter {
 		PFlagDAO pfdao = new PFlagDAO();
 		PUserDAO pudao = new PUserDAO();
 		DateTimeUtil dtu = new DateTimeUtil();
-		List<PScore> listps = new ArrayList<PScore>();
 		listyear = dtu.getLast10Years();
 //		if(chu!=null&&zhuan==1)
 //		{
@@ -195,15 +194,15 @@ public class SeasonQueryCenter {
 			for(int i=0;i<listrater.size();i++)
 			{
 				PUser pu = listrater.get(i);
-				if(!adyrate.contains(pu.getNewnumber()))
-				{
-					notrate+=pu.getName();
-					notrate+="、";
-				}
-				else
+				if(adyrate.contains(pu.getNewnumber()))
 				{
 					alreadyrate+=pu.getName();
 					alreadyrate+="、";
+				}
+				else
+				{
+					notrate+=pu.getName();
+					notrate+="、";
 				}
 			}
 			hql = "from PScore as p where p.year='"+year+"' and p.season='"+season+"'";
