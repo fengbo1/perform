@@ -119,7 +119,6 @@ $('#chu').attr('value',x[0].value);
 								</div></td>	
 						</tr>
 						</table>
-						
 						</th>
 			</tr>
 			<tr>

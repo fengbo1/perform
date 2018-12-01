@@ -120,125 +120,128 @@ public class PDPPerson {
     		pu = pudao.findByNewNumber(rater);
     		int pnum = pu.getPnum();
     		pp = ppdao.findByID(pnum);
-    		if(pp.getKpiprop()==3)
-    		{
-    			kpisum="扣分项";
-    		}
-    		else if(pp.getKpiprop()==2)
-    		{
-    			kpisum="加分项";
-    		}
-    		else
-    		{
-    			kpisum="共"+String.valueOf(pp.getKpiprop()*100)+"分";
-    		}
-    		if(pp.getKtiprop()==3)
-    		{
-    			ktisum="扣分项";
-    		}
-    		else if(pp.getKtiprop()==2)
-    		{
-    			ktisum="加分项";
-    		}
-    		else
-    		{
-    			ktisum="共"+String.valueOf(pp.getKtiprop()*100)+"分";
-    		}
-    		if(pp.getKbiprop()==3)
-    		{
-    			kbisum="扣分项";
-    		}
-    		else if(pp.getKbiprop()==2)
-    		{
-    			kbisum="加分项";
-    		}
-    		else
-    		{
-    			kbisum="共"+String.valueOf(pp.getKbiprop()*100)+"分";
-    		}
-    		if(pp.getKciprop()==3)
-    		{
-    			kcisum="扣分项";
-    		}
-    		else if(pp.getKciprop()==2)
-    		{
-    			kcisum="加分项";
-    		}
-    		else
-    		{
-    			kcisum="共"+String.valueOf(pp.getKciprop()*100)+"分";
-    		}
     		if(pp!=null)
     		{
-    			String[] kpis = pp.getKpinorm().split("、");
-        		String[] ktis = pp.getKtinorm().split("、");
-        		String[] kbis = pp.getKbinorm().split("、");
-        		String[] kcis = pp.getKcinorm().split("、");
-        		
-        		String[] ktips = pp.getKtinormprop().split("、");
-        		String[] kbips = pp.getKbinormprop().split("、");
-        		for(int i=0;i<kpis.length;i++)
+    			if(pp.getKpiprop()==3)
         		{
-        			int tempkpi = Integer.valueOf(kpis[i]);
-        			PKpinorm tempkpin = kpindao.findAllById(tempkpi);
-        			if(tempkpin!=null)
-        			{
-        				PdpBean temppb = new PdpBean();
-        				temppb.setId(tempkpin.getId());
-        				temppb.setName(tempkpin.getName());
-        				temppb.setTarget(tempkpin.getTarget());
-        				temppb.setScore(tempkpin.getScore());
-        				temppb.setRule(tempkpin.getRule());
-        				temppb.setPdpname(tempkpin.getPdpname());
-        				temppb.setRemark(tempkpin.getRemark());
-        				listkpi.add(temppb);
-        			}
+        			kpisum="扣分项";
         		}
-        		for(int i=0;i<ktis.length;i++)
+        		else if(pp.getKpiprop()==2)
         		{
-        			int tempkti = Integer.valueOf(ktis[i]);
-        			PKtinorm tempktin = ktindao.findAllById(tempkti);
-        			if(tempktin!=null)
-        			{
-        				PdpBean temppb = new PdpBean();
-        				temppb.setId(tempktin.getId());
-        				temppb.setName(tempktin.getName());
-        				temppb.setTarget(tempktin.getTarget());
-        				temppb.setScore(Util.DoubleTo2(tempktin.getScore()*Double.parseDouble(ktips[i])*pp.getKtiprop()));
-        				temppb.setRule(tempktin.getRule());
-        				listkti.add(temppb);
-        			}
+        			kpisum="加分项";
         		}
-        		for(int i=0;i<kbis.length;i++)
+        		else
         		{
-        			int tempkbi = Integer.valueOf(kbis[i]);
-        			PKbinorm tempkbin = kbindao.findAllById(tempkbi);
-        			if(tempkbin!=null)
-        			{
-        				PdpBean temppb = new PdpBean();
-        				temppb.setId(tempkbin.getId());
-        				temppb.setName(tempkbin.getName());
-        				temppb.setTarget(tempkbin.getTarget());
-        				temppb.setScore(Util.DoubleTo2(tempkbin.getScore()*Double.parseDouble(kbips[i])*pp.getKbiprop()));
-        				temppb.setRule(tempkbin.getRule());
-        				listkbi.add(temppb);
-        			}
+        			kpisum="共"+String.valueOf(pp.getKpiprop()*100)+"分";
         		}
-        		for(int i=0;i<kcis.length;i++)
+        		if(pp.getKtiprop()==3)
         		{
-        			int tempkci = Integer.valueOf(kcis[i]);
-        			PKcinorm tempkcin = kcindao.findAllById(tempkci);
-        			if(tempkcin!=null)
-        			{
-        				PdpBean temppb = new PdpBean();
-        				temppb.setId(tempkcin.getId());
-        				temppb.setName(tempkcin.getName());
-        				temppb.setTarget(tempkcin.getTarget());
-        				temppb.setScore("");
-        				temppb.setRule(tempkcin.getRule());
-        				temppb.setRemark(tempkcin.getRemark());
-        				listkci.add(temppb);
-        			}
+        			ktisum="扣分项";
+        		}
+        		else if(pp.getKtiprop()==2)
+        		{
+        			ktisum="加分项";
+        		}
+        		else
+        		{
+        			ktisum="共"+String.valueOf(pp.getKtiprop()*100)+"分";
+        		}
+        		if(pp.getKbiprop()==3)
+        		{
+        			kbisum="扣分项";
+        		}
+        		else if(pp.getKbiprop()==2)
+        		{
+        			kbisum="加分项";
+        		}
+        		else
+        		{
+        			kbisum="共"+String.valueOf(pp.getKbiprop()*100)+"分";
+        		}
+        		if(pp.getKciprop()==3)
+        		{
+        			kcisum="扣分项";
+        		}
+        		else if(pp.getKciprop()==2)
+        		{
+        			kcisum="加分项";
+        		}
+        		else
+        		{
+        			kcisum="共"+String.valueOf(pp.getKciprop()*100)+"分";
+        		}
+        		if(pp!=null)
+        		{
+        			String[] kpis = pp.getKpinorm().split("、");
+            		String[] ktis = pp.getKtinorm().split("、");
+            		String[] kbis = pp.getKbinorm().split("、");
+            		String[] kcis = pp.getKcinorm().split("、");
+            		
+            		String[] ktips = pp.getKtinormprop().split("、");
+            		String[] kbips = pp.getKbinormprop().split("、");
+            		for(int i=0;i<kpis.length;i++)
+            		{
+            			int tempkpi = Integer.valueOf(kpis[i]);
+            			PKpinorm tempkpin = kpindao.findAllById(tempkpi);
+            			if(tempkpin!=null)
+            			{
+            				PdpBean temppb = new PdpBean();
+            				temppb.setId(tempkpin.getId());
+            				temppb.setName(tempkpin.getName());
+            				temppb.setTarget(tempkpin.getTarget());
+            				temppb.setScore(tempkpin.getScore());
+            				temppb.setRule(tempkpin.getRule());
+            				temppb.setPdpname(tempkpin.getPdpname());
+            				temppb.setRemark(tempkpin.getRemark());
+            				listkpi.add(temppb);
+            			}
+            		}
+            		for(int i=0;i<ktis.length;i++)
+            		{
+            			int tempkti = Integer.valueOf(ktis[i]);
+            			PKtinorm tempktin = ktindao.findAllById(tempkti);
+            			if(tempktin!=null)
+            			{
+            				PdpBean temppb = new PdpBean();
+            				temppb.setId(tempktin.getId());
+            				temppb.setName(tempktin.getName());
+            				temppb.setTarget(tempktin.getTarget());
+            				temppb.setScore(Util.DoubleTo2(tempktin.getScore()*Double.parseDouble(ktips[i])*pp.getKtiprop()));
+            				temppb.setRule(tempktin.getRule());
+            				listkti.add(temppb);
+            			}
+            		}
+            		for(int i=0;i<kbis.length;i++)
+            		{
+            			int tempkbi = Integer.valueOf(kbis[i]);
+            			PKbinorm tempkbin = kbindao.findAllById(tempkbi);
+            			if(tempkbin!=null)
+            			{
+            				PdpBean temppb = new PdpBean();
+            				temppb.setId(tempkbin.getId());
+            				temppb.setName(tempkbin.getName());
+            				temppb.setTarget(tempkbin.getTarget());
+            				temppb.setScore(Util.DoubleTo2(tempkbin.getScore()*Double.parseDouble(kbips[i])*pp.getKbiprop()));
+            				temppb.setRule(tempkbin.getRule());
+            				listkbi.add(temppb);
+            			}
+            		}
+            		for(int i=0;i<kcis.length;i++)
+            		{
+            			int tempkci = Integer.valueOf(kcis[i]);
+            			PKcinorm tempkcin = kcindao.findAllById(tempkci);
+            			if(tempkcin!=null)
+            			{
+            				PdpBean temppb = new PdpBean();
+            				temppb.setId(tempkcin.getId());
+            				temppb.setName(tempkcin.getName());
+            				temppb.setTarget(tempkcin.getTarget());
+            				temppb.setScore("");
+            				temppb.setRule(tempkcin.getRule());
+            				temppb.setRemark(tempkcin.getRemark());
+            				listkci.add(temppb);
+            			}
+            		}
         		}
     		}
     	}catch (Exception e) {

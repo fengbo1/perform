@@ -51,11 +51,11 @@ public class PDPOffice {
 			PUser purater = pudao.findByNewNumber(rater);
 			
 			String position = purater.getPosition();
-			if(position.length()>5)
+			if(position.length()>3)
 			{
 				chu=position.substring(2, 3);
 			}
-			String hql = "from PUser as pu where pu.position like '__"+chu+"____'";
+			String hql = "from PUser as pu where pu.position like '__"+chu+"__'";
 			if(name!=null&&!name.equals(""))
 			{
 				hql += " and pu.name='"+name+"'";

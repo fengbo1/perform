@@ -32,6 +32,19 @@ body {
 	margin-top: 0px;
 	background-color: #ffffff;
 }
+tr.locktop{
+background-color:#FFFFFF;
+position:relative;
+top:expression((this.offsetParent.scrollTop>this.parentElement.parentElement.offsetTop?this.offsetParent.scrollTop-this.parentElement.parentElement.offsetTop-1:0)-1);
+}
+.c_ghbs3{
+background-color:#C6E2FF;
+font-family:黑体;
+font-size:14px;
+position:relative;
+font-weight:lighter;
+top:expression((this.offsetParent.scrollTop>this.parentElement.parentElement.offsetTop?this.offsetParent.scrollTop-this.parentElement.parentElement.offsetTop-1:0)-1);
+}
 -->
 </style>
 <script type="text/javascript">
@@ -46,6 +59,9 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
   
   <body>
   <form action="<%=path%>/pdp_office.action" method="post" name="fm1">
+<table id="pol_table_list" cellspacing="0" align="center" style="width: 1150px;height:500px">
+			<tr class="locktop">
+			<th>
 					<table height="80" align="center" cellpadding="0"
 						cellspacing="2" border: 0px;">
 						<tr>
@@ -80,26 +96,35 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 									<p>绩效目标任务书</p>
 								</div></td>	
 						</tr>
+						</table>
+						</th>
+			</tr>
+			<tr>
+			<td style="padding-left:1px">
+			<div id="scroll" align="center" style=" overflow-x: hidden;height:430px">
+				<table>
 						<c:forEach items="${list}" var="entity" varStatus="status">
 							<tr class="btbj" id="hang" style="height:20px">
-								<td  height="25" align="center" valign="middle" nowrap><div
+								<td width="40px"  height="25" align="center" valign="middle" nowrap><div
 										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td width="120px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${entity.newnumber}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td width="80px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${entity.name}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${fb:positiontochu(entity.position)}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${fb:pnumtoname(entity.pnum)}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
 										align="center">
 								<a	href="<%=path%>/pdp_person.action?rater=${entity.newnumber}">显示详情</a>		
 								</div></td>
 							</tr>
 						</c:forEach>	
-							<tr class="表格表头背景">
-						</tr>
+						</table>
+			</div>
+			</td>
+			</tr>	
 		</table>
 		</form>
   </body>

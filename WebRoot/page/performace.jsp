@@ -284,8 +284,10 @@ $(document).ready(function(){
 								</div>
 								<ul class="menu1">
 									<li class="cc"  onclick="frame('pdp_person')">个人绩效与发展计划书</li>
-								<!-- 	<li class="cc"  onclick="frame('pdp_office')">处室员工绩效与发展计划书</li>-->
-									<c:if test="${zhis=='0'||zhis=='1'||zhis=='2'||authoW=='W'}">	
+									<c:if test="${zhis=='1'||zhis=='2'||authoW=='W'}">	
+									<li class="cc"  onclick="frame('pdp_office')">处室员工绩效与发展计划书</li>
+									</c:if>
+									<c:if test="${zhis=='0'||authoW=='W'}">	
 									<li class="cc"  onclick="frame('pdp_center')">中心员工绩效与发展计划书</li>
 									</c:if>
 								</ul>
