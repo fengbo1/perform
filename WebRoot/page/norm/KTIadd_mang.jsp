@@ -70,16 +70,6 @@
     			</td>
     			
     		</tr>
-    		 <tr>
-    			<td width="100" class="as" >
-    				<span style="font-size:16pt;color:black">分值</span><span>*</span>
-    			</td>
-    			<td width="300" class="as">
-    				<input style="width:500px"  type="text" id="score" name="score" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')"/> 
-    				
-    			</td>
-    			
-    		</tr>
     		
     	   <tr>
     			<td width="100" class="as" >

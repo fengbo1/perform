@@ -385,7 +385,7 @@ public class PUserDAO extends BaseHibernateDAO  {
 			{
 				chu="_";
 			}
-			String queryString = "from PUser where position like'__"+chu+"__' and canscore='1' order by position";
+			String queryString = "from PUser where (position like '__"+chu+"__' or position like '0____') and canscore='1' order by position";
 	         Query queryObject = getSession().createQuery(queryString);
 	         return queryObject.list();
 		} catch (RuntimeException re) {

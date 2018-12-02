@@ -198,13 +198,13 @@ public class PosAdd_mang extends ActionSupport implements ServletResponseAware{
 	    }
  	  	if(typed==0)
 	    {
- 	  		temp = temp.add(b4);
-	    	pp.setKciprop(kciprop);
-	    	if(kciprop==0.00)
-			  {
-				 this.addFieldError("用户","加分项权重为空");
-			  	 return "failed";
-			  }
+// 	  		temp = temp.add(b4);
+	    	pp.setKciprop(0.0);
+//	    	if(kciprop==0.00)
+//			  {
+//				 this.addFieldError("用户","加分项权重为空");
+//			  	 return "failed";
+//			  }
 	    }
  		else
 	    {

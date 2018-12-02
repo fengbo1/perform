@@ -38,8 +38,8 @@ body {
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
  var chu=document.getElementById("parachu").value;
-$('#chu').attr('value',chu);
  brbrbr();
+ $('#chu').attr('value',chu);
  });
  //导出
  function expressout()
@@ -94,7 +94,7 @@ function brbrbr()
 						                 <option value="5">研发支持二处</option>				                        
 					                </select>
 									<input type="submit" value="查询"/>
-									<input type="button" value="全量导出" onclick="expressout()"/>
+								<!-- 	<input type="button" value="全量导出" onclick="expressout()"/> -->
 									<input type="hidden" id="parachu"  name="parachu" value="${chu}"/>
 						</div></td>	
 						</tr>

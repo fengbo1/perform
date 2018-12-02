@@ -16,18 +16,9 @@ public class PosAddKpi_mang {
 	private String posname;
 	private String poschu;
 	private String message;
-	private String city;
 	private String chu;
 	private List<PKtinorm> listkt;	
 	private List<PUser> listu;	
-	
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
 
 	public String getChu() {
 		return chu;
@@ -103,24 +94,24 @@ public class PosAddKpi_mang {
 			message="未选择关键业务指标！";
 			return "failed";
 		}
-		city="wu";
-		chu="wu";
 		PPositiontempDAO ppdao=new PPositiontempDAO();
 		PPositiontemp pp =new PPositiontemp();
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans = session.beginTransaction();
- 	    listu = pudao.findRaterByChu(chu);
+ 	    
  	    pp=ppdao.findByNameandChuandTuan(posname, poschu);
  	    pp.setKpinorm(category); 
  	    pp.setKpinormprop("1.00");
  	    ppdao.merge(pp);
  	    id=pp.getId();
+ 	    chu = pp.getChu();
  	    message="添加成功";
  	    hql = "from PKtinorm as kt";
 		hql +=" order by kt.id";
 		System.out.println(hql);
 		query = session.createQuery(hql);
 		listkt = query.list();
+		listu = pudao.findRaterByChu(chu);
  	    trans.commit();
 		session.flush();
 		session.clear();

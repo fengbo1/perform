@@ -15,7 +15,7 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 	 private static final long serialVersionUID = 1L;
 		private String name;
 	    private String target;
-	    private double score;
+//	    private double score;
 	    private String rule;
 	    private String message;
 	    
@@ -43,15 +43,6 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 
 		public void setTarget(String target) {
 			this.target = target;
-		}
-
-		
-		public double getScore() {
-			return score;
-		}
-
-		public void setScore(double score) {
-			this.score = score;
 		}
 
 		public String getRule() {
@@ -85,11 +76,11 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 				 this.addFieldError("用户","目标值为空");
 			  	 return "failed";
 			  }
-			  else if(score==0.00)
-			  {
-				 this.addFieldError("用户","指标分值为空");
-			  	 return "failed";
-			  }
+//			  else if(score==0.00)
+//			  {
+//				 this.addFieldError("用户","指标分值为空");
+//			  	 return "failed";
+//			  }
 			  else if(rule==null||rule.equals(""))
 			  {
 				 this.addFieldError("用户","规则为空");
@@ -105,7 +96,7 @@ public class KBIAdd_mang extends ActionSupport implements ServletResponseAware {
 	        kb.setName(name);
 	        kb.setLevel("");
 	        kb.setTarget(target);
-	        kb.setScore(score);
+	        kb.setScore(100.0);
 	        kb.setRule(rule);
 	 	    kbdao.merge(kb);
 	 	    message="添加成功";

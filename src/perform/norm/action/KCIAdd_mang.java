@@ -14,7 +14,7 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 	    private static final long serialVersionUID = 1L;
 		private String name;
 	    private String target;
-	    private double score;
+//	    private double score;
 	    private String rule;
 	    private String remark;
 	    private String message;
@@ -45,14 +45,6 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 			this.target = target;
 		}
 
-		
-		public double getScore() {
-			return score;
-		}
-
-		public void setScore(double score) {
-			this.score = score;
-		}
 
 		public String getRule() {
 			return rule;
@@ -106,7 +98,7 @@ public class KCIAdd_mang extends ActionSupport implements ServletResponseAware{
 			
 	        kc.setName(name.trim());
 	        kc.setTarget(target);
-	        kc.setScore(score);
+	        kc.setScore(100.0);
 	        kc.setLevel("");
 	        kc.setRule(rule);
 	        kc.setRemark(remark);

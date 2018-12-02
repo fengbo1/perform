@@ -82,7 +82,9 @@ function brbrbr()
 						<tr>
 							<td colspan="12" height="10px">
 								<div align="center">
-									<input type="button" value="全量导出" onclick="expressout()"/>
+							<!-- 
+									<input type="button" value="全量导出" onclick="expressout()"/> 
+									-->	
 						</div></td>	
 						</tr>
 						<tr height="50px" class="表格表头背景1" id="hang">

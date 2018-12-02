@@ -77,21 +77,21 @@ public class PosAddKci_mang {
 		  kcinormpropcun=kcinormpropcun.substring(0, kcinormpropcun.length()-1);
 		  }
 		}
-		if(kcipropnum==0)
-		{
-			message="指标系数未填！";
-			return "failed";
-		}
-		if(kcinorm==null||kcinorm.length==0)
-		{
-			message="指标未选！";
-			return "failed";
-		}
-		if(kcinorm.length!=kcipropnum)
-		{
-			message="指标数量和指标系数数量不匹配！";
-			return "failed";
-		}
+//		if(kcipropnum==0)
+//		{
+//			message="指标系数未填！";
+//			return "failed";
+//		}
+//		if(kcinorm==null||kcinorm.length==0)
+//		{
+//			message="指标未选！";
+//			return "failed";
+//		}
+//		if(kcinorm.length!=kcipropnum)
+//		{
+//			message="指标数量和指标系数数量不匹配！";
+//			return "failed";
+//		}
 		PPositiontempDAO pptdao=new PPositiontempDAO();
 		PPositiontemp ppt =new PPositiontemp();
 		PPositionDAO ppdao=new PPositionDAO();
@@ -100,7 +100,7 @@ public class PosAddKci_mang {
  	    Transaction trans = session.beginTransaction();
  	    ppt=pptdao.findAllById(posid);  
  	    ppt.setKcinorm(kcinormcun);
- 	    pp.setKcinormprop(kcinormpropcun);
+ 	    ppt.setKcinormprop(kcinormpropcun);
  	    pptdao.merge(ppt);
  	    pp.setName(ppt.getName());
  	    pp.setChu(ppt.getChu());

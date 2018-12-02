@@ -76,7 +76,7 @@ function brbrbr()
 						<tr>
 							<td
 								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="12" align="center" bordercolor="#FFFFFF"><b>关键业绩指标KPI指标库</b>
+								colspan="12" align="center" bordercolor="#FFFFFF"><b>关键业务指标库</b>
 							</td>
 						</tr>
 					
@@ -142,7 +142,7 @@ function brbrbr()
 							</tr>
 							</c:forEach>
 							<tr class="表格表头背景">
-							<td colspan="5">
+							<td colspan="6">
 							<div align="center">
 								<a	href="<%=path%>/kpilist_mang.action?currentPage=${previousPage}"
 							style="padding-right: 30px;color: #104E8B">上一页</a> 
