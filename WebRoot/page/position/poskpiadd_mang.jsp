@@ -125,7 +125,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								<td width="150px" height="25" align="center" valign="middle" ><div
 										align="left">${kp.remark}</div></td>		
 								<td width="100px" height="25" align="center" valign="middle" ><div
-										align="center"><input name="category" type="radio" value="${kp.id}"></div></td>				
+										align="center"><input id="${kb.id}" type="checkbox"  name="kpinorm" value="${kb.id}" /></div></td>				
 				     </tr>
 					</c:forEach>
 						</table>

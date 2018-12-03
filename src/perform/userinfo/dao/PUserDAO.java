@@ -249,7 +249,7 @@ public class PUserDAO extends BaseHibernateDAO  {
 			{
 				posrater="2_"+chu+tuan+"_";
 			}
-			String queryString = "from PUser as pu where pu.position like '"+posrater+"' or pu.position like '"+posrater+"' order by pu.position";
+			String queryString = "from PUser as pu where pu.position like '"+posrater+"' and pu.canscore='1' order by pu.position";
 			System.out.println(queryString);
 			Query queryObject = getSession().createQuery(queryString);
 			list =  queryObject.list();

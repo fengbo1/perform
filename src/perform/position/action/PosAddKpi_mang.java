@@ -11,7 +11,7 @@ import ccb.hibernate.HibernateSessionFactory;
 import perform.userinfo.dao.PUserDAO;
 import perform.userinfo.pojo.PUser;
 public class PosAddKpi_mang {
-	private String category;
+	private String[] kbinorm;
 	private int id;
 	private String posname;
 	private String poschu;
@@ -68,12 +68,12 @@ public class PosAddKpi_mang {
 		this.id = id;
 	}
 
-	public String getCategory() {
-		return category;
+	public String[] getKbinorm() {
+		return kbinorm;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setKbinorm(String[] kbinorm) {
+		this.kbinorm = kbinorm;
 	}
 
 	public List<PUser> getListu() {
@@ -89,10 +89,15 @@ public class PosAddKpi_mang {
 		PUserDAO pudao = new PUserDAO();
 		Query query;
 		String hql = "";
-		if(category==null||category=="")
-		{
-			message="未选择关键业务指标！";
-			return "failed";
+		String kbinormcun = "";
+		if(kbinorm!=null&&kbinorm.length!=0)
+		{	
+		  kbinormcun =kbinorm[0];
+		 for(int i=1;i<kbinorm.length;i++)
+	    {
+			kbinormcun += "、";
+			kbinormcun += kbinorm[i];
+	    }
 		}
 		PPositiontempDAO ppdao=new PPositiontempDAO();
 		PPositiontemp pp =new PPositiontemp();
@@ -100,8 +105,8 @@ public class PosAddKpi_mang {
  	    Transaction trans = session.beginTransaction();
  	    
  	    pp=ppdao.findByNameandChuandTuan(posname, poschu);
- 	    pp.setKpinorm(category); 
- 	    pp.setKpinormprop("1.00");
+ 	    pp.setKpinorm(kbinormcun); 
+ 	    pp.setKpinormprop("1");
  	    ppdao.merge(pp);
  	    id=pp.getId();
  	    chu = pp.getChu();

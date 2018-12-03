@@ -98,11 +98,11 @@ function brbrbr()
 								bordercolor=none><div align="center">
 									<p>分值</p>
 								</div></td>
-							<td  width="500px" align="center" valign="middle" nowrap
+							<td  width="400px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>考核规则</p>
 								</div></td>
-								<td  width="100px" align="center" valign="middle" nowrap
+								<td  width="200px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>备注</p>
 								</div></td>
@@ -125,9 +125,9 @@ function brbrbr()
 										align="left">${kp.target}</div></td>
 								<td width="100px" align="center" valign="middle" nowrap><div
 										align="left">${kp.score}</div></td>
-								<td width="500px" align="center" valign="middle" nowrap><div
+								<td width="400px" align="center" valign="middle" nowrap><div
 										align="left">${kp.rule}</div></td>
-								<td width="100px" align="center" valign="middle" nowrap><div
+								<td width="200px" align="center" valign="middle" nowrap><div
 										align="left">${kp.remark}</div></td>
 								<c:if test="${authoW=='W'}">
 								<td width="80px" height="25" align="center" valign="middle" nowrap><div
