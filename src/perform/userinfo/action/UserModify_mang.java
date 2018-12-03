@@ -20,8 +20,8 @@ public class UserModify_mang {
 	private String pos;
 	private String role;
 	private String authoE;
-	private String authoU;
-	private String authoV;
+	private String authoW;
+	private String authoX;
 	private int canscore;
 	private List<PPosition> listpos;
 	
@@ -42,20 +42,20 @@ public class UserModify_mang {
 		this.authoE = authoE;
 	}
 
-	public String getAuthoU() {
-		return authoU;
+	public String getAuthoW() {
+		return authoW;
 	}
 
-	public void setAuthoU(String authoU) {
-		this.authoU = authoU;
+	public void setAuthoW(String authoW) {
+		this.authoW = authoW;
 	}
 
-	public String getAuthoV() {
-		return authoV;
+	public String getAuthoX() {
+		return authoX;
 	}
 
-	public void setAuthoV(String authoV) {
-		this.authoV = authoV;
+	public void setAuthoX(String authoX) {
+		this.authoX = authoX;
 	}
 
 	public List<PPosition> getListpos() {
@@ -156,8 +156,8 @@ public class UserModify_mang {
  	    pos=ui.getPnum()==null?"":ui.getPnum().toString();
  	    role=ui.getAutho();
  	    authoE=role.substring(4,5);
- 	    authoU=role.substring(20,21);
- 	    authoV=role.substring(21,22);
+ 	    authoW=role.substring(22,23);
+ 	    authoX=role.substring(23,24);
  	    hql = "from PPosition as pos where pos.id>0 ";
 	    hql +=" order by pos.id";
 		System.out.println(hql);

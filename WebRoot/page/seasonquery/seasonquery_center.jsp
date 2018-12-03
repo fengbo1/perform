@@ -100,7 +100,8 @@ $('#chu').attr('value',x[0].value);
 								姓名
 								<input style="width:60px" type="text" id="name" name="name" value="${name}"/>			
 								<input type="submit" value="查询"/>
-								<input type="button" onclick="express()" value="导出"/>	
+							<!-- 
+								<input type="button" onclick="express()" value="导出"/>	 -->	
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
 								<input type="hidden" name="year" value="${year}"/>
 								<input type="hidden" name="season" value="${season}"/>

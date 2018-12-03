@@ -11,7 +11,7 @@ import ccb.hibernate.HibernateSessionFactory;
 import perform.userinfo.dao.PUserDAO;
 import perform.userinfo.pojo.PUser;
 public class PosAddKpi_mang {
-	private String[] kbinorm;
+	private String[] kpinorm;
 	private int id;
 	private String posname;
 	private String poschu;
@@ -67,13 +67,12 @@ public class PosAddKpi_mang {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String[] getKbinorm() {
-		return kbinorm;
+	public String[] getKpinorm() {
+		return kpinorm;
 	}
 
-	public void setKbinorm(String[] kbinorm) {
-		this.kbinorm = kbinorm;
+	public void setKpinorm(String[] kpinorm) {
+		this.kpinorm = kpinorm;
 	}
 
 	public List<PUser> getListu() {
@@ -89,14 +88,14 @@ public class PosAddKpi_mang {
 		PUserDAO pudao = new PUserDAO();
 		Query query;
 		String hql = "";
-		String kbinormcun = "";
-		if(kbinorm!=null&&kbinorm.length!=0)
+		String kpinormcun = "";
+		if(kpinorm!=null&&kpinorm.length!=0)
 		{	
-		  kbinormcun =kbinorm[0];
-		 for(int i=1;i<kbinorm.length;i++)
+		  kpinormcun =kpinorm[0];
+		 for(int i=1;i<kpinorm.length;i++)
 	    {
-			kbinormcun += "、";
-			kbinormcun += kbinorm[i];
+			kpinormcun += "、";
+			kpinormcun += kpinorm[i];
 	    }
 		}
 		PPositiontempDAO ppdao=new PPositiontempDAO();
@@ -105,7 +104,7 @@ public class PosAddKpi_mang {
  	    Transaction trans = session.beginTransaction();
  	    
  	    pp=ppdao.findByNameandChuandTuan(posname, poschu);
- 	    pp.setKpinorm(kbinormcun); 
+ 	    pp.setKpinorm(kpinormcun); 
  	    pp.setKpinormprop("1");
  	    ppdao.merge(pp);
  	    id=pp.getId();

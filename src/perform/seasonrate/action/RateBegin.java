@@ -272,7 +272,14 @@ public class RateBegin {
 					pktis.setScore(pktinorm.getScore()*ktip);
 					pktis.setRule(pktinorm.getRule());
 					pktis.setSum(0.0);
-					pktis.setRater1(ktirater[j]);
+					if(ktirater[j].equals("moren"))
+					{
+						pktis.setRater1(listrater.get(0).getNewnumber());
+					}
+					else
+					{
+						pktis.setRater1(ktirater[j]);
+					}
 					pktis.setResult1(0.0);
 					pktisdao.merge(pktis);
 				}

@@ -1,9 +1,6 @@
 package perform.userinfo.action;
-import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletResponseAware;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import com.opensymphony.xwork2.ActionSupport;

@@ -40,10 +40,9 @@ var zhi=document.getElementById("parazhi").value;
 var pos=document.getElementById("parapos").value;
 var role=document.getElementById("pararole").value;
 var authoE=document.getElementById("authoE").value;
-var authoU=document.getElementById("authoU").value;
-var authoV=document.getElementById("authoV").value;
+var authoW=document.getElementById("authoW").value;
+var authoX=document.getElementById("authoX").value;
 var canscore=document.getElementById("paracanscore").value;
-alert(chu);
 $('#chu').attr('value',chu);
  gettuan();
 $('#tuan').attr('value',tuan);
@@ -51,17 +50,17 @@ $('#tuan').attr('value',tuan);
 $('#zu').attr('value',zu);
 $('#zhiwu').attr('value',zhi);
 $('#canscore').attr('value',canscore);
-if(authoE=="E"&&authoU!="U"&&authoV!="V")
+if(authoE=="E"&&authoW!="W"&&authoX!="X")
 {
 	$('#role').attr('value',authoE);
 }
-if(authoU=="U")
+if(authoW=="W")
 {
-	$('#role').attr('value',authoU);
+	$('#role').attr('value',authoW);
 }
-if(authoV=="V")
+if(authoX=="X")
 {
-	$('#role').attr('value',authoV);
+	$('#role').attr('value',authoX);
 }
 //$('#role').attr('value',role);
 $('#pos').attr('value',pos);
@@ -328,6 +327,7 @@ for (var i=1;i<arry.length;i++){
     		  <tr>
     			<td width="200" class="as" >
     				<span style="font-size:12pt;color:black">操作</span><span></span>
+    				<input type="hidden" id="city" name="city" value="${city}"/>
     				<input type="hidden" id="paracity" name="paracity" value="${city}"/>
     				<input type="hidden" id="parazhi" name="parazhi" value="${zhi}"/>
 					<input type="hidden" id="parachu" name="parachu" value="${chu}"/>
@@ -336,8 +336,8 @@ for (var i=1;i<arry.length;i++){
 					<input type="hidden" id="parapos" name="parapos" value="${pos}"/>
 					<input type="hidden" id="pararole" name="pararole" value="${role}"/>
 					<input type="hidden" id="authoE" name="authoE" value="${authoE}"/>
-					<input type="hidden" id="authoU" name="authoU" value="${authoU}"/>
-					<input type="hidden" id="authoV" name="authoV" value="${authoV}"/>
+					<input type="hidden" id="authoW" name="authoW" value="${authoW}"/>
+					<input type="hidden" id="authoX" name="authoX" value="${authoX}"/>
 					<input type="hidden" id="paraid" name="paraid" value="${id}"/>
 					<input type="hidden" id="paracanscore" name="paracanscore" value="${canscore}"/>
     			</td>
