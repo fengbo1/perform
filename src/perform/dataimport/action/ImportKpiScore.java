@@ -1,6 +1,8 @@
 package perform.dataimport.action;
 import java.io.File;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -84,6 +86,7 @@ public String execute() throws Exception {
 		PKPIScoreDAO pkpdao = new PKPIScoreDAO();
 		PScoreDAO psdao = new PScoreDAO();
 		int nn=0;
+		int mm=0;
 		if (file != null) {
 	       File savefile = new File(new File(realpath), fileFileName);
 	       if (!savefile.getParentFile().exists())
@@ -113,13 +116,14 @@ public String execute() throws Exception {
 				Sheet sheet = book.getSheet(0);
 				// 得到第一列第一行的单元格
 				nn = sheet.getRows();
+				mm = sheet.getColumns();
 				PFlagDAO fdao = new PFlagDAO();
 				PFlag flag = fdao.findByIsNew(1);
 				//String sql = "delete from p_kpiscore where year='"+flag.getYear()+"' and season='"+flag.getSeason()+"'";
 				//session.createSQLQuery(sql).executeUpdate();
 				for (int i = 1; i < nn; i++) {
 					
-					PKPIScore pkp = new PKPIScore();
+					List<PKPIScore> listpkp = new ArrayList<PKPIScore>();
 					
 					PScore ps = new PScore();
 					String newnumber = sheet.getCell(0, i).getContents().trim();
@@ -132,26 +136,9 @@ public String execute() throws Exception {
 					}
 					else
 					{
-						if(sheet.getCell(2, i).getContents().trim()==null||sheet.getCell(2, i).getContents().trim().equals(""))
-						{
-							message="导入的分值为空";
-							return "failed";
-						}
-						double sum =Double.parseDouble(sheet.getCell(2, i).getContents().trim());
-						
-						
-						pkp = pkpdao.findByNewNumbernew(newnumber,flag.getYear(),flag.getSeason());
+						double summ = 0.0;
+						listpkp = pkpdao.findByYearSeasonNewnumber(flag.getYear(),flag.getSeason(),newnumber);
 						ps = psdao.findByNewnumberYearSeasonnew(newnumber, flag.getYear(), flag.getSeason());
-						if(pkp==null)
-						{
-							message="导入的新一代编号"+newnumber+"有误";
-							//this.addFieldError("用户","导入失败");
-							return "failed";
-						}
-						else
-					    {
-							pkp.setSum(sum);
-					    }
 						if(ps==null)
 						{
 							message="导入的新一代编号"+newnumber+"有误";
@@ -160,9 +147,30 @@ public String execute() throws Exception {
 						}
 						else
 					    {
-							ps.setKpiscore(sum);
+							BigDecimal sum = new BigDecimal("0");
+							for(int j=2;j<mm;j++)
+							{
+								String kpiname = sheet.getCell(j, 0).getContents().trim();
+								PKPIScore pkp = pkpdao.findByYearSeasonNewnumberKpiname(flag.getYear(),flag.getSeason(),newnumber, kpiname);
+								if(pkp!=null)
+								{
+									BigDecimal temp = new BigDecimal(sheet.getCell(j,i).getContents().trim());	
+									pkp.setSum(temp.doubleValue());
+									sum = sum.add(temp);
+									pkpdao.merge(pkp);
+								}
+							}
+							summ = sum.doubleValue();
+							if(ps.getKpiprop()==1)
+							{
+								summ = summ>0?summ:0;
+							}
+							else if(ps.getKpiprop()==-1)
+							{
+								summ = summ>0?0:summ;
+							}
+							ps.setKpiscore(summ);
 					    }
-						    pkpdao.merge(pkp);
 						    psdao.merge(ps);
 		    	        }
 					}

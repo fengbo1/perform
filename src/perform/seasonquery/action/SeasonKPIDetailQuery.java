@@ -20,7 +20,7 @@ public class SeasonKPIDetailQuery {
 	private String ratepeoplename;
 	private String ratepeopleposition;
 	private PUser pu;
-	private PKPIScore ps;
+//	private PKPIScore ps;
 	private int year;
 	private int season;
 	private double score;
@@ -73,12 +73,12 @@ public class SeasonKPIDetailQuery {
 	public void setScore(double score) {
 		this.score = score;
 	}
-	public PKPIScore getPs() {
-		return ps;
-	}
-	public void setPs(PKPIScore ps) {
-		this.ps = ps;
-	}
+//	public PKPIScore getPs() {
+//		return ps;
+//	}
+//	public void setPs(PKPIScore ps) {
+//		this.ps = ps;
+//	}
 	public List<PKPIScore> getList() {
 		return list;
 	}
@@ -93,7 +93,7 @@ public class SeasonKPIDetailQuery {
     	Transaction trans=session.beginTransaction();
     	try {
     		pu = pudao.findByNewNumber(ratepeople);
-    		ps = psdao.findByNewNumbernew(ratepeople,year,season);
+    	//	ps = psdao.findByNewNumbernew(ratepeople,year,season);
     		if(pu!=null)
     		{
     			ratepeoplename = pu.getName();

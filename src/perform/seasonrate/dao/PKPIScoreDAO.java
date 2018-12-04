@@ -239,7 +239,6 @@ public class PKPIScoreDAO extends BaseHibernateDAO  {
 			throw re;
 		}
 	}
-    
     public List<PKPIScore> findByYearSeasonNewnumber(int year,int season,String newnumber) {
     	log.debug("finding all PKPIScore instances");
     	try {
@@ -247,6 +246,26 @@ public class PKPIScoreDAO extends BaseHibernateDAO  {
 			 Query queryObject = getSession().createQuery(queryString);
     		 List<PKPIScore> list = queryObject.list();
     		 return list;
+    	} catch (RuntimeException re) {
+    		log.error("find all failed", re);
+    		throw re;
+    	}
+    }
+    
+    public PKPIScore findByYearSeasonNewnumberKpiname(int year,int season,String newnumber,String kpiname) {
+    	log.debug("finding all PKPIScore instances");
+    	try {
+    		String queryString = "from PKPIScore as kp where kp.newnumber='"+newnumber+"' and kp.year='"+year+"'  and kp.season='"+season+"' and kp.kpiname like '"+kpiname+"'";
+			 Query queryObject = getSession().createQuery(queryString);
+    		 List<PKPIScore> list = queryObject.list();
+    		 if(list.isEmpty())
+    		 {
+    			 return null;
+    		 }
+    		 else
+    		 {
+    			 return list.get(0);
+    		 }
     	} catch (RuntimeException re) {
     		log.error("find all failed", re);
     		throw re;

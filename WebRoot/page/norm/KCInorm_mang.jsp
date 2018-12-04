@@ -120,16 +120,16 @@ function brbrbr()
 								<td  height="25" align="center" valign="middle" nowrap><div
 										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
 									
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle"><div
 										align="center">${kc.name}</div></td>		
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle"><div
 										align="center">${kc.score}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle" ><div
 										align="left">${kc.rule}</div></td>
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle"><div
 										align="left">${kc.remark}</div></td>
 							<c:if test="${authoW=='W'}">
-								<td height="25" align="center" valign="middle" nowrap><div
+								<td height="25" align="center" valign="middle"><div
 										align="center">
 										
 										<input type="button" value="删除" onclick="del('${kc.id}')"/>
