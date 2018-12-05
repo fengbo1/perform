@@ -159,7 +159,8 @@ public class SeasonQueryCenter {
 		notrate = "";
 		String result = "success";
 		String hql = "";
-		UserUtil uu = new UserUtil();
+		PFlag pf = null;
+		String adyrate = "";
 		PFlagDAO pfdao = new PFlagDAO();
 		PUserDAO pudao = new PUserDAO();
 		DateTimeUtil dtu = new DateTimeUtil();
@@ -179,18 +180,25 @@ public class SeasonQueryCenter {
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();
 		try {
-			
-			PUser purater = pudao.findByNewNumber(rater);
-			String position = purater.getPosition();
 			if(year==0||season==0)//未选年和季度
 			{
-				PFlag pf = pfdao.findByIsNew(1);
-				year = pf.getYear();
-				season = pf.getSeason();
+				pf = pfdao.findByIsNew(1);
+				if(pf!=null)
+				{
+					year = pf.getYear();
+					season = pf.getSeason();
+				}
+			}
+			else
+			{
+				pf = pfdao.findByYearSeason(year, season);
+				if(pf!=null)
+				{
+					adyrate = pf.getAlreadyrate();
+				}
 			}
 			List<PUser> listrater = pudao.findRaterByChu(chu);
-			PFlag pf = pfdao.findByYearSeason(year, season);
-			String adyrate = pf.getAlreadyrate();
+			
 			for(int i=0;i<listrater.size();i++)
 			{
 				PUser pu = listrater.get(i);

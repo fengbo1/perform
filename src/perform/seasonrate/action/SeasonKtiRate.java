@@ -73,7 +73,7 @@ public class SeasonKtiRate {
 		Session session = HibernateSessionFactory.getSession();
     	Transaction trans=session.beginTransaction();
     	try {
-    		list = pdao.findByYearSeasonNewnumber(year, season, ratepeople);
+    		list = pdao.findByYearSeasonNewnumberRater(year, season, ratepeople,rater);
     		ps = psdao.findByNewnumberYearSeason(ratepeople, year, season);
     	}catch (Exception e) {
 			trans.rollback();//出错回滚

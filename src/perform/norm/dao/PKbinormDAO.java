@@ -183,7 +183,7 @@ public class PKbinormDAO extends BaseHibernateDAO {
 	    	}
 	    }
 	 
-	 public PKbinorm findAllById(int id) {
+	 public PKbinorm findAllById(String id) {
 			log.debug("finding all PKbinorm instances");
 			try {
 				String queryString = "from PKbinorm where id='"+id+"'";

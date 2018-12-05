@@ -188,7 +188,7 @@ public class PKtinormDAO extends BaseHibernateDAO {
 	    	}
 	    }
 	 
-	 public PKtinorm findAllById(int id) {
+	 public PKtinorm findAllById(String id) {
 			log.debug("finding all PKtinorm instances");
 			try {
 				String queryString = "from PKtinorm where id='"+id+"'";

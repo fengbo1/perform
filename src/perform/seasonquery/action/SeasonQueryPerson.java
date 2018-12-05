@@ -148,8 +148,11 @@ public class SeasonQueryPerson {
 			if(year==0||season==0)//未选年和季度
 			{
 				PFlag pf = pfdao.findByIsNew(1);
-				year = pf.getYear();
-				season = pf.getSeason();
+				if(pf!=null)
+				{
+					year = pf.getYear();
+					season = pf.getSeason();
+				}
 			}
 			ps = psdao.findByNewnumberYearSeason(querynewnumber, year, season);
 			chu = ps.getPositionchu();

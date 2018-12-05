@@ -175,8 +175,11 @@ public class HisQueryCenter {
 			if(year==0||season==0)//未选年和季度
 			{
 				PFlag pf = pfdao.findByIsNew(1);
-				year = pf.getYear();
-				season = pf.getSeason();
+				if(pf!=null)
+				{
+					year = pf.getYear();
+					season = pf.getSeason();
+				}
 			}
 			hql = "from PScore as p where p.year='"+year+"' and p.season='"+season+"'";
 			if(chu!=null&&!chu.equals("wu"))

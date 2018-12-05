@@ -168,8 +168,7 @@ public class PosShow_mang {
         		String[] kbips = pp.getKbinormprop().split("、");
         		for(int i=0;i<kpis.length;i++)
         		{
-        			int tempkpi = Integer.valueOf(kpis[i]);
-        			PKpinorm tempkpin = kpindao.findAllById(tempkpi);
+        			PKpinorm tempkpin = kpindao.findAllById(kpis[i]);
         			if(tempkpin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -184,8 +183,7 @@ public class PosShow_mang {
         		}
         		for(int i=0;i<ktis.length;i++)
         		{
-        			int tempkti = Integer.valueOf(ktis[i]);
-        			PKtinorm tempktin = ktindao.findAllById(tempkti);
+        			PKtinorm tempktin = ktindao.findAllById(ktis[i]);
         			if(tempktin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -199,8 +197,7 @@ public class PosShow_mang {
         		}
         		for(int i=0;i<kbis.length;i++)
         		{
-        			int tempkbi = Integer.valueOf(kbis[i]);
-        			PKbinorm tempkbin = kbindao.findAllById(tempkbi);
+        			PKbinorm tempkbin = kbindao.findAllById(kbis[i]);
         			if(tempkbin!=null)
         			{
         				PdpBean temppb = new PdpBean();
@@ -214,8 +211,7 @@ public class PosShow_mang {
         		}
         		for(int i=0;i<kcis.length;i++)
         		{
-        			int tempkci = Integer.valueOf(kcis[i]);
-        			PKcinorm tempkcin = kcindao.findAllById(tempkci);
+        			PKcinorm tempkcin = kcindao.findAllById(kcis[i]);
         			if(tempkcin!=null)
         			{
         				PdpBean temppb = new PdpBean();

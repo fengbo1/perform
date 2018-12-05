@@ -223,34 +223,38 @@ public class RateBegin {
 //				String[] kpinormprops = pp.getKpinormprop().split("、");//kpi指标比重
 				for(int j=0;j<kpinorms.length;j++)
 				{
-					int kpin = Integer.valueOf(kpinorms[j]);//指标编号
+					
 //					double kpip = Double.valueOf(kpinormprops[j]);//指标权重
-					PKpinorm pkpinorm = pkpindao.findAllById(kpin); 
-					PKPIScore pkpis = new PKPIScore();
-					pkpis.setYear(year);
-					pkpis.setSeason(season);
-					pkpis.setNewnumber(pu.getNewnumber());
-					pkpis.setName(pu.getName());
-					pkpis.setKpiname(pkpinorm.getName());
-					//pkpis.setKpipdpname(pkpinorm.getPdpname());
-					pkpis.setKpinumber(kpin);
-					pkpis.setTarget(pkpinorm.getTarget());
-					if(ps.getKpiprop()==1)
+					PKpinorm pkpinorm = pkpindao.findAllById(kpinorms[j]);
+					if(pkpinorm!=null)
 					{
-						pkpis.setScore(100.0);
+						int kpin = Integer.valueOf(kpinorms[j]);//指标编号
+						PKPIScore pkpis = new PKPIScore();
+						pkpis.setYear(year);
+						pkpis.setSeason(season);
+						pkpis.setNewnumber(pu.getNewnumber());
+						pkpis.setName(pu.getName());
+						pkpis.setKpiname(pkpinorm.getName());
+						//pkpis.setKpipdpname(pkpinorm.getPdpname());
+						pkpis.setKpinumber(kpin);
+						pkpis.setTarget(pkpinorm.getTarget());
+						if(ps.getKpiprop()==1)
+						{
+							pkpis.setScore(100.0);
+						}
+						else if(ps.getKpiprop()==-1)
+						{
+							pkpis.setScore(0.0);
+						}
+						else
+						{
+							pkpis.setScore(100.0);
+						}
+						pkpis.setRule(pkpinorm.getRule());
+						pkpis.setSum(0.0);
+						pkpis.setKpipdpname(pkpinorm.getRemark());
+						pkpisdao.merge(pkpis);
 					}
-					else if(ps.getKpiprop()==-1)
-					{
-						pkpis.setScore(0.0);
-					}
-					else
-					{
-						pkpis.setScore(100.0);
-					}
-					pkpis.setRule(pkpinorm.getRule());
-					pkpis.setSum(0.0);
-					pkpis.setKpipdpname(pkpinorm.getRemark());
-					pkpisdao.merge(pkpis);
 				}
 				//初始化ktiscore
 				String[] ktinorms = pp.getKtinorm().split("、");//kti指标
@@ -258,30 +262,34 @@ public class RateBegin {
 				String[] ktirater = pp.getKtirater().split("\\|");
 				for(int j=0;j<ktinorms.length;j++)
 				{
-					int ktin = Integer.valueOf(ktinorms[j]);//指标编号
+					
 					double ktip = Double.valueOf(ktinormprops[j]);//指标权重
-					PKtinorm pktinorm = pktindao.findAllById(ktin); 
-					PKTIScore pktis = new PKTIScore();
-					pktis.setYear(year);
-					pktis.setSeason(season);
-					pktis.setNewnumber(pu.getNewnumber());
-					pktis.setName(pu.getName());
-					pktis.setKtiname(pktinorm.getName());
-					pktis.setKtinumber(ktin);
-					pktis.setTarget(pktinorm.getTarget());
-					pktis.setScore(pktinorm.getScore()*ktip);
-					pktis.setRule(pktinorm.getRule());
-					pktis.setSum(0.0);
-					if(ktirater[j].equals("moren"))
+					PKtinorm pktinorm = pktindao.findAllById(ktinorms[j]); 
+					if(pktinorm!=null)
 					{
-						pktis.setRater1(listrater.get(0).getNewnumber());
+						int ktin = Integer.valueOf(ktinorms[j]);//指标编号
+						PKTIScore pktis = new PKTIScore();
+						pktis.setYear(year);
+						pktis.setSeason(season);
+						pktis.setNewnumber(pu.getNewnumber());
+						pktis.setName(pu.getName());
+						pktis.setKtiname(pktinorm.getName());
+						pktis.setKtinumber(ktin);
+						pktis.setTarget(pktinorm.getTarget());
+						pktis.setScore(pktinorm.getScore()*ktip);
+						pktis.setRule(pktinorm.getRule());
+						pktis.setSum(0.0);
+						if(ktirater[j].equals("moren"))
+						{
+							pktis.setRater1(listrater.get(0).getNewnumber());
+						}
+						else
+						{
+							pktis.setRater1(ktirater[j]);
+						}
+						pktis.setResult1(0.0);
+						pktisdao.merge(pktis);
 					}
-					else
-					{
-						pktis.setRater1(ktirater[j]);
-					}
-					pktis.setResult1(0.0);
-					pktisdao.merge(pktis);
 				}
 				//初始化kbiscore
 				String[] kbinorms = pp.getKbinorm().split("、");//kbi指标
@@ -292,58 +300,69 @@ public class RateBegin {
 				System.out.println(pu.getPnum());
 				for(int j=0;j<kbinorms.length;j++)
 				{
-					int kbin = Integer.valueOf(kbinorms[j]);//指标编号
+					
 					double kbip = Double.valueOf(kbinormprops[j]);//指标权重
-					PKbinorm pkbinorm = pkbindao.findAllById(kbin); 
-					PKBIScore pkbis = new PKBIScore();
-					pkbis.setYear(year);
-					pkbis.setSeason(season);
-					pkbis.setNewnumber(pu.getNewnumber());
-					pkbis.setName(pu.getName());
-					pkbis.setKbiname(pkbinorm.getName());
-					pkbis.setKbinumber(kbin);
-					pkbis.setTarget(pkbinorm.getTarget());
-					pkbis.setScore(pkbinorm.getScore()*kbip);
-					pkbis.setRule(pkbinorm.getRule());
-					pkbis.setSum(0.0);
-					pkbis.setRater1(listrater.get(0).getNewnumber());
-					pkbis.setResult1(0.0);
-					pkbisdao.merge(pkbis);
+					PKbinorm pkbinorm = pkbindao.findAllById(kbinorms[j]); 
+					if(pkbinorm!=null)
+					{
+						int kbin = Integer.valueOf(kbinorms[j]);//指标编号
+						PKBIScore pkbis = new PKBIScore();
+						pkbis.setYear(year);
+						pkbis.setSeason(season);
+						pkbis.setNewnumber(pu.getNewnumber());
+						pkbis.setName(pu.getName());
+						pkbis.setKbiname(pkbinorm.getName());
+						pkbis.setKbinumber(kbin);
+						pkbis.setTarget(pkbinorm.getTarget());
+						pkbis.setScore(pkbinorm.getScore()*kbip);
+						pkbis.setRule(pkbinorm.getRule());
+						pkbis.setSum(0.0);
+						pkbis.setRater1(listrater.get(0).getNewnumber());
+						pkbis.setResult1(0.0);
+						pkbisdao.merge(pkbis);
+					}
+					
 				}
 				//初始化kciscore
 				String[] kcinorms = pp.getKcinorm().split("、");//kci指标
 				String[] kcinormprops = pp.getKcinormprop().split("、");//kci指标比重
 				for(int j=0;j<kcinorms.length;j++)
 				{
-					int kcin = Integer.valueOf(kcinorms[j]);//指标编号
-					double kcip = Double.valueOf(kcinormprops[j]);//指标权重
-					PKcinorm pkcinorm = pkcindao.findAllById(kcin); 
-					PKCIScore pkcis = new PKCIScore();
-					pkcis.setYear(year);
-					pkcis.setSeason(season);
-					pkcis.setNewnumber(pu.getNewnumber());
-					pkcis.setName(pu.getName());
-					pkcis.setKciname(pkcinorm.getName());
-					pkcis.setKcinumber(kcin);
-					pkcis.setTarget(pkcinorm.getTarget());
-					if(ps.getKciprop()==1)
+					
+					
+					PKcinorm pkcinorm = pkcindao.findAllById(kcinorms[j]); 
+					if(pkcinorm!=null)
 					{
-						pkcis.setScore(100.0);
+						double kcip = Double.valueOf(kcinormprops[j]);//指标权重
+						int kcin = Integer.valueOf(kcinorms[j]);//指标编号
+						PKCIScore pkcis = new PKCIScore();
+						pkcis.setYear(year);
+						pkcis.setSeason(season);
+						pkcis.setNewnumber(pu.getNewnumber());
+						pkcis.setName(pu.getName());
+						pkcis.setKciname(pkcinorm.getName());
+						pkcis.setKcinumber(kcin);
+						pkcis.setTarget(pkcinorm.getTarget());
+						if(ps.getKciprop()==1)
+						{
+							pkcis.setScore(100.0);
+						}
+						else if(ps.getKpiprop()==-1)
+						{
+							pkcis.setScore(0.0);
+						}
+						else
+						{
+							pkcis.setScore(100.0);
+						}
+						pkcis.setRule(pkcinorm.getRule());
+						pkcis.setProp(kcip);
+						pkcis.setSum(0.0);
+						pkcis.setRater1(listrater.get(0).getNewnumber());
+						pkcis.setResult1(0.0);
+						pkcisdao.merge(pkcis);
 					}
-					else if(ps.getKpiprop()==-1)
-					{
-						pkcis.setScore(0.0);
-					}
-					else
-					{
-						pkcis.setScore(100.0);
-					}
-					pkcis.setRule(pkcinorm.getRule());
-					pkcis.setProp(kcip);
-					pkcis.setSum(0.0);
-					pkcis.setRater1(listrater.get(0).getNewnumber());
-					pkcis.setResult1(0.0);
-					pkcisdao.merge(pkcis);
+					
 				}
 				psdao.merge(ps);
 			}

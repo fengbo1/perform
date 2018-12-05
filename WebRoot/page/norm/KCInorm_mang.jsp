@@ -79,12 +79,13 @@ function brbrbr()
 								colspan="12" align="center" bordercolor="#FFFFFF"><b>加分项指标库</b>
 							</td>
 						</tr>
+						<!-- 
 						<tr>
 							<td colspan="12" height="10px">
 								<div align="center">
 									<input type="button" value="全量导出" onclick="expressout()"/>
 						</div></td>	
-						</tr>
+						</tr> -->
 						<tr height="50px" class="表格表头背景1" id="hang">
 							<td  width="40px" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">

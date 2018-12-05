@@ -88,6 +88,7 @@ $('#chu').attr('value',x[0].value);
 								 -->
 								 年度: ${year}
 								  季度: ${season}
+								<c:if test="${zhis=='0'||authoW=='W'}">
 								处室
 								<select id="chu" name="chu" style="width: 150px" onchange="gettuan()">
 										<option value="wu">-请选择处室名称-</option>
@@ -96,7 +97,11 @@ $('#chu').attr('value',x[0].value);
 						                 <option value="3">通用业务二处</option>
 						                 <option value="6">专业处理二处</option>
 						                 <option value="5">研发支持二处</option>	
-								</select>				
+								</select>
+								</c:if>	
+								<c:if test="${zhis!='0'&&authoW!='W'}">
+									<input type="hidden" name="chu" value="${chu}"/>
+								</c:if>				
 								姓名
 								<input style="width:60px" type="text" id="name" name="name" value="${name}"/>			
 								<input type="submit" value="查询"/>
@@ -238,7 +243,7 @@ $('#chu').attr('value',x[0].value);
 			</tr>
 			<tr class="btbj" id="hang" style="height:20px">
 				<td width="100px"  height="40" align="center" valign="middle" nowrap>
-				未已提交考核：
+				未提交考核：
 				</td>
 				<td width="1000px"  height="40" align="center" valign="middle" nowrap>
 				${notrate}

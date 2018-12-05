@@ -49,7 +49,7 @@ b{
   
   <body>
     <form action="seasonquery_person.action" method="post">
-    	  <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>关键业绩指标KPI得分</strong></p>
+    	  <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>关键任务指标得分</strong></p>
        		<p align="center" style="padding:0px;margin:0px; font-size: 16px;">
 				年度	:${year}					
 								

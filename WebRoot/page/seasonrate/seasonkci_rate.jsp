@@ -150,7 +150,7 @@ if(type=='rate')
 						<tr>
 							<td
 								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="7" align="center" bordercolor="#FFFFFF"><b>关键胜任力指标KCI评分</b>
+								colspan="7" align="center" bordercolor="#FFFFFF"><b>加分项评分</b>
 							</td>
 						</tr>
 						<tr  >

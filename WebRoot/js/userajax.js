@@ -249,11 +249,11 @@ function tuanidtoname(chu,id)
     }
     else if(id=="1")
     {
-       result="智慧柜员机&龙易行团队";
+       result="研发支持团队1";
     }
     else if(id=="2")
     {
-       result="柜面&智慧银行团队";
+       result="研发支持团队2";
     }
    }
    else if(chu=="U")//物业服务处

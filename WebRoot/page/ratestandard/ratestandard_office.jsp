@@ -91,7 +91,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								bordercolor=none><div align="center">
 									<p>岗位</p>
 								</div></td>
-							<td  width="80px"  align="center" valign="middle" nowrap
+							<td  width="150px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>绩效目标任务书</p>
 								</div></td>	

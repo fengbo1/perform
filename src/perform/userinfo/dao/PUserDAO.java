@@ -381,7 +381,7 @@ public class PUserDAO extends BaseHibernateDAO  {
 	public List findRaterByChu(String chu) {
 		log.debug("finding all PUser instances");
 		try {
-			if(chu.equals("wu"))
+			if(chu.equals("wu")||chu.equals("0"))
 			{
 				chu="_";
 			}

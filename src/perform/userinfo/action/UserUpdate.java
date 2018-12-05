@@ -218,7 +218,7 @@ public class UserUpdate extends ActionSupport implements ServletResponseAware {
 	 	    ui.setName(name);
 	 	    ui.setCanscore(canscore);
 	 	    ui.setPosition(position);
-	 	    ui.setAutho(roletoautho(role));
+	 	    ui.setAutho(roletoautho(role,zhiwu));
 	 	    ui.setPnum(pos);
 	 	    uidao.merge(ui);
 	 	    message="修改成功";
@@ -228,12 +228,34 @@ public class UserUpdate extends ActionSupport implements ServletResponseAware {
 			session.close();
 			return "success";
 		}
-		 public static String roletoautho(String role)
+		 public String roletoautho(String role,String zhiwu)
 		    {
 			 	String autho="";
-		    	autho = Util.autho.substring(0, Util.AUTHO.indexOf("E"))+"E"+ Util.autho.substring(Util.AUTHO.indexOf("E")+1,Util.autho.length());
-		    	autho = autho.substring(0, Util.AUTHO.indexOf(role))+role+ autho.substring(Util.AUTHO.indexOf(role)+1,Util.autho.length());
-		    	
+			 	if(zhiwu.equals("0"))
+			 	{
+			 		zhiwu="A";
+			 	}
+			 	else if(zhiwu.equals("1"))
+			 	{
+			 		zhiwu="B";
+			 	}
+			 	else if(zhiwu.equals("2"))
+			 	{
+			 		zhiwu="C";
+			 	}
+			 	else if(zhiwu.equals("3"))
+			 	{
+			 		zhiwu="E";
+			 	}
+			 	else if(zhiwu.equals("4"))
+			 	{
+			 		zhiwu="D";
+			 	}
+		    	autho = Util.autho.substring(0, Util.AUTHO.indexOf(zhiwu))+zhiwu+ Util.autho.substring(Util.AUTHO.indexOf(zhiwu)+1,Util.autho.length());
+		    	if(!role.equals("E"))
+		    	{
+		    		autho = autho.substring(0, Util.AUTHO.indexOf(role))+role+ autho.substring(Util.AUTHO.indexOf(role)+1,Util.autho.length());
+		    	}
 		    	return autho;
 		    }
 

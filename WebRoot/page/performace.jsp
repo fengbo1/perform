@@ -80,7 +80,7 @@ function frame(o)
 	}
 	else if(obj=="seasonquery_center")
 	{
-		document.getElementById("frame").src="<%=path%>/seasonquery_center.action?rater=${newnumber}";
+		document.getElementById("frame").src="<%=path%>/seasonquery_center.action?rater=${newnumber}&chu=${chus}";
 	}
 	else if(obj=="seasonquery_kpi")
 	{
@@ -88,7 +88,7 @@ function frame(o)
 	}
 	else if(obj=="seasonrate")
 	{
-		document.getElementById("frame").src="<%=path%>/seasonrate_list_rate.action?rater=${newnumber}";
+		document.getElementById("frame").src="<%=path%>/seasonrate_new_list_rate.action?rater=${newnumber}";
 	}
 	else if(obj=="rate_set")
 	{
@@ -240,6 +240,7 @@ $(document).ready(function(){
 				</div>
 					<div style="margin-top: 5px; background-color: #188AE7;">
 						<ul class="expmenu">
+							 <c:if test="${canscores=='1'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">考核评分</span>
@@ -248,13 +249,16 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('seasonrate')">季度评分</li>
 								</ul>
 							</li>
+							</c:if>
 							<li class="a">
 								<div class="header">
 									<span class="label">查看评分</span>
 								</div>
 								<ul class="menu1">
 									<li class="cc"  onclick="frame('seasonquery_person')">个人绩效得分查询</li>
+									<c:if test="${zhis=='0'||zhis=='1'||zhis=='2'||authoW=='W'}">
 									<li class="cc"  onclick="frame('seasonquery_center')">中心员工绩效得分查询</li>
+									</c:if>
 								</ul>
 							</li>
 							<li class="a">

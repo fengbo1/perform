@@ -117,9 +117,11 @@
 						<div class="four_columns_text">
 							<input type="button" onclick="beginrate()" value="开始评分"/>
 						</div>
+						<!-- 
 						<div class="four_columns_text">
 						 	<input type="button" onclick="expressun()" value="导出未评分人名单"/>
 						</div>
+						 -->
 						<div class="four_columns_text">
 							<input type="button" onclick="jisuan()" value="结束并计算"/>
 						</div>
@@ -133,8 +135,8 @@
 				<div class="clear"></div>
 				<div class="four_columns">
 						提示1：评分过程中不能操作【用户管理】、【岗位管理】、【指标管理】<br/>
-						提示2：结束评分之后，保存评分之前不能操作【用户管理】、【岗位管理】、【指标管理】、【评分】、【导入KPI】，可以修改当季评分内容<br/>
-						提示3：提交评分之后不能操作【打分】、【导入KPI】，不能修改当季评分内容<br/>
+						提示2：结束评分之后，保存评分之前不能操作【用户管理】、【岗位管理】、【指标管理】、【评分】、【导入数据】，可以修改当季评分内容<br/>
+						提示3：提交评分之后不能操作【打分】、【导入数据】，不能修改当季评分内容<br/>
 						提示4：绩效管理员可以初始化任一季度评分
 					<div class="clear"></div>
 				</div>

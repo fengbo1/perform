@@ -122,19 +122,7 @@ if(type=='rate')
 		obj.focus();
 		return false;
 	   }
-	/*  else if(score.length==0)
-	  {
-		alert("输入的分数不能为空！");
-		obj.focus();
-		return false;
-		}*/
 	  }
- function rtn()
- {
-	  action='seasonrate_list_rate.action';
-		method="post";
-		submit();
-	} 
  </script>
  <link href="<%=path%>/css/table_back.css" rel="stylesheet" type="text/css">
   </head>
@@ -179,6 +167,10 @@ if(type=='rate')
 								</div></td>
 							<td  width="15%" align="center" valign="middle" 
 								bordercolor=none><div align="center">
+									<p>姓名</p>
+								</div></td>	
+							<td  width="15%" align="center" valign="middle" 
+								bordercolor=none><div align="center">
 									<p>指标/任务名称</p>
 								</div></td>
 							<td  width="30%" align="center" valign="middle" 
@@ -202,10 +194,12 @@ if(type=='rate')
 									<p>备注</p>
 								</div></td> -->
 						</tr>
-						<c:forEach items="${list}" var="entity" varStatus="status">
+						<c:forEach items="${listkti}" var="entity" varStatus="status">
 							<tr class="btbj" id="hang" style="height:20px">
 								<td  height="25" align="center" valign="middle" ><div
 										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
+								<td height="25" align="center" valign="middle" ><div
+										align="center">${entity.name}</div></td>
 								<td height="25" align="center" valign="middle" ><div
 										align="center">${entity.ktiname}</div></td>
 								<td height="25" align="left" valign="middle" ><div
@@ -241,7 +235,125 @@ if(type=='rate')
 								  </c:if>	
 								</c:if>
 								</div></td>
-								<!--<td height="25" align="center" valign="middle" ><div
+							</tr>
+						</c:forEach>	
+							<tr class="表格表头背景">
+						</tr>
+    				<tr class="表格表头背景">
+    					<td colspan="7" height="25" align="center" valign="middle" ><div
+										align="center">
+									<input type="button" onclick="javascript:history.go(-1);" value="保存" />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+								<input type="button" onclick="tijiao()"  value="提  交" />
+							</div></td>
+    				</tr>
+		</table>
+		</form>
+		<br/><br/><br/><br/><br/><br/>
+		<form action="<%=path%>/subseasonkbi_rate.action" method="post" name="fm1">
+					<table height="80" align="center" cellpadding="0" style="width:1100px"
+						cellspacing="2" border: 0px;">
+						<tr>
+							<td
+								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
+								colspan="7" align="center" bordercolor="#FFFFFF"><b>关键品能目标评分</b>
+							</td>
+						</tr>
+						<tr  >
+							<td colspan="7" height="10px">
+								<div align="center">
+								处室	:${ps.positionchu}	
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					
+								 团队:${ps.positiontuan}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+								姓名:${ps.name}
+								<input type="hidden" name="ratepeople" value="${ratepeople}"/>
+								<input type="hidden" name="rater" value="${rater}"/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+								评分年份:${year}
+								<input type="hidden" name="year" value="${year}"/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+								评分季度:${season}
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+								 总分：
+								 <span id="sumscore" style="color:red"></span>
+								<input type="hidden" name="season" value="${season}"/>
+								<input type="hidden" name="type" value="${type}"/>
+						</div></td>	
+						</tr>
+						<tr height="50px" class="表格表头背景1" id="hang">
+							<td  width="5%" align="center" valign="middle"
+								bordercolor=none><div align="center">
+									<p>序号</p>
+								</div></td>
+							<td  width="15%" align="center" valign="middle"
+								bordercolor=none><div align="center">
+									<p>指标/任务名称</p>
+								</div></td>
+							<td  width="35%" align="center" valign="middle"
+								bordercolor=none><div align="center">
+									<p>目标值/任务目标</p>
+								</div></td>
+							<td  width="20%"  align="center" valign="middle"
+								bordercolor=none><div align="center">
+									<p>考核规则</p>
+								</div></td>	
+							<td  width="7%"  align="center" valign="middle"
+								bordercolor=none><div align="center">
+									<p>分值</p>
+								</div></td>	
+							<td  width="8%"  align="center" valign="middle"
+								bordercolor=none><div align="center">
+									<p>评分</p>
+								</div></td>
+							<!-- <td  width="15%"  align="center" valign="middle"
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td> -->
+						</tr>
+						<c:forEach items="${listkbi}" var="entity" varStatus="status">
+							<tr class="btbj" id="hang" style="height:20px">
+								<td  height="25" align="center" valign="middle"><div
+										align="center">${status.index+1+(currentPage-1)*pageSize}</div></td>
+								<td height="25" align="center" valign="middle"><div
+										align="center">${entity.kbiname}</div></td>
+								<td height="25" align="left" valign="middle"><div
+										align="left">${entity.target}</div></td>
+								<td height="25" align="center" valign="middle"><div
+										align="center">${entity.rule}</div></td>
+								<td height="25" align="center" valign="middle"><div
+										align="center">${entity.score}</div></td>
+								<td height="25" align="center" valign="middle"><div
+										align="center">
+								<c:if test="${newnumber==entity.rater1}">
+								 <c:if test="${entity.result1==0}">
+									<input name="score" type="text" onpropertychange="jisuan();" onblur="check(this,'${entity.score}');" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')" maxlength="5"  style="width:70%" value=""/>
+                                  </c:if>
+                                 <c:if test="${entity.result1!=0}">
+                                    <input name="score" type="text" onpropertychange="jisuan();" onblur="check(this,'${entity.score}');" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')" maxlength="5"  style="width:70%" value="${entity.result1}"/>
+                                  </c:if>								
+								</c:if>		
+								<c:if test="${newnumber==entity.rater2}">
+									<c:if test="${entity.result2==0}">
+									<input name="score" type="text" onpropertychange="jisuan();" onblur="check(this,'${entity.score}');" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')" maxlength="5"  style="width:70%" value=""/>
+                                  </c:if>
+                                 <c:if test="${entity.result2!=0}">
+                                    <input name="score" type="text" onpropertychange="jisuan();" onblur="check(this,'${entity.score}');" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')" maxlength="5"  style="width:70%" value="${entity.result2}"/>
+                                  </c:if>	
+								</c:if>
+								<c:if test="${newnumber==entity.rater3}">
+								  <c:if test="${entity.result3==0}">
+									<input name="score" type="text" onpropertychange="jisuan();" onblur="check(this,'${entity.score}');" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')" maxlength="5"  style="width:70%" value=""/>
+                                  </c:if>
+                                 <c:if test="${entity.result3!=0}">
+                                    <input name="score" type="text" onpropertychange="jisuan();" onblur="check(this,'${entity.score}');" onkeyup="this.value=value.replace(/[^\d.]/g,'')"  onafterpaste="this.value=value.replace(/[^\d.]/g,'')" maxlength="5"  style="width:70%" value="${entity.result3}"/>
+                                  </c:if>	
+								</c:if>			
+								</div></td>
+							   <!-- <td height="25" align="center" valign="middle"><div
 										align="center">
 								<c:if test="${newnumber==entity.rater1}">
 									<input name="remark" type="text" maxlength="200" style="width:80%" value="${entity.remark1}"/>
@@ -251,17 +363,17 @@ if(type=='rate')
 								</c:if>
 								<c:if test="${newnumber==entity.rater3}">
 									<input name="remark" type="text" maxlength="200" style="width:80%" value="${entity.remark3}"/>
-								</c:if>			
-										</div></td>-->
+								</c:if>				
+								</div></td> -->
 							</tr>
 						</c:forEach>	
 							<tr class="表格表头背景">
 						</tr>
     				<tr class="表格表头背景">
-    					<td colspan="7" height="25" align="center" valign="middle" ><div
+    					<td colspan="7" height="25" align="center" valign="middle"><div
 										align="center">
 								<c:if test="${type=='rate'}">
-									<input type="button" onclick="rtn();" value="返 回" />
+									<input type="button" onclick="rtn();" vsalue="返 回" />
 								</c:if>		
 								<c:if test="${type!='rate'}">
 									<input type="button" onclick="javascript:history.go(-1);" value="返 回" />

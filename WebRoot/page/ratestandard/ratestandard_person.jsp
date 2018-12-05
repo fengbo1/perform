@@ -114,19 +114,19 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     				${status.index+1}
     			</td>
     			<td>
-    				${kpi.pdpname}
+    				&nbsp;${kpi.name}
     			</td>
     			<td>
-    				${kpi.target}
+    				&nbsp;${kpi.target}
     			</td>
     			<td>
-    				${kpi.score}
+    				&nbsp;${kpi.score}
     			</td>
     			<td>
-    				${kpi.rule}
+    				&nbsp;${kpi.rule}
     			</td>
     			<td>
-    				&nbsp;;${kpi.remark}
+    				&nbsp;${kpi.remark}
     			</td>
     		</tr>
     		</c:forEach>
@@ -141,16 +141,16 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     				${status.index+1}
     			</td>
     			<td>
-    				${kti.name}
+    				&nbsp;${kti.name}
     			</td>
     			<td>
-    				${kti.target}
+    				&nbsp;${kti.target}
     			</td>
     			<td>
-    				<fmt:formatNumber type="number" value="${kti.score}" pattern="0.00" maxFractionDigits="2"/>
+    				&nbsp;<fmt:formatNumber type="number" value="${kti.score}" pattern="0.00" maxFractionDigits="2"/>
     			</td>
     			<td>
-    				${kti.rule}
+    				&nbsp;${kti.rule}
     			</td>
     			<td>
     				&nbsp;
@@ -168,16 +168,16 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     				${status.index+1}
     			</td>
     			<td>
-    				${kbi.name}
+    				&nbsp;${kbi.name}
     			</td>
     			<td>
-    				${kbi.target}
+    				&nbsp;${kbi.target}
     			</td>
     			<td>
-    				<fmt:formatNumber type="number" value="${kbi.score}" pattern="0.00" maxFractionDigits="2"/>
+    				&nbsp;<fmt:formatNumber type="number" value="${kbi.score}" pattern="0.00" maxFractionDigits="2"/>
     			</td>
     			<td>
-    				${kbi.rule}
+    				&nbsp;${kbi.rule}
     			</td>
     			<td>
     				&nbsp;
@@ -195,16 +195,16 @@ $("tr").css({"background-color":"#F0F8FF","font-family": "黑体","font-size": "
     				${status.index+1}
     			</td>
     			<td>
-    				${kci.name}
+    				&nbsp;${kci.name}
     			</td>
     			<td>
-    				${kci.target}
+    				&nbsp;${kci.target}
     			</td>
     			<td>
     				&nbsp;<fmt:formatNumber type="number" value="${kci.score}" pattern="0.00" maxFractionDigits="2"/>
     			</td>
     			<td>
-    				${kci.rule}
+    				&nbsp;${kci.rule}
     			</td>
     			<td>
     				&nbsp;${kci.remark}

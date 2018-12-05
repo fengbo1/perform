@@ -85,7 +85,7 @@ public class SubSeasonKtiRate {
 		Session session = HibernateSessionFactory.getSession();
     	Transaction trans=session.beginTransaction();
     	try {
-    		List<PKTIScore> listtemp = pdao.findByYearSeasonNewnumber(year, season, ratepeople);
+    		List<PKTIScore> listtemp = pdao.findByYearSeasonNewnumberRater(year, season, ratepeople,rater);
     		for(int i=0;i<listtemp.size();i++)
     		{
     			PKTIScore pstemp = listtemp.get(i);
@@ -106,8 +106,8 @@ public class SubSeasonKtiRate {
     			}
     			pstemp.setSum(score[i]);
     			pdao.merge(pstemp);
-    			list = pdao.findByYearSeasonNewnumber(year, season, ratepeople);
-        		ps = psdao.findByNewnumberYearSeason(ratepeople, year, season);
+//    			list = pdao.findByYearSeasonNewnumberRater(year, season, ratepeople,rater);
+//        		ps = psdao.findByNewnumberYearSeason(ratepeople, year, season);
     		}
     	}catch (Exception e) {
 			trans.rollback();//出错回滚

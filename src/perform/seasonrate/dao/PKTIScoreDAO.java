@@ -286,4 +286,28 @@ public class PKTIScoreDAO extends BaseHibernateDAO  {
     		throw re;
     	}
     }
+    public List<PKTIScore> findByYearSeasonNewnumberRater(int year,int season,String newnumber,String rater) {
+    	log.debug("finding all PKTIScore instances");
+    	try {
+    		String queryString = "from PKTIScore as p where p.year='"+year+"' and p.season='"+season+"' and p.newnumber='"+newnumber+"' and (rater1='"+rater+"' or rater2='"+rater+"' or rater3='"+rater+"')";
+             Query queryObject = getSession().createQuery(queryString);
+    		 List<PKTIScore> list = queryObject.list();
+    		 return list;
+    	} catch (RuntimeException re) {
+    		log.error("find all failed", re);
+    		throw re;
+    	}
+    }
+    public List<PKTIScore> findByYearSeasonRater(int year,int season,String rater) {
+    	log.debug("finding all PKTIScore instances");
+    	try {
+    		String queryString = "from PKTIScore as p where p.year='"+year+"' and p.season='"+season+"' and (rater1='"+rater+"' or rater2='"+rater+"' or rater3='"+rater+"')";
+             Query queryObject = getSession().createQuery(queryString);
+    		 List<PKTIScore> list = queryObject.list();
+    		 return list;
+    	} catch (RuntimeException re) {
+    		log.error("find all failed", re);
+    		throw re;
+    	}
+    }
 }

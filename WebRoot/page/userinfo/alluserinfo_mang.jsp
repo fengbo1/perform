@@ -209,7 +209,7 @@ for (var i=1;i<arry.length;i++){
 						</tr>
 						<tr>
 							<td colspan="12" height="10px">
-								
+								<div align="center">
     							<input type="hidden" id="city" name="city" value="2"/>					
 									处室
 									<select style="width:140px"  id="chu" name="chu" onchange="gettuan()">
@@ -232,7 +232,9 @@ for (var i=1;i<arry.length;i++){
 				                                                      姓名
 				                    <input type="text" id="name"  name="name" style="width: 100px" value="${strtemp}"/>	
 									<input type="submit" value="查询"/>
+									<!-- 
 									<input type="button" value="全量导出" onclick="expressout()"/>
+									 -->
 									<input type="hidden" id="paracity"  name="paracity" value="${city}"/>
 									<input type="hidden" id="parachu"  name="parachu" value="${chu}"/>
 									<input type="hidden" id="paratuan" name="paratuan" value="${tuan}"/>
