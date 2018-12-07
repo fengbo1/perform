@@ -151,18 +151,21 @@ function tijiao()
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
 										<!-- <fmt:formatNumber type="number" value="${entity.kti}" pattern="0.00" maxFractionDigits="2"/> -->
-								<c:if test="${entity.ktirater==newnumber}"><a href="<%=path%>/seasonkti_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">评分</a></c:if>
+								<c:if test="${entity.ktirater==newnumber}"><a href="<%=path%>/seasonkti_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">
+								<c:if test="${entity.ktirated=='yes'}">已</c:if><c:if test="${entity.ktirated=='no'}">未</c:if>评分
+								</a></c:if>
 								<c:if test="${entity.ktirater!=newnumber}">-</c:if>		
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<c:if test="${entity.kbirater==newnumber}"><a href="<%=path%>/seasonkbi_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">评分</a></c:if>
+								<c:if test="${entity.kbirater==newnumber}"><a href="<%=path%>/seasonkbi_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">
+								<c:if test="${entity.kbirated=='yes'}">已</c:if><c:if test="${entity.kbirated=='no'}">未</c:if>评分
+								</a></c:if>
 								<c:if test="${entity.kbirater!=newnumber}">-</c:if>		
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
-								<c:if test="${entity.kcirater==newnumber}"><a href="<%=path%>/seasonkci_rate.action?year=${year}&season=${season}&rater=${newnumber}&ratepeople=${entity.newnumber}">评分</a></c:if>
-								<c:if test="${entity.kcirater!=newnumber}">-</c:if>		
+										-
 										</div></td>	
 							   	<td height="25" align="center" valign="middle" nowrap><div
 										align="center">

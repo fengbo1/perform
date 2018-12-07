@@ -67,7 +67,7 @@ public class RateJisuan {
         		//将kbiscore得分更新到p_score中
         		sql = "update p_score a set a.kbiscore=(SELECT sum(b.sum) from p_kbiscore b where b.year='"+year+"' and b.season='"+season+"' and a.newnumber=b.newnumber group by b.newnumber) where a.year='"+year+"' and a.season='"+season+"'";
         		session.createSQLQuery(sql).executeUpdate();
-        		//将kciscore得分更新到p_score中
+//        		//将kciscore得分更新到p_score中
         		sql = "update p_score a set a.kciscore=(SELECT sum(b.sum) from p_kciscore b where b.year='"+year+"' and b.season='"+season+"' and a.newnumber=b.newnumber group by b.newnumber) where a.year='"+year+"' and a.season='"+season+"'";
         		session.createSQLQuery(sql).executeUpdate();
         		//更新p_score总分

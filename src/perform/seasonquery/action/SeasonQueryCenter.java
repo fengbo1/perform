@@ -187,6 +187,7 @@ public class SeasonQueryCenter {
 				{
 					year = pf.getYear();
 					season = pf.getSeason();
+					adyrate = pf.getAlreadyrate();
 				}
 			}
 			else

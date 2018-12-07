@@ -214,7 +214,7 @@ public class RateBegin {
 				ps.setKbiprop(pp.getKbiprop());
 				ps.setKciprop(pp.getKciprop());
 				ps.setKpirater("");
-				ps.setKtirater(pp.getKtirater());
+				ps.setKtirater(pp.getKtirater().replace("moren", listrater.get(0).getNewnumber()));
 				ps.setKbirater(listrater.get(0).getNewnumber());
 				ps.setKcirater(listrater.get(0).getNewnumber());
 				ps.setScore(0.0);

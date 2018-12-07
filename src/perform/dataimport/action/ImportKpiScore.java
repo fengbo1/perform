@@ -81,7 +81,7 @@ public class ImportKpiScore{
 public String execute() throws Exception {
 		
 		String realpath = "D:/import/performance/";
-		message = "导入成功";
+		message = "";
 		//UserInfoDAO uidao = new UserInfoDAO();
 		PKPIScoreDAO pkpdao = new PKPIScoreDAO();
 		PScoreDAO psdao = new PScoreDAO();
@@ -103,7 +103,7 @@ public String execute() throws Exception {
 		String yearmonth = fileFileName.substring(0, 6);
 		if(yearmonth.compareTo("201001")<0||yearmonth.compareTo("209912")>0)
 		{
-			message="文件名不符合规范";
+			message="文件名不符合规范,请以年份+季度开头";
 			//this.addFieldError("用户","文件名不符合规范");
 			return "failed";
 		}
@@ -154,10 +154,17 @@ public String execute() throws Exception {
 								PKPIScore pkp = pkpdao.findByYearSeasonNewnumberKpiname(flag.getYear(),flag.getSeason(),newnumber, kpiname);
 								if(pkp!=null)
 								{
-									BigDecimal temp = new BigDecimal(sheet.getCell(j,i).getContents().trim());	
-									pkp.setSum(temp.doubleValue());
-									sum = sum.add(temp);
-									pkpdao.merge(pkp);
+									if(sheet.getCell(j,i).getContents().equals(""))
+									{
+										message+="员工编号："+newnumber+"评分项："+kpiname+"内容为空，请注意评分";
+									}
+									else
+									{
+										BigDecimal temp = new BigDecimal(sheet.getCell(j,i).getContents().trim());	
+										pkp.setSum(temp.doubleValue());
+										sum = sum.add(temp);
+										pkpdao.merge(pkp);
+									}
 								}
 							}
 							summ = sum.doubleValue();
@@ -174,18 +181,7 @@ public String execute() throws Exception {
 						    psdao.merge(ps);
 		    	        }
 					}
-				if(flag.getAlreadyrate()==null)
-				{
-					flag.setAlreadyrate("shujutemp");//
-				}
-				else if(flag.getAlreadyrate().contains("shujutemp"))
-				{
-					flag.setAlreadyrate(flag.getAlreadyrate().replace("shujutemp",newnumber));
-				}
-				else
-				{
-					flag.setAlreadyrate(flag.getAlreadyrate()+"、shujutemp");
-				}
+				flag.setAlreadyrate(flag.getAlreadyrate()+"88888887");
 				}
 				catch (Exception e) {
 				trans.rollback();//出错回滚
@@ -200,7 +196,10 @@ public String execute() throws Exception {
 			//countKqjlDaily();//计算考勤记录日表
 			//countKqjlDailyForYgxy();//计算考勤记录日表(员工响应)
 			//countkqjlMonth();//计算考勤记录月表
-		
+		if(message.equals(""))
+		{
+			message = "导入成功";
+		}
 		return "success";
    }
 }

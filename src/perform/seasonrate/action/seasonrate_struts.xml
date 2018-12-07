@@ -7,7 +7,7 @@
 	<package name="seasonrate_default" extends="struts-default" >
 		<action name="seasonrate_list_rate" class="perform.seasonrate.action.SeasonRateList">
 			<result name="success">/page/seasonrate/seasonrate_list.jsp</result>
-			<result name="failed">/page/public/error.jsp</result>
+			<result name="failed">/page/public/errornoreturn.jsp</result>
 		</action>
 		<action name="seasonrate_new_list_rate" class="perform.seasonrate.action.SeasonNewRateList">
 			<result name="success">/page/seasonrate/seasonnewrate_list.jsp</result>

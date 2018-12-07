@@ -115,7 +115,7 @@ public class PosShow_mang {
     		}
     		else if(pp.getKpiprop()==1)
     		{
-    			kpisum="加分项";
+    			kpisum="";
     		}
     		else
     		{
@@ -127,7 +127,7 @@ public class PosShow_mang {
     		}
     		else if(pp.getKtiprop()==1)
     		{
-    			ktisum="加分项";
+    			ktisum="";
     		}
     		else
     		{
@@ -139,7 +139,7 @@ public class PosShow_mang {
     		}
     		else if(pp.getKbiprop()==1)
     		{
-    			kbisum="加分项";
+    			kbisum="";
     		}
     		else
     		{
@@ -151,7 +151,7 @@ public class PosShow_mang {
     		}
     		else if(pp.getKciprop()==1)
     		{
-    			kcisum="加分项";
+    			kcisum="";
     		}
     		else
     		{
@@ -173,7 +173,7 @@ public class PosShow_mang {
         			{
         				PdpBean temppb = new PdpBean();
         				temppb.setId(tempkpin.getId());
-        				temppb.setPdpname(tempkpin.getPdpname());
+        				temppb.setName(tempkpin.getName());
         				temppb.setTarget(tempkpin.getTarget());
         				temppb.setScore(tempkpin.getScore());
         				temppb.setRule(tempkpin.getRule());

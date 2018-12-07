@@ -62,7 +62,7 @@ brbrbr()
 						<tr>
 							<td
 								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="11" align="center" bordercolor="#FFFFFF"><b>关键胜任力指标（KCI）得分明细</b>
+								colspan="11" align="center" bordercolor="#FFFFFF"><b>加分项得分明细</b>
 							</td>
 						</tr>
 						<tr>

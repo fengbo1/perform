@@ -110,16 +110,16 @@ b{
     				${status.index+1}
     			</td>
     			<td>
-    				${kpi.pdpname}
+    				&nbsp;${kpi.name}
     			</td>
     			<td>
-    				${kpi.target}
+    				&nbsp;${kpi.target}
     			</td>
     			<td>
-    				${kpi.score}
+    				&nbsp;${kpi.score}
     			</td>
     			<td>
-    				${kpi.rule}
+    				&nbsp;${kpi.rule}
     			</td>
     			<td>
     				&nbsp;${kpi.remark}
@@ -137,16 +137,16 @@ b{
     				${status.index+1}
     			</td>
     			<td>
-    				${kti.name}
+    				&nbsp;${kti.name}
     			</td>
     			<td>
-    				${kti.target}
+    				&nbsp;${kti.target}
     			</td>
     			<td>
-    				${kti.score}
+    				&nbsp;${kti.score}
     			</td>
     			<td>
-    				${kti.rule}
+    				&nbsp;${kti.rule}
     			</td>
     			<td>
     				&nbsp;
@@ -164,16 +164,16 @@ b{
     				${status.index+1}
     			</td>
     			<td>
-    				${kbi.name}
+    				&nbsp;${kbi.name}
     			</td>
     			<td>
-    				${kbi.target}
+    				&nbsp;${kbi.target}
     			</td>
     			<td>
-    				${kbi.score}
+    				&nbsp;${kbi.score}
     			</td>
     			<td>
-    				${kbi.rule}
+    				&nbsp;${kbi.rule}
     			</td>
     			<td>
     				&nbsp;
@@ -194,7 +194,7 @@ b{
     				${kci.name}
     			</td>
     			<td>
-    				${kci.target}
+    				&nbsp;${kci.target}
     			</td>
     			<td>
     				&nbsp;${kci.score}

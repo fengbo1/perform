@@ -96,7 +96,7 @@ public class SeasonKCIDetailQuery {
     		list = pdao.findByYearSeasonNewnumber(year, season, ratepeople);
     		PUser pu = pudao.findByNewNumber(ratepeople);
     		PUser pur = pudao.findByNewNumber(rater);
-    		if(pu!=null)
+    		if(!list.isEmpty()&&pu!=null)
     		{
     			ratepeoplename = pu.getName();
     			if(pur!=null)

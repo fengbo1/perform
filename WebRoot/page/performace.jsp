@@ -88,7 +88,7 @@ function frame(o)
 	}
 	else if(obj=="seasonrate")
 	{
-		document.getElementById("frame").src="<%=path%>/seasonrate_new_list_rate.action?rater=${newnumber}";
+		document.getElementById("frame").src="<%=path%>/seasonrate_list_rate.action?rater=${newnumber}";
 	}
 	else if(obj=="rate_set")
 	{
@@ -337,7 +337,7 @@ $(document).ready(function(){
 								</ul>
 							</li>
 							</c:if>
-							<c:if test="${authoX=='X'}">
+							<c:if test="${authoX=='X'||authoW=='W'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">数据导入</span>

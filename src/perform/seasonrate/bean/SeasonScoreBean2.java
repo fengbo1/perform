@@ -9,21 +9,18 @@ public class SeasonScoreBean2 {
 	private String zu;
 	private String position;
 	private String kpi;
-	private String kpirater;//kpt评分人
+	private String kpirater;//kpi评分人
+	private String kpirated;//kpi已评
 	private String kti;
 	private String ktirater;//kti评分人
+	private String ktirated;//kti已评
 	private String kbi;
 	private String kbirater;//kbi评分人
+	private String kbirated;//kbi已评
 	private String kci;
 	private String kcirater;//kci评分人
+	private String kcirated;//kpi已评
 	private String score;
-	
-	public String getScore() {
-		return score;
-	}
-	public void setScore(String score) {
-		this.score = score;
-	}
 	public String getNewnumber() {
 		return newnumber;
 	}
@@ -66,29 +63,23 @@ public class SeasonScoreBean2 {
 	public void setKpi(String kpi) {
 		this.kpi = kpi;
 	}
-	public String getKti() {
-		return kti;
-	}
-	public void setKti(String kti) {
-		this.kti = kti;
-	}
-	public String getKbi() {
-		return kbi;
-	}
-	public void setKbi(String kbi) {
-		this.kbi = kbi;
-	}
-	public String getKci() {
-		return kci;
-	}
-	public void setKci(String kci) {
-		this.kci = kci;
-	}
 	public String getKpirater() {
 		return kpirater;
 	}
 	public void setKpirater(String kpirater) {
 		this.kpirater = kpirater;
+	}
+	public String getKpirated() {
+		return kpirated;
+	}
+	public void setKpirated(String kpirated) {
+		this.kpirated = kpirated;
+	}
+	public String getKti() {
+		return kti;
+	}
+	public void setKti(String kti) {
+		this.kti = kti;
 	}
 	public String getKtirater() {
 		return ktirater;
@@ -96,16 +87,52 @@ public class SeasonScoreBean2 {
 	public void setKtirater(String ktirater) {
 		this.ktirater = ktirater;
 	}
+	public String getKtirated() {
+		return ktirated;
+	}
+	public void setKtirated(String ktirated) {
+		this.ktirated = ktirated;
+	}
+	public String getKbi() {
+		return kbi;
+	}
+	public void setKbi(String kbi) {
+		this.kbi = kbi;
+	}
 	public String getKbirater() {
 		return kbirater;
 	}
 	public void setKbirater(String kbirater) {
 		this.kbirater = kbirater;
 	}
+	public String getKbirated() {
+		return kbirated;
+	}
+	public void setKbirated(String kbirated) {
+		this.kbirated = kbirated;
+	}
+	public String getKci() {
+		return kci;
+	}
+	public void setKci(String kci) {
+		this.kci = kci;
+	}
 	public String getKcirater() {
 		return kcirater;
 	}
 	public void setKcirater(String kcirater) {
 		this.kcirater = kcirater;
+	}
+	public String getKcirated() {
+		return kcirated;
+	}
+	public void setKcirated(String kcirated) {
+		this.kcirated = kcirated;
+	}
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String score) {
+		this.score = score;
 	}
 }

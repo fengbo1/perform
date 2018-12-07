@@ -28,7 +28,7 @@
   }
   </style>
   <script type="text/javascript">
-   function getchu(){
+  function getchu(){
     
     var chus="";
     var	city=document.getElementById('city').value;
@@ -49,15 +49,17 @@
 			chuname(chus);
 		}				
 	} 
-	xmlhttp.open("GET","getchuajax.action?city="+city+"&nowtime="+time,true);
+	xmlhttp.open("GET","getchuajax.action?city="+city+"&nowtime="+time,false);
 	//xmlhttp.open("GET","login.action",true);
 	xmlhttp.send();
 }
 
- function gettuan(){
+ 
+
+function gettuan(){
     
+    var chu=document.getElementById("chu").value;
     var tuans="";
-    var	chu=document.getElementById('chu').value;
     var xmlhttp;
     var time=new Date().getTime();
 	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -66,25 +68,24 @@
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}	
 	xmlhttp.onreadystatechange = function() {
+	
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			
 			tuans=xmlhttp.responseText;
-			//alert(yesorno);
-			
-				//document.getElementById("chutuan").innerHTML=arr[0];
-			tuanname(tuans);
+	
+			tuanname(chu,tuans);
 		}				
 	} 
-	xmlhttp.open("GET","gettuanajax.action?chu="+chu+"&nowtime="+time,true);
+	xmlhttp.open("GET","gettuanajax.action?chu="+chu+"&nowtime="+time,false);
 	//xmlhttp.open("GET","login.action",true);
 	xmlhttp.send();
 }
 
  function getzu(){
     
+    var chu=document.getElementById("chu").value;
+    var tuan=document.getElementById("tuan").value;
     var zus="";
-    var	chu=document.getElementById('chu').value;
-    var	tuan=document.getElementById('tuan').value;
     var xmlhttp;
     var time=new Date().getTime();
 	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -99,10 +100,10 @@
 			//alert(yesorno);
 			
 				//document.getElementById("chutuan").innerHTML=arr[0];
-			zuname(zus);
+			zuname(chu,zus);
 		}				
 	} 
-	xmlhttp.open("GET","getzuajax.action?chu="+chu+"&tuan="+tuan+"&nowtime="+time,true);
+	xmlhttp.open("GET","getzuajax.action?chu="+chu+"&tuan="+tuan+"&nowtime="+time,false);
 	//xmlhttp.open("GET","login.action",true);
 	xmlhttp.send();
 }
@@ -120,7 +121,7 @@ for (var i=1;i<arry.length;i++){
 }
 } 
 
-function tuanname(tuans){
+function tuanname(chu,tuans){
 
 var arry= new Array();
 arry=tuans.split("|"); //字符分割 
@@ -129,11 +130,10 @@ obj.options.length=0;
 obj.options.add(new Option("-请选择团队名称-","wu"));
 for (var i=1;i<arry.length;i++){	
 
-	obj.options.add(new Option(tuanidtoname(arry[i]),arry[i])); //这个兼容IE与firefox 
+	obj.options.add(new Option(tuanidtoname(chu,arry[i]),arry[i])); //这个兼容IE与firefox 
 }
 } 
-
-function zuname(zus){
+function zuname(chu,zus){
 
 var arry= new Array();
 arry=zus.split("|"); //字符分割 
@@ -141,12 +141,10 @@ var obj=document.getElementById('zu');
 obj.options.length=0;
 obj.options.add(new Option("-请选择班组名称-","wu"));
 for (var i=1;i<arry.length;i++){	
-
-	obj.options.add(new Option(zuidtoname(arry[i]),arry[i])); //这个兼容IE与firefox 
+    
+	obj.options.add(new Option(zuidtoname(chu,arry[i]),arry[i])); //这个兼容IE与firefox 
 }
-} 
-
-
+}  
   </script>
 	</head>
 	<body>
@@ -189,33 +187,16 @@ for (var i=1;i<arry.length;i++){
     		</tr>
     		 <tr>
     			<td width="200" class="as" >
-    				<span style="font-size:12pt;color:black">机构</span><span>*</span>
-    			</td>
-    			<td width="300" class="as">
-    				<select style="width:280px"  id="city" name="city" onchange="getchu()">
-										<option value="wu">请选择机构名称</option>
-										<option value="1">业务处理中心</option>
-										<option value="2">成都分中心</option>
-										<option value="3">武汉生产园区管理办公室</option>
-						</select>
-    				
-    			</td>
-    			
-    		</tr>
-    		 <tr>
-    			<td width="200" class="as" >
     				<span style="font-size:12pt;color:black">职务</span><span>*</span>
     			</td>
     			<td width="300" class="as">
     				<select style="width:280px"  id="zhiwu" name="zhiwu" >
     				                   <option value="wu">-请选择职务-</option>
 										<option value="0">主任</option>
-										<option value="1">副主任</option>
-										<option value="2">处室主要负责人</option>
-										<option value="3">处室负责人</option>
-										<option value="4">团队主管</option>
-										<option value="5">班组长</option>
-										<option value="6">经办岗</option>
+										<option value="1">处室负责人</option>
+										<option value="2">团队主管</option>
+										<option value="4">班组长</option>
+										<option value="3">普通员工</option>
 										
 						</select>
     				
@@ -243,7 +224,12 @@ for (var i=1;i<arry.length;i++){
     			</td>
     			<td width="300" class="as">
     				<select style="width:280px"  id="chu" name="chu" onchange="gettuan()">
-						 <option value="wu">-请选择处室名称-</option>			                        
+						 <option value="wu">-请选择处室名称-</option>
+						  <option value="1">综合与生产管理处</option>
+						                 <option value="2">合规与监督二处</option>
+						                 <option value="3">通用业务二处</option>
+						                 <option value="6">专业处理二处</option>
+						                 <option value="5">研发支持二处</option>				                        
 					</select>
     				
     			</td>
@@ -257,7 +243,6 @@ for (var i=1;i<arry.length;i++){
     			<select id="tuan" name="tuan" style="width: 280px" onchange="getzu()">
 					  <option value="wu">-请选择团队名称-</option>				
 				</select>
-    				
     			</td>
     			
     		</tr>
@@ -295,8 +280,8 @@ for (var i=1;i<arry.length;i++){
     			<td width="300" class="as">
     				<select id="role" name="role" style="width: 280px">
 										<option value="wu">-请选择系统角色-</option>
-										<option value="U">绩效管理员</option><!-- R -->
-										<option value="V">数据管理员</option><!-- S -->
+										<option value="W">绩效管理员</option><!-- W -->
+										<option value="X">数据管理员</option><!-- X -->
 										<option value="E">普通用户</option>
 						</select>
     				

@@ -11,6 +11,10 @@ import ccb.hibernate.HibernateSessionFactory;
 import perform.flag.dao.PFlagDAO;
 import perform.flag.pojo.PFlag;
 import perform.seasonrate.bean.SeasonScoreBean2;
+import perform.seasonrate.dao.PKBIScoreDAO;
+import perform.seasonrate.dao.PKTIScoreDAO;
+import perform.seasonrate.pojo.PKBIScore;
+import perform.seasonrate.pojo.PKTIScore;
 import perform.seasonrate.pojo.PScore;
 import perform.userinfo.dao.PUserDAO;
 import perform.userinfo.pojo.PUser;
@@ -93,6 +97,8 @@ public class SeasonRateList {
 		DateTimeUtil dtu = new DateTimeUtil();
 		PFlagDAO pfdao = new PFlagDAO();
 		PUserDAO pudao = new PUserDAO();
+		PKTIScoreDAO pktidao = new PKTIScoreDAO();
+		PKBIScoreDAO pkbidao = new PKBIScoreDAO();
 		listyear = dtu.getLast10Years();
 		list2 = new ArrayList<SeasonScoreBean2>();
 		if(name!=null&&zhuan==1)
@@ -137,14 +143,34 @@ public class SeasonRateList {
 				ssb2.setZu(ps.getPositionzu());
 				ssb2.setPosition(ps.getPositionname());
 				ssb2.setKpi(String.valueOf(ps.getKpiscore()));
-				sql = "select sum(if(rater1='"+rater+"',result1,0)+if(rater2='"+rater+"',result2,0)+if(rater3='"+rater+"',result3,0)) from p_ktiscore where newnumber='"+ps.getNewnumber()+"' and year='"+year+"' and season='"+season+"'";
-				ssb2.setKti(session.createSQLQuery(sql).uniqueResult().toString());
-				sql = "select sum(if(rater1='"+rater+"',result1,0)+if(rater2='"+rater+"',result2,0)+if(rater3='"+rater+"',result3,0)) from p_kbiscore where newnumber='"+ps.getNewnumber()+"' and year='"+year+"' and season='"+season+"'";
-				ssb2.setKbi(session.createSQLQuery(sql).uniqueResult().toString());
-				sql = "select sum(if(rater1='"+rater+"',result1,0)+if(rater2='"+rater+"',result2,0)+if(rater3='"+rater+"',result3,0)) from p_kciscore where newnumber='"+ps.getNewnumber()+"' and year='"+year+"' and season='"+season+"'";
-				ssb2.setKci(session.createSQLQuery(sql).uniqueResult().toString());
-				score = Double.valueOf(ssb2.getKpi())*ps.getKpiprop()+Double.valueOf(ssb2.getKti())*ps.getKtiprop()+Double.valueOf(ssb2.getKbi())*ps.getKbiprop()+Double.valueOf(ssb2.getKci())*ps.getKciprop();
-				ssb2.setScore(String.valueOf(score));
+//				sql = "select sum(if(rater1='"+rater+"',result1,0)+if(rater2='"+rater+"',result2,0)+if(rater3='"+rater+"',result3,0)) from p_ktiscore where newnumber='"+ps.getNewnumber()+"' and year='"+year+"' and season='"+season+"'";
+//				ssb2.setKti(session.createSQLQuery(sql).uniqueResult().toString());
+//				sql = "select sum(if(rater1='"+rater+"',result1,0)+if(rater2='"+rater+"',result2,0)+if(rater3='"+rater+"',result3,0)) from p_kbiscore where newnumber='"+ps.getNewnumber()+"' and year='"+year+"' and season='"+season+"'";
+//				ssb2.setKbi(session.createSQLQuery(sql).uniqueResult().toString());
+//				sql = "select sum(if(rater1='"+rater+"',result1,0)+if(rater2='"+rater+"',result2,0)+if(rater3='"+rater+"',result3,0)) from p_kciscore where newnumber='"+ps.getNewnumber()+"' and year='"+year+"' and season='"+season+"'";
+//				ssb2.setKci(session.createSQLQuery(sql).uniqueResult().toString());
+//				score = Double.valueOf(ssb2.getKpi())*ps.getKpiprop()+Double.valueOf(ssb2.getKti())*ps.getKtiprop()+Double.valueOf(ssb2.getKbi())*ps.getKbiprop()+Double.valueOf(ssb2.getKci())*ps.getKciprop();
+//				ssb2.setScore(String.valueOf(score));
+				List<PKTIScore> listkti = pktidao.findByYearSeasonRaterNotRate(year, season, rater,ps.getNewnumber());
+				List<PKBIScore> listkbi = pkbidao.findByYearSeasonRaterNotRate(year, season, rater,ps.getNewnumber());
+				ssb2.setKpirated("");
+				if(listkti.isEmpty())
+				{
+					ssb2.setKtirated("yes");
+				}
+				else
+				{
+					ssb2.setKtirated("no");
+				}
+				if(listkbi.isEmpty())
+				{
+					ssb2.setKbirated("yes");
+				}
+				else
+				{
+					ssb2.setKbirated("no");
+				}
+				ssb2.setKcirated("");
 				//是否本人打分标志
 				if(ps.getKpirater()!=null&&ps.getKpirater().contains(rater))
 				{

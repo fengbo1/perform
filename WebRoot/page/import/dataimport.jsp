@@ -24,6 +24,7 @@
 	<div style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
 			colspan="14" align="center" bordercolor="#FFFFFF"><b>数据导入</b>
 	</div>
+	<c:if test="${yewuimp==newnumber||authoW=='W'}">
 	<div class="layout">
 		<form name="filename" method="post" action="importkpiscore_rate.action"
 			enctype="multipart/form-data">
@@ -59,7 +60,8 @@
 			</table>
 	</div>
 	<br/>
-	 
+	 </c:if>
+	 <c:if test="${jiafenimp==newnumber||authoW=='W'}">
 	<div class="layout">
 		<form name="filename" method="post" action="importkciscore_rate.action"
 			enctype="multipart/form-data">
@@ -88,14 +90,51 @@
 					<td width="35%">示例如下：</td>
 				</tr>
 				<tr>
-					<td>业务指标得分表：</td>
+					<td>加分项得分表：</td>
 					<td>年季度&nbsp;+&nbsp;jiafenscore</td>
 					<td>201801jiafenscore.xls</td>
 				</tr>
 			</table>
 	</div>
 	<br/>
-	 
+	 </c:if>
+	 <c:if test="${tiyanimp==newnumber||authoW=='W'}">
+	 	<div class="layout">
+		<form name="filename" method="post" action="importtiyanduijie_rate.action"
+			enctype="multipart/form-data">
+			<div class="title" ><b></b></div>
+			<div id="content" >
+				<div class="four_columns">
+					<div class="four_columns_input">
+						<input type="file" name="file" />
+						 <input type="submit" name="submit"value="上传">
+					</div>
+						<br/>
+					<div class="four_columns_input" >
+						<a href="<%=path%>/templet/tiyanjiafen.xls">下载【体验加分】模板</a>
+						<input type="hidden" name="newnumber" value="${newnumber}"/>
+					</div>
+				</div>
+			</div>
+		</form>
+		<table border="1px"width="100%">
+				<tr>
+					<td colspan="3" class="title">提示：上传文件命名规则</td>
+				</tr>
+				<tr>
+					<td width="30%">&nbsp;</td>
+					<td width="35%">文件名规则如下：</td>
+					<td width="35%">示例如下：</td>
+				</tr>
+				<tr>
+					<td>体验加分得分表：</td>
+					<td>年季度&nbsp;+&nbsp;tiyanjiafen</td>
+					<td>201801tiyanjiafen.xls</td>
+				</tr>
+			</table>
+	</div>
+	<br/>
+	</c:if>
 	<!--  
 	<div class="layout">
 			<form name="filename" method="post" action="exportkqjl.action"

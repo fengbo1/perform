@@ -82,7 +82,6 @@ function show(id)
 					                </select>
 									
 									<input type="submit" value="查询"/>
-									<input type="button" value="全量导出" onclick="expressout()"/>
 									<input type="hidden" id="parachu"  name="parachu" value="${chu}"/>
 						</div></td>	
 						</tr>

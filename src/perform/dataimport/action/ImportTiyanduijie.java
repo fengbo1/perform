@@ -1,6 +1,7 @@
 package perform.dataimport.action;
 
 import java.io.File;
+
 import jxl.Sheet;
 import jxl.Workbook;
 
@@ -16,13 +17,9 @@ import perform.seasonrate.dao.PScoreDAO;
 import perform.seasonrate.pojo.PKCIScore;
 import perform.seasonrate.pojo.PScore;
 import perform.userinfo.dao.PUserDAO;
-import perform.userinfo.pojo.PUser;
 import ccb.hibernate.HibernateSessionFactory;
 
-public class ImportKciScore {
-	/**
-	 * 
-	 */
+public class ImportTiyanduijie {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(ImportKciScore.class);
 	private File file; //上传的文件
@@ -63,10 +60,9 @@ public class ImportKciScore {
 public String execute() throws Exception {
 		
 		String realpath = "D:/import/performance/";
-		message = "";
+		message = "导入成功";
 		PKCIScoreDAO pkcdao = new PKCIScoreDAO();
 		PScoreDAO psdao = new PScoreDAO();
-		PUserDAO pudao = new PUserDAO();
 		int nn=0;
 		int mm=0;
 		if (file != null) {
@@ -119,7 +115,7 @@ public String execute() throws Exception {
 							else
 							{
 								String kciname = sheet.getCell(j, 0).getContents().trim();
-								PKCIScore pkci = pkcdao.findByYearSeasonNewnumberKciname(flag.getYear(),flag.getSeason(),newnumber,kciname);
+								PKCIScore pkci = pkcdao.findByYearSeasonNewnumberTiyanduijie(flag.getYear(),flag.getSeason(),newnumber);
 								ps = psdao.findByNewnumberYearSeasonnew(newnumber, flag.getYear(), flag.getSeason());
 								double prop = 1;
 								double sum = 0;
@@ -152,10 +148,9 @@ public String execute() throws Exception {
 							}
 						}
 		    	      }
-						
 					
 					}
-				flag.setAlreadyrate(flag.getAlreadyrate()+"88888888");
+				flag.setAlreadyrate(flag.getAlreadyrate()+"88888889");
 				}
 				catch (Exception e) {
 				trans.rollback();//出错回滚
@@ -170,10 +165,7 @@ public String execute() throws Exception {
 			//countKqjlDaily();//计算考勤记录日表
 			//countKqjlDailyForYgxy();//计算考勤记录日表(员工响应)
 			//countkqjlMonth();//计算考勤记录月表
-				if(message.equals(""))
-				{
-					message = "导入成功";
-				}
+		
 		return "success";
    }
 }

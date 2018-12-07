@@ -311,4 +311,24 @@ public class PKCIScoreDAO extends BaseHibernateDAO  {
     		throw re;
     	}
     }
+    public PKCIScore findByYearSeasonNewnumberTiyanduijie(int year,int season,String newnumber) {
+    	log.debug("finding all PKCIScore instances");
+    	try {
+    		String queryString = "from PKCIScore as p where p.year='"+year+"' and p.season='"+season+"' and p.newnumber='"+newnumber+"' and (p.kciname like '%对接%' or p.kciname like '%体验%')";
+             Query queryObject = getSession().createQuery(queryString);
+    		 List<PKCIScore> list = queryObject.list();
+    		 if(list.isEmpty())
+    		 {
+    			 return null;
+    		 }
+    		 else
+    		 {
+    			 return list.get(0);
+    		 }
+    		 
+    	} catch (RuntimeException re) {
+    		log.error("find all failed", re);
+    		throw re;
+    	}
+    }
 }

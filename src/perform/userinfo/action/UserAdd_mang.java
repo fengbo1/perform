@@ -19,7 +19,6 @@ public class UserAdd_mang extends ActionSupport implements ServletResponseAware{
 	private String newnumber;
     private String name;
     private String password;
-    private String city;
     private String zhiwu;
     private String chu;
     private String tuan;
@@ -46,15 +45,6 @@ public class UserAdd_mang extends ActionSupport implements ServletResponseAware{
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
 
 	public String getNewnumber() {
 		return newnumber;
@@ -166,11 +156,6 @@ public class UserAdd_mang extends ActionSupport implements ServletResponseAware{
 		  else if(password==null||password.equals(""))
 		  {
 			 this.addFieldError("用户","密码为空");
-		  	 return "failed";
-		  }
-		  else if(city.equals("")||city.equals("wu"))
-		  {
-			 this.addFieldError("用户","所属中心为空");
 		  	 return "failed";
 		  }
 		  else if(password.length()<6||password.length()>20)

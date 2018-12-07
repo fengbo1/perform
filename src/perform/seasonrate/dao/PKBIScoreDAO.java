@@ -297,4 +297,23 @@ public class PKBIScoreDAO extends BaseHibernateDAO  {
     		throw re;
     	}
     }
+    /**
+     * 未评完分
+     * @param year
+     * @param season
+     * @param rater
+     * @return
+     */
+    public List<PKBIScore> findByYearSeasonRaterNotRate(int year,int season,String rater,String newnumber) {
+    	log.debug("finding all PKTIScore instances");
+    	try {
+    		String queryString = "from PKBIScore where year='"+year+"' and season='"+season+"' and newnumber='"+newnumber+"' and ((rater1='"+rater+"' and result1='0') or (rater2='"+rater+"' and result2='0') or (rater3='"+rater+"' and result3='0'))";
+             Query queryObject = getSession().createQuery(queryString);
+    		 List<PKBIScore> list = queryObject.list();
+    		 return list;
+    	} catch (RuntimeException re) {
+    		log.error("find all failed", re);
+    		throw re;
+    	}
+    }
 }

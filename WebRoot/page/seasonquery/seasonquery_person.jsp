@@ -114,80 +114,53 @@ $('#season').attr('value',x[1].value);
     		</tr>
     		<tr>
     			<td class="as" colspan="2">
-    				关键业绩指标（KPI）
+    				关键业务指标
     			</td>
     			<td class="as" >
     				得分
     			</td>
-    			<td class="as" >
+    			<td class="as" colspan="3">
     				<fmt:formatNumber type="number" value="${ps.kpiscore*ps.kpiprop}" pattern="0.000" maxFractionDigits="3"/>&nbsp;
-    			</td>
-    			<td class="as" >
-    				排名
-    			</td>
-    			<td class="as" >
-    				${kpirank}/${kpiallrank}
     			</td>
    	
     		</tr>
     		<tr>
     			<td class="as" colspan="2">
-    				关键任务指标（KTI）
+    				关键任务目标
     			</td>
     			<td class="as" >
     				得分
     			</td>
-    			<td class="as" >
+    			<td class="as" colspan="3">
     				<fmt:formatNumber type="number" value="${ps.ktiscore*ps.ktiprop}" pattern="0.00" maxFractionDigits="2"/>
     			</td>
-    			<td class="as" >
-    				排名
-    			</td>
-    			<td class="as" >
-    				${ktirank}/${ktiallrank}
-    			</td>
     		</tr>
     		<tr>
     			<td class="as" colspan="2">
-    				关键行为指标（KBI）
+    				品能目标
     			</td>
     			<td class="as" >
     				得分
     			</td>
-    			<td class="as" >
+    			<td class="as" colspan="3">
     				<fmt:formatNumber type="number" value="${ps.kbiscore*ps.kbiprop}" pattern="0.00" maxFractionDigits="2"/>
     			</td>
-    			<td class="as" >
-    				排名
-    			</td>
-    			<td class="as" >
-    				${kbirank}/${kbiallrank}
-    			</td>
     		</tr>
     		<tr>
     			<td class="as" colspan="2">
-    				关键胜任力指标（KCI）
+    				加分项
     			</td>
     			<td class="as" >
     				得分
     			</td>
-    			<td class="as" >
+    			<td class="as" colspan="3">
     				<fmt:formatNumber type="number" value="${ps.kciscore*ps.kciprop}" pattern="0.00" maxFractionDigits="2"/>
-    			</td>
-    			<td class="as" >
-    				排名
-    			</td>
-    			<td class="as" >
-    				${kcirank}/${kciallrank}
     			</td>
     		</tr>
     		
     		<tr>
-    			<td class="as" colspan="3">
+    			<td class="as" colspan="6">
     				季度绩效评价总得分：<fmt:formatNumber type="number" value="${ps.score}" pattern="0.000" maxFractionDigits="3"/>
-    			</td>
-    			<td class="as" colspan="3">
-    				总得分排名：${scorerank}/${scoreallrank}
     			</td>
     		</tr>
     		

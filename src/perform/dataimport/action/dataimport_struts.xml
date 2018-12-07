@@ -18,5 +18,10 @@
 			<result name="success">/page/public/success.jsp</result>
 			<result name="failed">/page/public/error.jsp</result>
 		</action>
+		<action name="importtiyanduijie_rate" class="perform.dataimport.action.ImportTiyanduijie">
+			<result name="success">/page/public/success.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		
 	</package>
 </struts>    
