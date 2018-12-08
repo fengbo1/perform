@@ -119,7 +119,7 @@ public class PosShow_mang {
     		}
     		else
     		{
-    			kpisum="共"+String.valueOf(pp.getKpiprop()*100)+"分";
+    			kpisum="共100分";
     		}
     		if(pp.getKtiprop()==-1)
     		{
@@ -131,7 +131,7 @@ public class PosShow_mang {
     		}
     		else
     		{
-    			ktisum="共"+String.valueOf(pp.getKtiprop()*100)+"分";
+    			ktisum="共100分";
     		}
     		if(pp.getKbiprop()==-1)
     		{
@@ -143,7 +143,7 @@ public class PosShow_mang {
     		}
     		else
     		{
-    			kbisum="共"+String.valueOf(pp.getKbiprop()*100)+"分";
+    			kbisum="共100分";
     		}
     		if(pp.getKciprop()==-1)
     		{
@@ -155,7 +155,7 @@ public class PosShow_mang {
     		}
     		else
     		{
-    			kcisum="共"+String.valueOf(pp.getKciprop()*100)+"分";
+    			kcisum="共100分";
     		}
     		if(pp!=null)
     		{
@@ -190,7 +190,7 @@ public class PosShow_mang {
         				temppb.setId(tempktin.getId());
         				temppb.setName(tempktin.getName());
         				temppb.setTarget(tempktin.getTarget());
-        				temppb.setScore(Util.DoubleTo2(tempktin.getScore()*Double.parseDouble(ktips[i])*pp.getKtiprop()));
+        				temppb.setScore(Util.DoubleTo2(tempktin.getScore()*Double.parseDouble(ktips[i])));
         				temppb.setRule(tempktin.getRule());
         				listkti.add(temppb);
         			}
@@ -204,7 +204,7 @@ public class PosShow_mang {
         				temppb.setId(tempkbin.getId());
         				temppb.setName(tempkbin.getName());
         				temppb.setTarget(tempkbin.getTarget());
-        				temppb.setScore(Util.DoubleTo2(tempkbin.getScore()*Double.parseDouble(kbips[i])*pp.getKbiprop()));
+        				temppb.setScore(Util.DoubleTo2(tempkbin.getScore()*Double.parseDouble(kbips[i])));
         				temppb.setRule(tempkbin.getRule());
         				listkbi.add(temppb);
         			}

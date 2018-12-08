@@ -83,7 +83,7 @@ b{
     			<td class="cb" width="5%">
     				编号
     			</td>
-    			<td class="cb" width="17%">
+    			<td class="cb" width="14%">
     				指标/任务名称
     			</td>
     			<td class="cb" width="25%">
@@ -92,10 +92,10 @@ b{
     			<td class="cb" width="10%">
     				分值
     			</td>
-    			<td class="cb" width="35%">
+    			<td class="cb" width="32%">
     				考核规则
     			</td>
-    			<td class="cb" width="8%">
+    			<td class="cb" width="14%">
     				备注
     			</td>
     		</tr>
@@ -180,6 +180,7 @@ b{
     			</td>
     		</tr>
     		</c:forEach>
+    		<c:if test="${pp.kciprop!='0'}">
     		<tr height="20px">
     			<td class="b" colspan="6">
     				四、加分项（${kcisum}）
@@ -207,6 +208,15 @@ b{
     			</td>
     		</tr>
     		</c:forEach>
+    		</c:if>
+    		<tr>
+    			<td class="as"  colspan="2"  align="center">
+    				最终考核得分
+    			</td>
+    			<td class="as" colspan="4" align="center">
+    				最终考核得分=关键任务目标得分*${pp.ktiprop}+品能目标得分*${pp.kbiprop}<c:if test="${pp.kciprop!='0'}">+加分项得分</c:if>
+    			</td>
+    		</tr>
     		<tr>
     			<td class="as" colspan="6">
     				<input type="button" onclick="javascript:history.go(-1);" value="返 回" />
