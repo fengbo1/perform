@@ -37,6 +37,7 @@ var chu=document.getElementById("parachu").value;
 var tuan=document.getElementById("paratuan").value;
 var zu=document.getElementById("parazu").value;
 var zhi=document.getElementById("parazhi").value;
+var zf=document.getElementById("parazf").value;
 var pos=document.getElementById("parapos").value;
 var role=document.getElementById("pararole").value;
 var authoE=document.getElementById("authoE").value;
@@ -49,6 +50,7 @@ $('#tuan').attr('value',tuan);
  getzu(); 
 $('#zu').attr('value',zu);
 $('#zhiwu').attr('value',zhi);
+$('#zf').attr('value',zf);
 $('#canscore').attr('value',canscore);
 if(authoE=="E"&&authoW!="W"&&authoX!="X")
 {
@@ -231,13 +233,20 @@ for (var i=1;i<arry.length;i++){
 										<option value="2">团队负责人</option>
 										<option value="4">班组长</option>
 										<option value="3">普通员工</option>
-										
 						</select>
-    				
     			</td>
-    			
     		</tr>
-    		
+    		<tr>
+    			<td width="200" class="as" >
+    				<span style="font-size:12pt;color:black">职务主次</span><span>*</span>
+    			</td>
+    			<td width="300" class="as">
+    				<select style="width:280px"  id="zf" name="zf" >
+										<option value="0">主要负责人</option>
+										<option value="1">其他负责人</option>
+						</select>
+    			</td>
+    		</tr>
     		 <tr>
     			<td width="200" class="as" >
     				<span style="font-size:12pt;color:black">是否有权评分人</span><span>*</span>
@@ -330,6 +339,7 @@ for (var i=1;i<arry.length;i++){
     				<input type="hidden" id="city" name="city" value="${city}"/>
     				<input type="hidden" id="paracity" name="paracity" value="${city}"/>
     				<input type="hidden" id="parazhi" name="parazhi" value="${zhi}"/>
+    				<input type="hidden" id="parazf" name="parazf" value="${zf}"/>
 					<input type="hidden" id="parachu" name="parachu" value="${chu}"/>
 					<input type="hidden" id="paratuan" name="paratuan" value="${tuan}"/>
 					<input type="hidden" id="parazu" name="parazu" value="${zu}"/>

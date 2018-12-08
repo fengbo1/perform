@@ -174,7 +174,7 @@ public class HisQueryCenter {
 			String position = purater.getPosition();
 			if(year==0||season==0)//未选年和季度
 			{
-				PFlag pf = pfdao.findByIsNew(1);
+				PFlag pf = pfdao.findHis();
 				if(pf!=null)
 				{
 					year = pf.getYear();

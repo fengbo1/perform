@@ -22,6 +22,7 @@ public class UserUpdate extends ActionSupport implements ServletResponseAware {
 	    private int pos;
 	    private String message;
 	    private int paraid;
+	    private String zf;
 	   
 		public int getCanscore() {
 			return canscore;
@@ -127,6 +128,14 @@ public class UserUpdate extends ActionSupport implements ServletResponseAware {
 			// TODO Auto-generated method stub
 			
 		}
+		public String getZf() {
+			return zf;
+		}
+
+		public void setZf(String zf) {
+			this.zf = zf;
+		}
+
 		public String execute() throws Exception
 		{
 			PUserDAO uidao=new PUserDAO();
@@ -213,7 +222,7 @@ public class UserUpdate extends ActionSupport implements ServletResponseAware {
 			  }
 	 	    String position="";
 	 	   
-	 	    position=zhiwu+"0"+chu+tuan+zu;
+	 	    position=zhiwu+zf+chu+tuan+zu;
 	 	    ui.setNewnumber(newnumber);
 	 	    ui.setName(name);
 	 	    ui.setCanscore(canscore);

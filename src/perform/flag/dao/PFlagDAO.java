@@ -246,4 +246,23 @@ public class PFlagDAO extends BaseHibernateDAO  {
 			throw re;
 		}
 	}
+    public PFlag findHis() {
+		log.debug("finding all PFlag instances");
+		try {
+			String queryString = "from PFlag where flag='3' order by year desc,season desc";
+	         Query queryObject = getSession().createQuery(queryString);
+			 List<PFlag> list = queryObject.list();
+			 if(list.isEmpty())
+			 {
+				 return null;
+			 }
+			 else
+			 {
+				 return list.get(0);
+			 }
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
 }

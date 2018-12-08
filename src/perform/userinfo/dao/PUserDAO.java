@@ -239,15 +239,15 @@ public class PUserDAO extends BaseHibernateDAO  {
 			}
 			else if(zhi.equals("2"))
 			{
-				posrater="1_"+chu+"__";
+				posrater="10"+chu+"__";
 			}
 			else if(zhi.equals("3"))
 			{
-				posrater="4_"+chu+tuan+zu;
+				posrater="40"+chu+tuan+zu;
 			}
 			else if(zhi.equals("4"))
 			{
-				posrater="2_"+chu+tuan+"_";
+				posrater="20"+chu+tuan+"_";
 			}
 			String queryString = "from PUser as pu where pu.position like '"+posrater+"' and pu.canscore='1' order by pu.position";
 			System.out.println(queryString);

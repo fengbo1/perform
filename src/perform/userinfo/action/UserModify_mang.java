@@ -14,6 +14,7 @@ public class UserModify_mang {
 	private int id;
 	private String city;
 	private String zhi;
+	private String zf;//职务正负
 	private String chu;
 	private String tuan;
 	private String zu;
@@ -82,6 +83,14 @@ public class UserModify_mang {
 		this.zhi = zhi;
 	}
 
+	public String getZf() {
+		return zf;
+	}
+
+	public void setZf(String zf) {
+		this.zf = zf;
+	}
+
 	public String getChu() {
 		return chu;
 	}
@@ -147,6 +156,7 @@ public class UserModify_mang {
  	    PUserDAO uidao=new PUserDAO();
  	    ui = uidao.findAllById(id);
  	    zhi=ui.getPosition().substring(0,1);
+ 	    zf=ui.getPosition().substring(1,2);
  	    chu=ui.getPosition().substring(2,3);
  	    tuan=ui.getPosition().substring(3,4);
  	    zu=ui.getPosition().substring(4,5);

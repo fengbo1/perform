@@ -61,6 +61,8 @@ public class RateJisuan {
         		//将kpiscore得分更新到p_score中
         		sql = "update p_score a set a.kpiscore=(SELECT sum(b.sum) from p_kpiscore b where b.year='"+year+"' and b.season='"+season+"' and a.newnumber=b.newnumber group by b.newnumber) where a.year='"+year+"' and a.season='"+season+"'";
         		session.createSQLQuery(sql).executeUpdate();
+        		sql = "update p_score set kpiscore='0' where kpiscore<'0' and year='"+year+"' and season='"+season+"'";
+        		session.createSQLQuery(sql).executeUpdate();
         		//将ktiscore得分更新到p_score中
         		sql = "update p_score a set a.ktiscore=(SELECT sum(b.sum) from p_ktiscore b where b.year='"+year+"' and b.season='"+season+"' and a.newnumber=b.newnumber group by b.newnumber) where a.year='"+year+"' and a.season='"+season+"'";
         		session.createSQLQuery(sql).executeUpdate();
@@ -70,8 +72,7 @@ public class RateJisuan {
 //        		//将kciscore得分更新到p_score中
         		sql = "update p_score a set a.kciscore=(SELECT sum(b.sum) from p_kciscore b where b.year='"+year+"' and b.season='"+season+"' and a.newnumber=b.newnumber group by b.newnumber) where a.year='"+year+"' and a.season='"+season+"'";
         		session.createSQLQuery(sql).executeUpdate();
-        		//更新p_score总分
-        		sql = "update p_score a set a.score=CAST((a.kpiscore*a.kpiprop+a.ktiscore*a.ktiprop+a.kbiscore*a.kbiprop+a.kciscore*a.kciprop) AS DECIMAL(18,2)) where a.year='"+year+"' and a.season='"+season+"'";
+        		sql = "update p_score set kciscore='10' where kciscore>'10' and year='"+year+"' and season='"+season+"'";
         		session.createSQLQuery(sql).executeUpdate();
         		sql = "update p_ktiscore set sum=0 where sum is NULL";
         		session.createSQLQuery(sql).executeUpdate();
@@ -84,6 +85,9 @@ public class RateJisuan {
         		sql = "update p_score set kbiscore=0 where kbiscore is NULL";
         		session.createSQLQuery(sql).executeUpdate();
         		sql = "update p_score set kciscore=0 where kciscore is NULL";
+        		session.createSQLQuery(sql).executeUpdate();
+        		//更新p_score总分
+        		sql = "update p_score a set a.score=CAST((a.kpiscore*a.kpiprop+a.ktiscore*a.ktiprop+a.kbiscore*a.kbiprop+a.kciscore*a.kciprop) AS DECIMAL(18,2)) where a.year='"+year+"' and a.season='"+season+"'";
         		session.createSQLQuery(sql).executeUpdate();
         		sql = "update p_score set score=0 where score is NULL";
         		session.createSQLQuery(sql).executeUpdate();

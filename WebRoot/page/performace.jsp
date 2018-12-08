@@ -269,7 +269,9 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('hisquery_person')">个人绩效得分查询</li>
 								<!-- 
 									<li class="cc"  onclick="frame('seasonquery_office')">处室员工绩效得分查询</li> -->	
+								<c:if test="${zhis=='0'||zhis=='1'||zhis=='2'||authoW=='W'}">
 									<li class="cc"  onclick="frame('hisquery_center')">中心员工绩效得分查询</li>
+									</c:if>
 								</ul>
 							</li>
 							<c:if test="${authoW=='W'}">	

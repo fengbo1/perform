@@ -88,6 +88,8 @@ $('#chu').attr('value',x[0].value);
 								 -->
 								 年度: ${year}
 								  季度: ${season}
+								  <input type="hidden" id="year" name="year" value="${year}"/>
+								  <input type="hidden" id="season" name="season" value="${season}"/>
 								<c:if test="${zhis=='0'||authoW=='W'}">
 								处室
 								<select id="chu" name="chu" style="width: 150px" onchange="gettuan()">
@@ -105,8 +107,8 @@ $('#chu').attr('value',x[0].value);
 								姓名
 								<input style="width:60px" type="text" id="name" name="name" value="${name}"/>			
 								<input type="submit" value="查询"/>
-							<!-- 
-								<input type="button" onclick="express()" value="导出"/>	 -->	
+							 
+								<input type="button" onclick="express()" value="导出"/>	 	
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
 								<input type="hidden" name="year" value="${year}"/>
 								<input type="hidden" name="season" value="${season}"/>
