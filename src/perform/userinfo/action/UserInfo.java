@@ -35,7 +35,7 @@ public class UserInfo {
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans = session.beginTransaction();
  	    PUserDAO uidao=new PUserDAO();
- 	    ui = uidao.findById(id);
+ 	    ui = uidao.findAllById(id);
  	    trans.commit();
 		session.flush();
 		session.clear();

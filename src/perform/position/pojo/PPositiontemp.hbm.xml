@@ -26,56 +26,56 @@
             </column>
         </property>
         <property name="kpinorm" type="java.lang.String">
-            <column name="kpinorm" length="128">
+            <column name="kpinorm" length="512">
                 <comment>KPI指标</comment>
             </column>
         </property>
         <property name="kpinormprop" type="java.lang.String">
-            <column name="kpinormprop" length="128">
+            <column name="kpinormprop" length="512">
                 <comment>KPI指标比重</comment>
             </column>
         </property>
         <property name="kpirater" type="java.lang.String">
-            <column name="kpirater" length="128" />
+            <column name="kpirater" length="512" />
         </property>
         <property name="ktinorm" type="java.lang.String">
-            <column name="ktinorm" length="128">
+            <column name="ktinorm" length="512">
                 <comment>KTI指标</comment>
             </column>
         </property>
         <property name="ktinormprop" type="java.lang.String">
-            <column name="ktinormprop" length="128">
+            <column name="ktinormprop" length="512">
                 <comment>KTI指标比重</comment>
             </column>
         </property>
         <property name="ktirater" type="java.lang.String">
-            <column name="ktirater" length="128" />
+            <column name="ktirater" length="512" />
         </property>
         <property name="kcinorm" type="java.lang.String">
-            <column name="kcinorm" length="128">
+            <column name="kcinorm" length="512">
                 <comment>KCI指标</comment>
             </column>
         </property>
         <property name="kcinormprop" type="java.lang.String">
-            <column name="kcinormprop" length="128">
+            <column name="kcinormprop" length="512">
                 <comment>KCI指标比重</comment>
             </column>
         </property>
         <property name="kcirater" type="java.lang.String">
-            <column name="kcirater" length="128" />
+            <column name="kcirater" length="512" />
         </property>
         <property name="kbinorm" type="java.lang.String">
-            <column name="kbinorm" length="128">
+            <column name="kbinorm" length="512">
                 <comment>KBI指标</comment>
             </column>
         </property>
         <property name="kbinormprop" type="java.lang.String">
-            <column name="kbinormprop" length="128">
+            <column name="kbinormprop" length="512">
                 <comment>KBI指标比重</comment>
             </column>
         </property>
         <property name="kbirater" type="java.lang.String">
-            <column name="kbirater" length="128" />
+            <column name="kbirater" length="512" />
         </property>
         <property name="kpiprop" type="java.lang.Double">
             <column name="kpiprop" precision="22" scale="0">

@@ -243,7 +243,9 @@ for (var i=1;i<arry.length;i++){
     			<td width="300" class="as">
     				<select style="width:280px"  id="zf" name="zf" >
 										<option value="0">主要负责人</option>
-										<option value="1">其他负责人</option>
+										<option value="1">其他负责人1</option>
+										<option value="2">其他负责人2</option>
+										<option value="3">其他负责人3</option>
 						</select>
     			</td>
     		</tr>

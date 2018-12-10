@@ -192,7 +192,9 @@ public class RateBegin {
 			PPosition pp = ppdao.findByID(pu.getPnum());
 			if(pp!=null)
 			{
-				List<PUser> listrater = pudao.findRaterByPostion(pu.getPosition());
+				String rater = pudao.findRaterByPostion(pu.getPosition(),"0");
+				String rater1 = pudao.findRaterByPostion(pu.getPosition(),"1");
+				String rater2 = pudao.findRaterByPostion(pu.getPosition(),"2");
 				//初始化PScore
 				PScore ps = new PScore();
 				ps.setYear(year);
@@ -214,9 +216,9 @@ public class RateBegin {
 				ps.setKbiprop(pp.getKbiprop());
 				ps.setKciprop(pp.getKciprop());
 				ps.setKpirater("");
-				ps.setKtirater(pp.getKtirater().replace("moren", listrater.get(0).getNewnumber()));
-				ps.setKbirater(listrater.get(0).getNewnumber());
-				ps.setKcirater(listrater.get(0).getNewnumber());
+				ps.setKtirater(pp.getKtirater().replace("moren2",rater2).replace("moren1",rater1).replace("moren",rater));
+				ps.setKbirater(rater);
+				ps.setKcirater(rater);
 				ps.setScore(0.0);
 				//初始化kpiscore
 				String[] kpinorms = pp.getKpinorm().split("、");//kpi指标
@@ -279,9 +281,17 @@ public class RateBegin {
 						pktis.setScore(pktinorm.getScore()*ktip);
 						pktis.setRule(pktinorm.getRule());
 						pktis.setSum(0.0);
-						if(ktirater[j].equals("moren"))
+						if(ktirater[j].equals("moren2"))
 						{
-							pktis.setRater1(listrater.get(0).getNewnumber());
+							pktis.setRater1(rater2);
+						}
+						else if(ktirater[j].equals("moren1"))
+						{
+							pktis.setRater1(rater1);
+						}
+						else if(ktirater[j].equals("moren"))
+						{
+							pktis.setRater1(rater);
 						}
 						else
 						{
@@ -317,7 +327,7 @@ public class RateBegin {
 						pkbis.setScore(pkbinorm.getScore()*kbip);
 						pkbis.setRule(pkbinorm.getRule());
 						pkbis.setSum(0.0);
-						pkbis.setRater1(listrater.get(0).getNewnumber());
+						pkbis.setRater1(rater);
 						pkbis.setResult1(0.0);
 						pkbisdao.merge(pkbis);
 					}
@@ -358,7 +368,7 @@ public class RateBegin {
 						pkcis.setRule(pkcinorm.getRule());
 						pkcis.setProp(kcip);
 						pkcis.setSum(0.0);
-						pkcis.setRater1(listrater.get(0).getNewnumber());
+						pkcis.setRater1(rater);
 						pkcis.setResult1(0.0);
 						pkcisdao.merge(pkcis);
 					}

@@ -59,7 +59,7 @@ public class PUserDAO extends BaseHibernateDAO  {
         }
     }
     
-    public PUser findById( java.lang.Integer id) {
+    public PUser findById1( java.lang.Integer id) {
         log.debug("getting PUser instance with id: " + id);
         try {
             PUser instance = (PUser) getSession()
@@ -222,16 +222,17 @@ public class PUserDAO extends BaseHibernateDAO  {
 	/**
 	 * 查询有权评分人
 	 * @param position
+	 * zhuci 职务主次序号0-3
 	 * @return
 	 */
-	public List findRaterByPostion(String position) {
+	public String findRaterByPostion(String position,String zhuci) {
 		log.debug("finding all PUser instances");
 		try {
 			String chu = position.substring(2, 3);
 			String zhi = position.substring(0, 1);
 			String tuan = position.substring(3, 4);
 			String zu = position.substring(4, 5);
-			List list =  new ArrayList<PUser>();
+			List<PUser> list =  new ArrayList<PUser>();
 			String posrater = "";
 			if(zhi.equals("1"))
 			{
@@ -239,21 +240,28 @@ public class PUserDAO extends BaseHibernateDAO  {
 			}
 			else if(zhi.equals("2"))
 			{
-				posrater="10"+chu+"__";
+				posrater="1"+zhuci+chu+"__";
 			}
 			else if(zhi.equals("3"))
 			{
-				posrater="40"+chu+tuan+zu;
+				posrater="4"+zhuci+chu+tuan+zu;
 			}
 			else if(zhi.equals("4"))
 			{
-				posrater="20"+chu+tuan+"_";
+				posrater="2"+zhuci+chu+tuan+"_";
 			}
 			String queryString = "from PUser as pu where pu.position like '"+posrater+"' and pu.canscore='1' order by pu.position";
 			System.out.println(queryString);
 			Query queryObject = getSession().createQuery(queryString);
 			list =  queryObject.list();
-			return list;
+			if(list.isEmpty())
+			{
+				return "";
+			}
+			else
+			{
+				return list.get(0).getNewnumber();
+			}
 			
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);

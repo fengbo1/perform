@@ -42,16 +42,16 @@
             <column name="positionzu" length="64" />
         </property>
         <property name="kpirater" type="java.lang.String">
-            <column name="kpirater" length="64" />
+            <column name="kpirater" length="512" />
         </property>
         <property name="ktirater" type="java.lang.String">
-            <column name="ktirater" length="64" />
+            <column name="ktirater" length="512" />
         </property>
         <property name="kbirater" type="java.lang.String">
-            <column name="kbirater" length="64" />
+            <column name="kbirater" length="512" />
         </property>
         <property name="kcirater" type="java.lang.String">
-            <column name="kcirater" length="64" />
+            <column name="kcirater" length="512" />
         </property>
         <property name="kpiscore" type="java.lang.Double">
             <column name="kpiscore" precision="22" scale="0">

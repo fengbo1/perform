@@ -62,7 +62,7 @@ public class PDPCenter {
 		
 		
 		try {
-			String hql = "from PUser as pu where 1=1";
+			String hql = "from PUser as pu where length(pu.name)<15";
 			if(chu!=null&&!chu.equals("wu"))
 			{
 				hql += " and pu.position like '__"+chu+"__'";

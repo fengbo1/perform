@@ -55,7 +55,7 @@ public class PDPOffice {
 			{
 				chu=position.substring(2, 3);
 			}
-			String hql = "from PUser as pu where pu.position like '__"+chu+"__'";
+			String hql = "from PUser as pu where length(pu.name)<15 and pu.position like '__"+chu+"__'";
 			if(name!=null&&!name.equals(""))
 			{
 				hql += " and pu.name='"+name+"'";

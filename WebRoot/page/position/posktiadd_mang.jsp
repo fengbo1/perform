@@ -201,7 +201,9 @@ function tijiao()
 				     			<td width="140px" height="25" align="center" valign="middle" ><div
 										align="center">
 											 <select style="width:80px"  id="${kt.id+10000000}" name="rater">
-											 	<option value="moren">默认</option>
+											 	<option value="moren">主要</option>
+											 	<option value="moren1">其他1</option>
+											 	<option value="moren2">其他2</option>
 											 	<c:forEach items="${listu}" var="u" varStatus="status">
 											 		<option value="${u.newnumber}">${u.name}</option>
 											 	</c:forEach>

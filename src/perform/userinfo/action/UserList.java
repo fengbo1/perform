@@ -165,7 +165,7 @@ public class UserList {
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();
 		try {
-			hql = "from PUser as ui where ui.id>0 ";
+			hql = "from PUser as ui where ui.id>0 and length(ui.name)<15";
 //			if(city!=null&&!city.equals("")&&!city.equals("wu"))
 //			{
 //				hql=hql+" and ui.position like '_____"+city+"_'";
@@ -186,7 +186,7 @@ public class UserList {
 			{
 				hql=hql+" and ui.name='"+strtemp+"'";
 			}
-			hql +=" order by ui.id";
+			hql +=" order by ui.position";
 			System.out.println(hql);
 			query = session.createQuery(hql);
 			query.setFirstResult(pageSize * (currentPage - 1));
