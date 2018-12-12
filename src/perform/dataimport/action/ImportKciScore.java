@@ -62,7 +62,7 @@ public class ImportKciScore {
 	}
 public String execute() throws Exception {
 		
-		String realpath = "D:/import/performance/";
+		String realpath = "C:/import/performance/";
 		message = "";
 		PKCIScoreDAO pkcdao = new PKCIScoreDAO();
 		PScoreDAO psdao = new PScoreDAO();
@@ -155,7 +155,7 @@ public String execute() throws Exception {
 						
 					
 					}
-				flag.setAlreadyrate(flag.getAlreadyrate()+"88888888");
+				flag.setAlreadyrate(flag.getAlreadyrate()+"、88888888");
 				}
 				catch (Exception e) {
 				trans.rollback();//出错回滚

@@ -80,7 +80,7 @@ public class ImportKpiScore{
 	}
 public String execute() throws Exception {
 		
-		String realpath = "D:/import/performance/";
+		String realpath = "C:/import/performance/";
 		message = "";
 		//UserInfoDAO uidao = new UserInfoDAO();
 		PKPIScoreDAO pkpdao = new PKPIScoreDAO();
@@ -181,7 +181,7 @@ public String execute() throws Exception {
 						    psdao.merge(ps);
 		    	        }
 					}
-				flag.setAlreadyrate(flag.getAlreadyrate()+"88888887");
+				flag.setAlreadyrate(flag.getAlreadyrate()+"、88888887");
 				}
 				catch (Exception e) {
 				trans.rollback();//出错回滚

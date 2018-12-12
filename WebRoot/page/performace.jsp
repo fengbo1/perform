@@ -66,9 +66,13 @@ function frame(o)
 	{
 		document.getElementById("frame").src="<%=path%>/seasonquery_person.action?querynewnumber=${newnumber}&type=his";
 	}
+	else if(obj=="hisquery_office")
+	{
+		document.getElementById("frame").src="<%=path%>/hisquery_office.action?rater=${newnumber}";
+	}
 	else if(obj=="hisquery_center")
 	{
-		document.getElementById("frame").src="<%=path%>/hisquery_center.action?rater=${newnumber}";
+		document.getElementById("frame").src="<%=path%>/hisquery_center.action?rater=${newnumber}&chu=${chus}";
 	}
 	else if(obj=="seasonquery_person")
 	{
@@ -267,8 +271,9 @@ $(document).ready(function(){
 								</div>
 								<ul class="menu1">
 									<li class="cc"  onclick="frame('hisquery_person')">个人绩效得分查询</li>
-								<!-- 
-									<li class="cc"  onclick="frame('seasonquery_office')">处室员工绩效得分查询</li> -->	
+								<c:if test="${zhis=='4'||zhis=='2'||zhis=='1'}"> 
+									<li class="cc"  onclick="frame('hisquery_office')">处室员工绩效得分查询</li>	
+								</c:if>	
 								<c:if test="${zhis=='0'||zhis=='1'||zhis=='2'||authoW=='W'}">
 									<li class="cc"  onclick="frame('hisquery_center')">中心员工绩效得分查询</li>
 									</c:if>
@@ -298,7 +303,7 @@ $(document).ready(function(){
 									</c:if>
 								</ul>
 							</li>
-							<c:if test="${zhis=='0'||zhis=='1'||authoW=='W'}">
+							<c:if test="${zhis=='0'||zhis=='1'||authoX=='X'||authoW=='W'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">指标库管理</span>
@@ -311,7 +316,7 @@ $(document).ready(function(){
 								</ul>
 							</li>
 							</c:if>
-							<c:if test="${zhis=='0'||zhis=='1'||authoW=='W'||zhis=='2'}">
+							<c:if test="${zhis=='0'||zhis=='1'||authoW=='W'||authoX=='X'||zhis=='2'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">岗位管理</span>
@@ -323,13 +328,13 @@ $(document).ready(function(){
 									<c:if test="${zhis=='1'||zhis=='2'}">
 									<li class="cc"  onclick="frame('poschulist')">处室岗位信息查询</li>
 									</c:if>
-									<c:if test="${authoW=='W'}">
+									<c:if test="${authoX=='X'||authoW=='W'}">
 									<li class="cc"  onclick="frame('poslist')">岗位信息维护</li>
 									</c:if>
 								</ul>
 							</li>
 							</c:if>
-							<c:if test="${authoW=='W'}">
+							<c:if test="${authoX=='X'||authoW=='W'}">
 							<li class="a">
 								<div class="header">
 									<span class="label">用户管理</span>

@@ -255,7 +255,7 @@ public class PKPIScoreDAO extends BaseHibernateDAO  {
     public PKPIScore findByYearSeasonNewnumberKpiname(int year,int season,String newnumber,String kpiname) {
     	log.debug("finding all PKPIScore instances");
     	try {
-    		String queryString = "from PKPIScore as kp where kp.newnumber='"+newnumber+"' and kp.year='"+year+"'  and kp.season='"+season+"' and kp.kpiname like '"+kpiname+"'";
+    		String queryString = "from PKPIScore as kp where kp.newnumber='"+newnumber+"' and kp.year='"+year+"'  and kp.season='"+season+"' and kp.kpiname like '%"+kpiname+"%'";
 			 Query queryObject = getSession().createQuery(queryString);
     		 List<PKPIScore> list = queryObject.list();
     		 if(list.isEmpty())

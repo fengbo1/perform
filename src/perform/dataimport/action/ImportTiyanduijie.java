@@ -59,7 +59,7 @@ public class ImportTiyanduijie {
 	}
 public String execute() throws Exception {
 		
-		String realpath = "D:/import/performance/";
+		String realpath = "C:/import/performance/";
 		message = "导入成功";
 		PKCIScoreDAO pkcdao = new PKCIScoreDAO();
 		PScoreDAO psdao = new PScoreDAO();
@@ -150,7 +150,7 @@ public String execute() throws Exception {
 		    	      }
 					
 					}
-				flag.setAlreadyrate(flag.getAlreadyrate()+"88888889");
+				flag.setAlreadyrate(flag.getAlreadyrate()+"、88888889");
 				}
 				catch (Exception e) {
 				trans.rollback();//出错回滚

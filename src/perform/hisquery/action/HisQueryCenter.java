@@ -182,7 +182,7 @@ public class HisQueryCenter {
 				}
 			}
 			hql = "from PScore as p where p.year='"+year+"' and p.season='"+season+"'";
-			if(chu!=null&&!chu.equals("wu"))
+			if(chu!=null&&!chu.equals("wu")&&!chu.equals("0"))
 			{
 				hql +=" and p.position like '__"+chu+"__'";
 			}

@@ -7,6 +7,16 @@
 	<package name="hisquery_default" extends="struts-default" >
 		<action name="hisquery_center" class="perform.hisquery.action.HisQueryCenter">
 			<result name="success">/page/hisquery/hisquery_center.jsp</result>
+		</action> 
+		<action name="hisquery_office" class="perform.hisquery.action.HisQueryOffice">
+			<result name="success">/page/hisquery/hisquery_office.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+		</action>
+		<action name="seasonkti_query" class="perform.hisquery.action.HisQueryKti">
+			<result name="success">/page/hisquery/hisquery_kti.jsp</result>
+		</action>
+		<action name="seasonkbi_query" class="perform.hisquery.action.HisQueryKbi">
+			<result name="success">/page/hisquery/hisquery_kbi.jsp</result>
 		</action>
 	</package>
 </struts>    

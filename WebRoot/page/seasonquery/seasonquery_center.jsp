@@ -191,7 +191,6 @@ $('#chu').attr('value',x[0].value);
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
 								 <a	href="<%=path%>/seasonkpidetail_query.action?year=${entity.year}&season=${entity.season}&rater=${newnumber}&ratepeople=${entity.newnumber}"><fmt:formatNumber type="number" value="${entity.kpiscore}" pattern="0.00" maxFractionDigits="2"/></a> 
-									<!--	<fmt:formatNumber type="number" value="${entity.kpiscore}" pattern="0.000" maxFractionDigits="3"/>-->	
 										</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">
